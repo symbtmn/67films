@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>Кері байланыс - HDRezka</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="main-header">
+  <div class="top-bar">
+    <div class="logo">67 <span>FILMS</span></div>
+  </div>
+  <nav class="nav-bar">
+    <ul class="nav-container">
+      <li><a href="index.html">Басты бет</a></li>
+      <li><a href="top-rated.html">Топ Топтама</a></li>
+      <li><a href="about.html">Біз туралы</a></li>
+      <li><a href="contact.html">Байланыс</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h2 class="page-title" style="text-align: center;">Кері байланыс (Фильм ұсыну)</h2>
+
+  <form id="contact-form">
+    <label for="username">Атыңыз:</label>
+    <input type="text" id="username" required placeholder="Есіміңіз">
+
+    <label for="email">Электронды пошта:</label>
+    <input type="email" id="email" required placeholder="email@example.com">
+
+    <label for="category">Санат:</label>
+    <select id="category">
+      <option value="Фильм ұсыну">Фильм ұсыну</option>
+      <option value="Қателік туралы">Қателік туралы хабарлау</option>
+    </select>
+
+    <label for="message">Хабарлама:</label>
+    <textarea id="message" rows="4" required></textarea>
+
+    <button type="submit">Жіберу және Excel-ге сақтау</button>
+  </form>
+</main>
+
+<footer>
+  <p>Created by:</p>
+  <p><b> <i> Symbat Abdirakhman, Akerke Zulpubek </p></b></i> </footer>
+
+<!-- JS скриптін қосу -->
+<script src="js/script.js"></script>
+</body>
+</html>

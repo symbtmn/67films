@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HDRezka - Смотреть фильмы онлайн</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="main-header">
+  <div class="top-bar">
+    <div class="logo">
+      67 <span>FILMS</span>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Іздеу..." id="navSearch">
+      <button type="submit" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Режим ауыстыратын батырма -->
+    <button id="theme-toggle" class="theme-toggle-btn">night mode</button>
+  </div>
+
+
+  <nav class="nav-bar">
+    <ul class="nav-container">
+      <li><a href="index.html">Басты бет</a></li>
+
+      <li>
+        <a href="#">Фильмдер ▾</a>
+        <div class="mega-dropdown">
+          <div class="genre-grid">
+            <a href="#">Вестерны</a>
+            <a href="#">Семейные</a>
+            <a href="#">Фэнтези</a>
+            <a href="#">Биографические</a>
+            <a href="#">Арт-хаус</a>
+            <a href="#">Боевики</a>
+            <a href="#">Военные</a>
+            <a href="#">Детективы</a>
+            <a href="#">Криминал</a>
+            <a href="#">Приключения</a>
+            <a href="#">Драмы</a>
+            <a href="#">Спортивные</a>
+            <a href="#">Фантастика</a>
+            <a href="#">Комедии</a>
+            <a href="#">Мелодрамы</a>
+            <a href="#">Триллеры</a>
+            <a href="#">Ужасы</a>
+            <a href="#">Мюзиклы</a>
+          </div>
+        </div>
+      </li>
+      <li>
+      <a href="#">Сериалдар ▾</a>
+      <div class="mega-dropdown">
+        <div class="genre-grid">
+          <a href="#">Вестерны</a>
+          <a href="#">Семейные</a>
+          <a href="#">Фэнтези</a>
+          <a href="#">Биографические</a>
+          <a href="#">Арт-хаус</a>
+          <a href="#">Боевики</a>
+          <a href="#">Военные</a>
+          <a href="#">Детективы</a>
+          <a href="#">Криминал</a>
+          <a href="#">Приключения</a>
+          <a href="#">Драмы</a>
+          <a href="#">Спортивные</a>
+          <a href="#">Фантастика</a>
+          <a href="#">Комедии</a>
+          <a href="#">Мелодрамы</a>
+          <a href="#">Триллеры</a>
+          <a href="#">Ужасы</a>
+          <a href="#">Мюзиклы</a>
+        </div>
+      </div>
+      </li>
+      <!-- 1. МУЛЬТФИЛЬМДЕР (Mega-dropdown) -->
+      <li>
+        <a href="#">Мультфильмдер ▾</a>
+        <div class="mega-dropdown">
+          <div class="genre-grid">
+            <a href="#">Полнометражные</a>
+            <a href="#">Мультсериалы</a>
+            <a href="#">Детские</a>
+            <a href="#">Семейные</a>
+            <a href="#">Развивающие</a>
+            <a href="#">Приключения</a>
+            <a href="#">Комедийные</a>
+            <a href="#">Фэнтези</a>
+            <a href="#">Анимационные</a>
+            <a href="#">Советские</a>
+            <a href="#">Disney / Pixar</a>
+            <a href="#">Аниме-мультфильмы</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 2. АНИМЕ (Mega-dropdown) -->
+      <li>
+        <a href="#">Аниме ▾</a>
+        <div class="mega-dropdown">
+          <div class="genre-grid">
+            <a href="#">Сёнэн</a>
+            <a href="#">Сёдзё</a>
+            <a href="#">Сэйнэн</a>
+            <a href="#">Исэкай</a>
+            <a href="#">Меха</a>
+            <a href="#">Романтика</a>
+            <a href="#">Фэнтези</a>
+            <a href="#">Боевик</a>
+            <a href="#">Школа</a>
+            <a href="#">Повседневность</a>
+            <a href="#">Мистика</a>
+            <a href="#">Спорт</a>
+            <a href="#">Детектив</a>
+            <a href="#">Комедия</a>
+            <a href="#">Драма</a>
+            <a href="#">Приключения</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 3. ДОРАМАЛАР (Mega-dropdown) -->
+      <li>
+        <a href="#">Дорамалар ▾</a>
+        <div class="mega-dropdown">
+          <div class="genre-grid">
+            <a href="#">Южнокорейские</a>
+            <a href="#">Китайские</a>
+            <a href="#">Японские</a>
+            <a href="#">Тайваньские</a>
+            <a href="#">Романтика</a>
+            <a href="#">Исторические</a>
+            <a href="#">Комедии</a>
+            <a href="#">Драмы</a>
+            <a href="#">Детективы</a>
+            <a href="#">Триллеры</a>
+            <a href="#">Фэнтези</a>
+            <a href="#">Школа & Молодёжные</a>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="top-rated.html">Топ</a></li>
+      <li><a href="about.html">Біз туралы</a></li>
+      <li><a href="contact.html">Байланыс</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>Смотреть в HD онлайн</h2>
+  <div class="movie-grid">
+
+    <!-- Мстители: Финал -->
+    <article class="card">
+      <a href="avengers.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Фильм</span>
+          <img src="img/5276258587908973287.jpg" alt="Мстители: Финал">
+        </div>
+        <div class="card-info">
+          <h4>Мстители: Финал</h4>
+          <p>2019, США, Фантастика, Боевик</p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Великолепный век -->
+    <article class="card">
+      <a href="movie-details.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Сериал</span>
+          <img src="img/5276258587908973304.jpg" alt="Великолепный век">
+        </div>
+        <div class="card-info">
+          <h4>Великолепный век</h4>
+          <p>2011, Турция, Мелодрама, История</p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Атака титанов -->
+    <article class="card">
+      <a href="movie-details.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Аниме</span>
+          <img src="img/d83491ac30d4c7a2b64b42c7ed67b7b8.jpg" alt="Атака титанов">
+        </div>
+        <div class="card-info">
+          <h4>Атака титанов</h4>
+          <p>2013, Япония, Фэнтези, Боевик</p>
+        </div>
+      </a>
+    </article>
+
+    <!--Хватай Сон Джэ и беги -->
+    <article class="card">
+      <a href="movie-details.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Дорама</span>
+          <img src="img/5276258587908973596.jpg" alt="Хватай Сон Джэ и беги">
+        </div>
+        <div class="card-info">
+          <h4>Хватай Сон Джэ и беги</h4>
+          <p>2024, Южная Корея, Романтика, Фэнтези</p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Человек-паук: Нет пути домой -->
+    <article class="card">
+      <a href="movie-details.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Мультфильм</span>
+          <img src="img/5276258587908973376.jpg" alt="Человек-паук: Паутина миров">
+        </div>
+        <div class="card-info">
+          <h4>Человек-паук: Нет пути домой</h4>
+          <p>2021, США, Приключения, Фантастика</p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Одиссея (2026) -->
+    <article class="card">
+      <a href="odyssey2026.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Фильм</span>
+          <img src="img/5276258587908973589.jpg" alt="Одиссея 2026">
+        </div>
+        <div class="card-info">
+          <h4>Одиссея / The Odyssey</h4>
+          <p>2026, США, Фэнтези, Приключения, Боевик</p>
+        </div>
+      </a>
+    </article>
+
+    <!--  Гравити Фолз -->
+    <article class="card">
+      <a href="movie-details.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Мультсериал</span>
+          <img src="img/5276258587908973584.jpg" alt="Гравити Фолз">
+        </div>
+        <div class="card-info">
+          <h4>Гравити Фолз</h4>
+          <p>2012, США, Комедия, Мистика</p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Кот в сапогах 2: Последнее желание -->
+    <article class="card">
+      <a href="movie-details.html" class="card-link">
+        <div class="card-img-wrapper">
+          <span class="card-badge">Мультфильм</span>
+          <img src="img/5276258587908973591.jpg" alt="Кот в сапогах 2">
+        </div>
+        <div class="card-info">
+          <h4>Кот в сапогах 2: Последнее желание</h4>
+          <p>2022, США, Семейный, Комедия</p>
+        </div>
+      </a>
+    </article>
+  </div>
+</main>
+<footer>
+  <p>Created by:</p>
+  <p><b> <i> Symbat Abdirakhman, Akerke Zulpubek </p></b></i> </footer>
+
+
+<script src="js/script.js"></script>
+</body>
+</html>
