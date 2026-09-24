@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кинолар тізімі - 67FILMS (Grid Layout)</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- TASK 3: GRID TEMPLATE AREAS WRAPPER -->
+<div class="full-grid-wrapper">
+
+  <!-- 1. HEADER AREA -->
+  <header id="main-header" class="grid-header">
+    <div class="top-bar">
+      <div class="logo">
+        67 <span>FILMS</span>
+      </div>
+      <button id="theme-toggle" class="theme-toggle-btn">night mode</button>
+    </div>
+    <nav class="nav-bar">
+      <ul class="nav-container">
+        <li><a href="index.html">Басты бет</a></li>
+        <li><a href="movies.html">Кинолар</a></li>
+        <li><a href="top-rated.html">Топ Топтама</a></li>
+        <li><a href="about.html">Біз туралы</a></li>
+        <li><a href="contact.html">Байланыс</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 2. SIDEBAR AREA (Кинолар тізімі) -->
+  <aside class="grid-sidebar">
+    <h3 class="sidebar-title">🔥 Жаңа қосылғандар</h3>
+
+    <ul class="sidebar-movie-list">
+      <li>
+        <a href="movie-details.html">
+          <img src="img/5276258587908973596.jpg" alt="Хватай Сон Джэ и беги">
+          <div class="sidebar-movie-info">
+            <h5>Хватай Сон Джэ и беги</h5>
+            <span>2024 • Дорама</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="avengers.html">
+          <img src="img/5276258587908973287.jpg" alt="Мстители: Финал">
+          <div class="sidebar-movie-info">
+            <h5>Мстители: Финал</h5>
+            <span>2019 • Боевик</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="movie-details.html">
+          <img src="img/d83491ac30d4c7a2b64b42c7ed67b7b8.jpg" alt="Атака титанов">
+          <div class="sidebar-movie-info">
+            <h5>Атака титанов</h5>
+            <span>2013 • Аниме</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="odyssey2026.html">
+          <img src="img/5276258587908973589.jpg" alt="Одиссея">
+          <div class="sidebar-movie-info">
+            <h5>Одиссея</h5>
+            <span>2026 • Фэнтези</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- 3. MAIN CONTENT AREA -->
+  <main class="grid-main">
+    <h2 class="page-title">Танымал туындылар</h2>
+    <p style="margin-bottom: 20px; color: #888;">Бұл бет CSS Grid (grid-template-areas) арқылы құрастырылған.</p>
+
+    <div class="movie-grid">
+      <!-- Человек-паук -->
+      <article class="card">
+        <a href="movie-details.html" class="card-link">
+          <div class="card-img-wrapper">
+            <span class="card-badge">Мультфильм</span>
+            <img src="img/5276258587908973376.jpg" alt="Человек-паук">
+          </div>
+          <div class="card-info">
+            <h4>Человек-паук: Нет пути домой</h4>
+            <p>2021, США, Фантастика</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Гравити Фолз -->
+      <article class="card">
+        <a href="movie-details.html" class="card-link">
+          <div class="card-img-wrapper">
+            <span class="card-badge">Мультсериал</span>
+            <img src="img/5276258587908973584.jpg" alt="Гравити Фолз">
+          </div>
+          <div class="card-info">
+            <h4>Гравити Фолз</h4>
+            <p>2012, США, Мистика</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Кот в сапогах -->
+      <article class="card">
+        <a href="movie-details.html" class="card-link">
+          <div class="card-img-wrapper">
+            <span class="card-badge">Мультфильм</span>
+            <img src="img/5276258587908973591.jpg" alt="Кот в сапогах 2">
+          </div>
+          <div class="card-info">
+            <h4>Кот в сапогах 2</h4>
+            <p>2022, США, Комедия</p>
+          </div>
+        </a>
+      </article>
+    </div>
+  </main>
+
+
+
+  <!-- 4. FOOTER AREA -->
+  <footer class="grid-footer">
+    <p>Created by:</p>
+    <p><b><i>Әбдірахман Сымбат Нұрланқызы, Akerke Zulpubek</i></b></p>
+  </footer>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

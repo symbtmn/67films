@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Түнгі / Күндізгі режим
+  //  Түнгі / Күндізгі режим
   const themeBtn = document.getElementById('theme-toggle');
 
   if (themeBtn) {
@@ -57,13 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-// 2. Басқа бетке өту немесе Enter басып іздеу
+
   function handleSearch() {
     const query = searchInput.value.trim();
     if (query !== '') {
       alert(`Іздеу сұранысы: ${query}`);
-      // Редирект жасау керек болса:
-      // window.location.href = `/search?q=${encodeURIComponent(query)}`;
+
     }
   }
 
@@ -77,3 +76,42 @@ document.addEventListener('DOMContentLoaded', () => {
 // Лупа батырмасын басу оқиғасы
   searchBtn.addEventListener('click', handleSearch);
 });
+// Көру статусын өзгерту функциясы
+function setStatus(btnElement, statusType) {
+  const buttons = document.querySelectorAll('.status-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  btnElement.classList.add('active');
+
+  const feedbackText = document.getElementById('feedbackText');
+  const ratingBox = document.getElementById('ratingBox');
+
+  if (statusType === 'not_watched' || statusType === 'will_watch') {
+    feedbackText.textContent = "💡 Бұл фильмді әлі көрмеген болсаңыз, көріп шығуға кеңес береміз!";
+    ratingBox.style.display = 'none';
+  } else if (statusType === 'watched') {
+    feedbackText.textContent = "🎉 Фильмді көріп болдыңыз ба? Бағаңызды беріп өтіңіз:";
+    ratingBox.style.display = 'flex';
+  } else if (statusType === 'watching') {
+    feedbackText.textContent = "🍿 Көріліміңіз сәтті өтсін!";
+    ratingBox.style.display = 'none';
+  } else if (statusType === 'dropped') {
+    feedbackText.textContent = "⏹️ Фильм соңына дейін қаралмады.";
+    ratingBox.style.display = 'none';
+  }
+}
+
+// Жұлдызша бағалау функциясы
+function rateFilm(starCount) {
+  const stars = document.querySelectorAll('.stars span');
+  stars.forEach((star, index) => {
+    if (index < starCount) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+
+  const ratingResult = document.getElementById('ratingResult');
+  ratingResult.textContent = `Бағаңыз: ${starCount} / 5 ⭐`;
+}

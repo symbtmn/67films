@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кек алушылар: Финал (2019) - Онлайн қарау | 67FILMS</title>
+  <title>67Films - Фильмдерді онлайн қарау</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- ОБЩИЙ GRID-КОНТЕЙНЕР ДЛЯ ВСЕЙ СТРАНИЦЫ -->
 <div class="page-layout-wrapper">
 
-  <!-- HEADER -->
+  <!-- 1. HEADER (HEADER AREA) -->
   <header id="main-header" class="grid-header">
     <div class="top-bar">
       <div class="logo">
@@ -18,14 +19,22 @@
       </div>
       <div class="search-box">
         <input type="text" placeholder="Іздеу..." id="navSearch">
-        <button type="submit" aria-label="Search">🔍</button>
+        <button type="submit" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
       </div>
+
+      <!-- Режим ауыстыратын батырма -->
       <button id="theme-toggle" class="theme-toggle-btn">night mode</button>
     </div>
 
     <nav class="nav-bar">
       <ul class="nav-container">
         <li><a href="index.html">Басты бет</a></li>
+
         <li>
           <a href="#">Фильмдер ▾</a>
           <div class="mega-dropdown">
@@ -37,6 +46,7 @@
               <a href="xdrama.html">Драма</a>
               <a href="xtriller.html">Триллер</a>
               <a href="xdetektiv.html">Детектив</a>
+              <a href="xkriminal.html">Криминал</a>
             </div>
           </div>
         </li>
@@ -92,6 +102,7 @@
     </nav>
   </header>
 
+  <!-- 2. SIDEBAR (SIDEBAR AREA) -->
   <aside class="grid-sidebar">
     <h3 class="sidebar-title">🔥 Трендтегілер</h3>
 
@@ -402,173 +413,24 @@
   </aside>
 
 
-  <!-- MAIN CONTENT (ФИЛЬМНІҢ ТОЛЫҚ СИПАТТАМАСЫ) -->
+
+  <!-- 3. MAIN CONTENT (MAIN AREA) -->
   <main class="grid-main">
-
-    <div class="movie-single-container">
-      <h1 class="movie-single-title">Кек алушылар: Финал (2019)</h1>
-      <p class="movie-single-subtitle">Avengers: Endgame • HD 1080p</p>
-
-      <!-- ПОСТЕР ЖӘНЕ АҚПАРАТТАР КЕСТЕСІ -->
-      <div class="movie-details-flex">
-        <div class="poster-box">
-          <img src="img/5276258587908973287.jpg" alt="Кек алушылар: Финал" class="detail-poster">
-        </div>
-
-        <div class="info-table-box">
-          <table class="movie-info-table">
-            <tr>
-              <th>Шыққан жылы:</th>
-              <td>2019</td>
-            </tr>
-            <tr>
-              <th>Ел:</th>
-              <td>АҚШ</td>
-            </tr>
-            <tr>
-              <th>Жанр:</th>
-              <td>Фантастика, Боевик, Приключения</td>
-            </tr>
-            <tr>
-              <th>Режиссер:</th>
-              <td>Энтони Руссо, Джо Руссо</td>
-            </tr>
-            <tr>
-              <th>Басты рөлдерде:</th>
-              <td>Роберт Дауни мл., Крис Эванс, Марк Руффало, Крис Хемсворт, Скарлетт Йоханссон</td>
-            </tr>
-            <tr>
-              <th>Ұзақтығы:</th>
-              <td>181 минут / 03:01</td>
-            </tr>
-            <tr>
-              <th>Сапасы:</th>
-              <td><span class="badge-hd">HD 1080p</span></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <!-- СЮЖЕТТІҢ СИПАТТАМАСЫ -->
-      <div class="movie-description-box">
-        <h3>Фильмнің сюжеті:</h3>
-        <p>
-          Танос Әлемдегі халықтың жартысын жойғаннан кейін, Кек алушылар тобының тірі қалған мүшелері мен олардың одақтастары жиналып, қуатты титанның жойқын әрекеттеріне қарсы тұрудың жаңа жоспарын әзірлеуі керек. Әлемді бұрынғы қалпына келтіру үшін қаһармандар өз өмірлерін қатерге тігіп, ең үлкен сынаққа тап болады.
-        </p>
-      </div>
-
-      <!-- ТРЕЙЛЕР БӨЛІМІ (YOUTUBE IFRAME) -->
-      <div class="trailer-box">
-        <h3>🎬 Трейлерді қарау:</h3>
-        <div class="video-responsive">
-          <iframe
-            src="https://www.youtube.com/embed/rd6aY2vPhUc"
-            title="Кек алушылар: Финал қазақша трейлер"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-    </div>
-    <!-- КӨРУ СТАТУСТАРЫ БӨЛІМІ -->
-    <div class="user-status-container">
-      <div class="status-buttons">
-        <button class="status-btn" onclick="setStatus(this, 'watching')">Көріп жатырмын</button>
-        <button class="status-btn" onclick="setStatus(this, 'watched')">Қарадым</button>
-        <button class="status-btn" onclick="setStatus(this, 'will_watch')">Көремін</button>
-        <button class="status-btn" onclick="setStatus(this, 'dropped')">Тастадым</button>
-        <button class="status-btn active" onclick="setStatus(this, 'not_watched')">Көрген жоқпын</button>
-      </div>
-
-      <!-- КӨРГЕН ЖОҚПЫН / ҚАРАДЫМ ТЕКСТІ МЕНЕН РЕЙТИНГ БӨЛІГІ -->
-      <div class="status-feedback-box" id="statusFeedback">
-        <p class="feedback-text" id="feedbackText">💡 Бұл фильмді әлі көрмеген болсаңыз, көріп шығуға кеңес береміз!</p>
-
-        <!-- Жұлдызша рейтинг ("Қарадым" басылғанда шығады) -->
-        <div class="rating-stars-box" id="ratingBox" style="display: none;">
-          <span>Фильмге бағаңызды беріңіз:</span>
-          <div class="stars">
-            <span onclick="rateFilm(1)">★</span>
-            <span onclick="rateFilm(2)">★</span>
-            <span onclick="rateFilm(3)">★</span>
-            <span onclick="rateFilm(4)">★</span>
-            <span onclick="rateFilm(5)">★</span>
-          </div>
-          <span class="rating-result" id="ratingResult"></span>
-        </div>
+    <h2 class="page-title">Фильмдерді онлайн қарау</h2>
+    <div class="movie-grid">
+      <div class="empty-state">
+        <p>Өкінішке орай, бұл жанрда фильмдер табылмады.</p>
       </div>
     </div>
-
-    <!-- ҚАРАП ШЫҒУҒА КЕҢЕС БЕРЕМІЗ БӨЛІМІ -->
-    <div class="recommended-section">
-      <h3>🍿 Қарап шығуға кеңес береміз:</h3>
-      <div class="recommended-grid">
-        <article class="card">
-          <a href="zatakatitanov.html" class="card-link">
-            <div class="card-img-wrapper">
-              <span class="card-badge">Аниме</span>
-              <img src="img/d83491ac30d4c7a2b64b42c7ed67b7b8.jpg" alt="Титандар шабуылы">
-            </div>
-            <div class="card-info">
-              <h4>Титандар шабуылы</h4>
-              <p>2013, Жапония</p>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <a href="zhvataisonja.html" class="card-link">
-            <div class="card-img-wrapper">
-              <span class="card-badge">Дорама</span>
-              <img src="img/5276258587908973596.jpg" alt="Хватай Сон Джэ и беги">
-            </div>
-            <div class="card-info">
-              <h4>Хватай Сон Джэ и беги</h4>
-              <p>2024, Оңтүстік Корея</p>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <a href="odyssey.html" class="card-link">
-            <div class="card-img-wrapper">
-              <span class="card-badge">Фильм</span>
-              <img src="img/5276258587908973589.jpg" alt="Одиссея">
-            </div>
-            <div class="card-info">
-              <h4>Одиссея / The Odyssey</h4>
-              <p>2026, АҚШ</p>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <a href="zchelovekpauk.html" class="card-link">
-            <div class="card-img-wrapper">
-              <span class="card-badge">Мультфильм</span>
-              <img src="img/5276258587908973376.jpg" alt="Человек-паук">
-            </div>
-            <div class="card-info">
-              <h4>Человек-паук: Нет пути домой</h4>
-              <p>2021, АҚШ</p>
-            </div>
-          </a>
-        </article>
-      </div>
-    </div>
-
   </main>
 
-
-  <!-- FOOTER -->
+  <!-- 4. FOOTER (FOOTER AREA) -->
   <footer class="grid-footer">
     <p>Created by:</p>
     <p><b><i>Symbat Abdirakhman, Akerke Zulpubek</i></b></p>
   </footer>
 
-</div>
+</div> <!-- /page-layout-wrapper -->
 
 <script src="js/script.js"></script>
 </body>

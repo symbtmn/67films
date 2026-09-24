@@ -2,33 +2,319 @@
 <html lang="kk">
 <head>
   <meta charset="UTF-8">
-  <title>Біз туралы - 67FILMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Біз туралы - 67Films</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Ақ (Күндізгі) және Қара (Түнгі) режимге толық бейімделген стильдер */
+    .about-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .author-card {
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* 1. КҮНДІЗГІ РЕЖИМ СТИЛЬДЕРІ (Анық & Контрастты) */
+    body:not(.dark-mode) .author-card,
+    body.light-mode .author-card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    body:not(.dark-mode) .author-name,
+    body.light-mode .author-name {
+      color: #1a202c;
+    }
+
+    body:not(.dark-mode) .author-bio,
+    body.light-mode .author-bio {
+      color: #4a5568;
+    }
+
+    body:not(.dark-mode) .skill-badge,
+    body.light-mode .skill-badge {
+      background: #fff0f3;
+      color: #800020;
+      border: 1px solid #ffccd5;
+    }
+
+    body:not(.dark-mode) .author-skills,
+    body.light-mode .author-skills {
+      border-top: 1px solid #edf2f7;
+    }
+
+    /* 2. ТҮНГІ РЕЖИМ СТИЛЬДЕРІ */
+    body.dark-mode .author-card {
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .author-name {
+      color: #ffffff;
+    }
+
+    body.dark-mode .author-bio {
+      color: #cbd5e0;
+    }
+
+    body.dark-mode .skill-badge {
+      background: rgba(128, 0, 32, 0.3);
+      color: #ffb3c1;
+      border: 1px solid rgba(128, 0, 32, 0.5);
+    }
+
+    body.dark-mode .author-skills {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* ЖАЛПЫ ОРТАҚ СТИЛЬДЕР */
+    .author-card:hover {
+      transform: translateY(-5px);
+      border-color: #800020 !important;
+    }
+
+    .author-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #800020;
+      box-shadow: 0 4px 15px rgba(128, 0, 32, 0.3);
+      margin: 0 auto 20px auto;
+      display: block;
+    }
+
+    .author-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .author-role {
+      font-size: 0.92rem;
+      color: #800020;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .author-bio {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .author-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      padding-top: 15px;
+    }
+
+    .skill-badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
-<header id="main-header">
-  <div class="top-bar"><div class="logo">67 <span>FILMS</span></div></div>
-  <nav class="nav-bar">
-    <ul class="nav-container">
-      <li><a href="index.html">Басты бет</a></li>
-      <li><a href="about.html">Біз туралы</a></li>
+<!-- ОБЩИЙ GRID-КОНТЕЙНЕР ДЛЯ ВСЕЙ СТРАНИЦЫ -->
+<div class="page-layout-wrapper">
+
+  <!-- 1. HEADER (HEADER AREA) -->
+  <header id="main-header" class="grid-header">
+    <div class="top-bar">
+      <div class="logo">
+        67 <span>FILMS</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Іздеу..." id="navSearch">
+        <button type="submit" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Режим ауыстыратын батырма -->
+      <button id="theme-toggle" class="theme-toggle-btn">night mode</button>
+    </div>
+
+    <nav class="nav-bar">
+      <ul class="nav-container">
+        <li><a href="index.html">Басты бет</a></li>
+
+        <li>
+          <a href="#">Фильмдер ▾</a>
+          <div class="mega-dropdown">
+            <div class="genre-grid">
+              <a href="xfantastika.html">Фантастика</a>
+              <a href="xboevik.html">Боевик</a>
+              <a href="xfentezi.html">Фэнтези</a>
+              <a href="xprikliucheniya.html">Шытырман</a>
+              <a href="xdrama.html">Драма</a>
+              <a href="xtriller.html">Триллер</a>
+              <a href="xdetektiv.html">Детектив</a>
+              <a href="xkriminal.html">Криминал</a>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <a href="#">Сериалдар ▾</a>
+          <div class="mega-dropdown">
+            <div class="genre-grid">
+              <a href="xkomediya.html">Комедиялық сериалдар</a>
+              <a href="xmelodrama.html">Мелодрамалар</a>
+              <a href="xtarihy.html">Тарихи сериалдар</a>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <a href="#">Мультфильмдер ▾</a>
+          <div class="mega-dropdown">
+            <div class="genre-grid">
+              <a href="xanimatsia.html">Толықметражды</a>
+              <a href="xmultserial.html">Мультсериалдар</a>
+              <a href="xotbasylyk.html">Отбасылық</a>
+              <a href="xmuzikalik.html">Музыкалық</a>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <a href="#">Аниме ▾</a>
+          <div class="mega-dropdown">
+            <div class="genre-grid">
+              <a href="xsionen.html">Сёнэн</a>
+              <a href="xmistika.html">Мистика</a>
+              <a href="xanimeboevik.html">Экшн & Боевик</a>
+              <a href="xskazka.html">Ертегі & Фэнтези</a>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <a href="#">Дорамалар ▾</a>
+          <div class="mega-dropdown">
+            <div class="genre-grid">
+              <a href="xdorama.html">Оңтүстік Кореялық</a>
+              <a href="xromantika.html">Романтика</a>
+              <a href="xdoramatriller.html">Триллер & Қорқынышты</a>
+              <a href="xdoramagistorya.html">Тарихи</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="active"><a href="about.html">Біз туралы</a></li>
+        <li><a href="contact.html">Байланыс</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 2. SIDEBAR (SIDEBAR AREA) -->
+  <aside class="grid-sidebar">
+    <h3 class="sidebar-title">🔥 Трендтегілер</h3>
+
+    <ul class="sidebar-movie-list">
+      <li><a href="avengers.html"><div class="sidebar-movie-info"><h5>Кек алушылар: Финал</h5><span>2019 • Боевик</span></div></a></li>
+      <li><a href="zhvataisonja.html"><div class="sidebar-movie-info"><h5>Хватай Сон Джэ и беги</h5><span>2024 • Дорама</span></div></a></li>
+      <li><a href="zatakatitanov.html"><div class="sidebar-movie-info"><h5>Титандар шабуылы</h5><span>2013 • Аниме</span></div></a></li>
+      <li><a href="odyssey.html"><div class="sidebar-movie-info"><h5>Одиссея</h5><span>2026 • Фэнтези</span></div></a></li>
+      <li><a href="zesigimdiqaq.html"><div class="sidebar-movie-info"><h5>Есігімді қақ</h5><span>2020 • Сериал</span></div></a></li>
+      <li><a href="zopengamer.html"><div class="sidebar-movie-info"><h5>Оппенгеймер</h5><span>2023 • Биография</span></div></a></li>
+      <li><a href="zmagisheski%20bitva.html"><div class="sidebar-movie-info"><h5>Магическая битва</h5><span>2020 • Аниме</span></div></a></li>
+      <li><a href="ztruebeauty.html"><div class="sidebar-movie-info"><h5>Истинная красота</h5><span>2020 • Дорама</span></div></a></li>
+      <li><a href="zcherezvseleni.html"><div class="sidebar-movie-info"><h5>Человек-паук: Через вселенные</h5><span>2018 • Мультфильм</span></div></a></li>
+      <li><a href="zharrypotter.html"><div class="sidebar-movie-info"><h5>Гарри Поттер мен философ тасы</h5><span>2001 • Фэнтези</span></div></a></li>
     </ul>
-  </nav>
-</header>
 
-<main class="container" style="text-align: center;">
-  <h2 class="page-title">About us</h2>
+    <!-- ХАБАРЛАМАЛАР ВИДЖЕТІ -->
+    <div class="sidebar-widget announcements-widget">
+      <h3 class="sidebar-title">📢 Сайт хабарландырулары</h3>
 
-  <div style="margin-top: 20px;">
-    <img src="img/5276258587908974183.jpg" alt="Әзірлеуші суреті" class="profile-img">
-    <h3>Symbat and Akerke</h3>
-    <p>Жобаның навигациясы мен дизайнын жасаған.</p>
-  </div>
-</main>
-<footer>
-  <p>Created by:</p>
-  <p><b><i> Symbat Abdirakhman, Akerke Zulpubek </p></b></i> </footer>
+      <div class="announcement-item">
+        <span class="announcement-date">25 Қыркүйек</span>
+        <h4>🍿 Жаңа маусым премьералары</h4>
+        <p>Осы демалыста базамызға 50-ден астам жаңа аниме мен дорама сериялары қосылады!</p>
+      </div>
 
+      <div class="announcement-item">
+        <span class="announcement-date">Қазан айында</span>
+        <h4>🎥 4K HDR сапасы және аудиотректер</h4>
+        <p>Жақында плеерге видео сапасын 4K-ға ауыстыру және қазақша дыбыстама таңдау мүмкіндігі қосылады.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 3. MAIN CONTENT (MAIN AREA) -->
+  <main class="grid-main">
+    <h2 class="page-title">Жоба авторлары</h2>
+
+    <div class="about-container">
+
+      <!-- 1-автор: Сымбат -->
+      <div class="author-card">
+        <img src="img/5309935748599455000.jpg" alt="Әбдірахман Сымбат" class="author-avatar" onerror="this.src='https://via.placeholder.com/160'">
+        <h3 class="author-name">Әбдірахман Сымбат</h3>
+        <p class="author-role">Lead Frontend & Software Engineer</p>
+        <p class="author-bio">
+          Astana IT University (AITU) «Software Engineering» мамандығының 2-курс студенті. 67Films жобасында сайттың веб-архитектурасын, CSS Grid/Flexbox құрылымын, навигациялық менюлерін және негізгі веб-функционалын әзірледі. Python, Java, HTML/CSS және PostgreSQL базаларымен жұмыс істеуге маманданған.
+        </p>
+        <div class="author-skills">
+          <span class="skill-badge">HTML5 / CSS3</span>
+          <span class="skill-badge">JavaScript</span>
+          <span class="skill-badge">Python / Java</span>
+          <span class="skill-badge">PostgreSQL</span>
+          <span class="skill-badge">UI/UX Layout</span>
+        </div>
+      </div>
+
+      <!-- 2-автор: Ақерке -->
+      <div class="author-card">
+        <img src="img/5309935748599455006.jpg" alt="Зұлпубек Ақерке" class="author-avatar" onerror="this.src='https://via.placeholder.com/160'">
+        <h3 class="author-name">Зұлпубек Ақерке</h3>
+        <p class="author-role">Frontend & Content Manager</p>
+        <p class="author-bio">
+          Astana IT University (AITU) «Software Engineering» мамандығының 2-курс студенті. 67Films платформасында медиа-контентті визуализациялау, фильмдер мен сериалар карточкаларын безендіру, трейлерлерді интеграциялау және жанрлық санаттарды қазақшалау бағытында жұмыстар жүргізді.
+        </p>
+        <div class="author-skills">
+          <span class="skill-badge">HTML5 / CSS3</span>
+          <span class="skill-badge">Web Design</span>
+          <span class="skill-badge">Content Editing</span>
+          <span class="skill-badge">Media Integration</span>
+          <span class="skill-badge">Frontend Dev</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 4. FOOTER (FOOTER AREA) -->
+  <footer class="grid-footer">
+    <p>Created by:</p>
+    <p><b><i>Symbat Abdirakhman, Akerke Zulpubek</i></b></p>
+  </footer>
+
+</div> <!-- /page-layout-wrapper -->
+
+<script src="js/script.js"></script>
 </body>
 </html>
