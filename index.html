@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>67Films - Фильмдерді онлайн қарау</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,15 +14,15 @@
 <!-- ОБЩИЙ GRID-КОНТЕЙНЕР ДЛЯ ВСЕЙ СТРАНИЦЫ -->
 <div class="page-layout-wrapper">
 
-  <!-- 1. HEADER (HEADER AREA) -->
+  <!-- 1. HEADER (HEADER AREA - TASK 5 & 10) -->
   <header id="main-header" class="grid-header">
-    <div class="top-bar">
-      <div class="logo">
-        67 <span>FILMS</span>
+    <div class="top-bar d-flex justify-content-between align-items-center p-2">
+      <div class="logo fw-bold fs-3">
+        67 <span class="text-danger">FILMS</span>
       </div>
-      <div class="search-box">
-        <input type="text" placeholder="Іздеу..." id="navSearch">
-        <button type="submit" aria-label="Search">
+      <div class="search-box d-flex align-items-center gap-2">
+        <input type="text" placeholder="Іздеу..." id="navSearch" class="form-control form-control-sm">
+        <button type="submit" aria-label="Search" class="btn btn-sm btn-outline-danger">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -27,77 +30,76 @@
         </button>
       </div>
 
-      <!-- Режим ауыстыратын батырма -->
-      <button id="theme-toggle" class="theme-toggle-btn">night mode</button>
+      <!-- Режим ауыстыратын батырма (TASK 6) -->
+      <button id="theme-toggle" class="btn btn-sm btn-dark theme-toggle-btn">night mode</button>
     </div>
 
-    <nav class="nav-bar">
-      <ul class="nav-container">
-        <li><a href="index.html">Басты бет</a></li>
+    <!-- Bootstrap Navbar Component -->
+    <nav class="nav-bar navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="nav-container navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Басты бет</a></li>
 
-        <li>
-          <a href="#">Фильмдер ▾</a>
-          <div class="mega-dropdown">
-            <div class="genre-grid">
-              <a href="xfantastika.html">Фантастика</a>
-              <a href="xboevik.html">Боевик</a>
-              <a href="xfentezi.html">Фэнтези</a>
-              <a href="xprikliucheniya.html">Шытырман</a>
-              <a href="xdrama.html">Драма</a>
-              <a href="xtriller.html">Триллер</a>
-              <a href="xdetektiv.html">Детектив</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <a href="#">Сериалдар ▾</a>
-          <div class="mega-dropdown">
-            <div class="genre-grid">
-              <a href="xkomediya.html">Комедиялық сериалдар</a>
-              <a href="xmelodrama.html">Мелодрамалар</a>
-              <a href="xtarihy.html">Тарихи сериалдар</a>
-            </div>
-          </div>
-        </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Фильмдер</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="xfantastika.html">Фантастика</a>
+                <a class="dropdown-item" href="xboevik.html">Боевик</a>
+                <a class="dropdown-item" href="xfentezi.html">Фэнтези</a>
+                <a class="dropdown-item" href="xprikliucheniya.html">Шытырман</a>
+                <a class="dropdown-item" href="xdrama.html">Драма</a>
+                <a class="dropdown-item" href="xtriller.html">Триллер</a>
+                <a class="dropdown-item" href="xdetektiv.html">Детектив</a>
+              </div>
+            </li>
 
-        <li>
-          <a href="#">Мультфильмдер ▾</a>
-          <div class="mega-dropdown">
-            <div class="genre-grid">
-              <a href="xanimatsia.html">Толықметражды</a>
-              <a href="xmultserial.html">Мультсериалдар</a>
-              <a href="xotbasylyk.html">Отбасылық</a>
-              <a href="xmuzikalik.html">Музыкалық</a>
-            </div>
-          </div>
-        </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Сериалдар</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="xkomediya.html">Комедиялық сериалдар</a>
+                <a class="dropdown-item" href="xmelodrama.html">Мелодрамалар</a>
+                <a class="dropdown-item" href="xtarihy.html">Тарихи сериалдар</a>
+              </div>
+            </li>
 
-        <li>
-          <a href="#">Аниме ▾</a>
-          <div class="mega-dropdown">
-            <div class="genre-grid">
-              <a href="xsionen.html">Сёнэн</a>
-              <a href="xmistika.html">Мистика</a>
-              <a href="xanimeboevik.html">Экшн & Боевик</a>
-              <a href="xskazka.html">Ертегі & Фэнтези</a>
-            </div>
-          </div>
-        </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Мультфильмдер</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="xanimatsia.html">Толықметражды</a>
+                <a class="dropdown-item" href="xmultserial.html">Мультсериалдар</a>
+                <a class="dropdown-item" href="xotbasylyk.html">Отбасылық</a>
+                <a class="dropdown-item" href="xmuzikalik.html">Музыкалық</a>
+              </div>
+            </li>
 
-        <li>
-          <a href="#">Дорамалар ▾</a>
-          <div class="mega-dropdown">
-            <div class="genre-grid">
-              <a href="xdorama.html">Оңтүстік Кореялық</a>
-              <a href="xromantika.html">Романтика</a>
-              <a href="xdoramatriller.html">Триллер & Қорқынышты</a>
-              <a href="xdoramagistorya.html">Тарихи</a>
-            </div>
-          </div>
-        </li>
-        <li><a href="about.html">Біз туралы</a></li>
-        <li><a href="contact.html">Байланыс</a></li>
-      </ul>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Аниме</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="xsionen.html">Сёнэн</a>
+                <a class="dropdown-item" href="xmistika.html">Мистика</a>
+                <a class="dropdown-item" href="xanimeboevik.html">Экшн & Боевик</a>
+                <a class="dropdown-item" href="xskazka.html">Ертегі & Фэнтези</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Дорамалар</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="xdorama.html">Оңтүстік Кореялық</a>
+                <a class="dropdown-item" href="xromantika.html">Романтика</a>
+                <a class="dropdown-item" href="xdoramatriller.html">Триллер & Қорқынышты</a>
+                <a class="dropdown-item" href="xdoramagistorya.html">Тарихи</a>
+              </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about.html">Біз туралы</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Байланыс</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -106,319 +108,155 @@
     <h3 class="sidebar-title">🔥 Трендтегілер</h3>
 
     <ul class="sidebar-movie-list">
-      <li>
-        <a href="avengers.html">
-          <div class="sidebar-movie-info">
-            <h5> Кек алушылар: Финал</h5>
-            <span>2019 • Боевик</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zhvataisonja.html">
-          <div class="sidebar-movie-info">
-            <h5> Хватай Сон Джэ и беги</h5>
-            <span>2024 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zatakatitanov.html">
-          <div class="sidebar-movie-info">
-            <h5> Титандар шабуылы</h5>
-            <span>2013 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="odyssey.html">
-          <div class="sidebar-movie-info">
-            <h5> Одиссея</h5>
-            <span>2026 • Фэнтези</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zesigimdiqaq.html">
-          <div class="sidebar-movie-info">
-            <h5>Есігімді қақ</h5>
-            <span>2020 • Сериал</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zopengamer.html">
-          <div class="sidebar-movie-info">
-            <h5>Оппенгеймер</h5>
-            <span>2023 • Биография</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zmagisheski%20bitva.html">
-          <div class="sidebar-movie-info">
-            <h5>Магическая битва</h5>
-            <span>2020 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="ztruebeauty.html">
-          <div class="sidebar-movie-info">
-            <h5>Истинная красота</h5>
-            <span>2020 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zcherezvseleni.html">
-          <div class="sidebar-movie-info">
-            <h5>Человек-паук: Через вселенные</h5>
-            <span>2018 • Мультфильм</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zharrypotter.html">
-          <div class="sidebar-movie-info">
-            <h5>Гарри Поттер мен философ тасы</h5>
-            <span>2001 • Фэнтези</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zdemetr.html">
-          <div class="sidebar-movie-info">
-            <h5>Деметр жоюшы жүз</h5>
-            <span>2019 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zkalmaroiyn.html">
-          <div class="sidebar-movie-info">
-            <h5>Кальмар ойыны</h5>
-            <span>2021 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zintersteller.html">
-          <div class="sidebar-movie-info">
-            <h5>Интерстеллар</h5>
-            <span>2014 • Фантастика</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="znaruto.html">
-          <div class="sidebar-movie-info">
-            <h5>Наруто: Дауылды хроникалар</h5>
-            <span>2007 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zkumiho.html">
-          <div class="sidebar-movie-info">
-            <h5>Тоғыз құйрықты түлкі туралы аңыз</h5>
-            <span>2020 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zbastau.html">
-          <div class="sidebar-movie-info">
-            <h5>Бастау (Inception)</h5>
-            <span>2010 • Триллер</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="ztetradsmerti.html">
-          <div class="sidebar-movie-info">
-            <h5>Өлім дәптері (Death Note)</h5>
-            <span>2006 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zchorin.html">
-          <div class="sidebar-movie-info">
-            <h5>Чорин ханымы (Mr. Queen)</h5>
-            <span>2020 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zdoctorstrang.html">
-          <div class="sidebar-movie-info">
-            <h5>Ғарыш сақшылары 3</h5>
-            <span>2023 • Комедия</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zmyhero.html">
-          <div class="sidebar-movie-info">
-            <h5>Менің қаһармандық академиям</h5>
-            <span>2016 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zpotomkisolnce.html">
-          <div class="sidebar-movie-info">
-            <h5>Күн ұрпақтары</h5>
-            <span>2016 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="ztemiradam.html">
-          <div class="sidebar-movie-info">
-            <h5>Темір адам</h5>
-            <span>2008 • Фантастика</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zruhtar.html">
-          <div class="sidebar-movie-info">
-            <h5>Рухтар баураған шаһар</h5>
-            <span>2001 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zhappiness.html">
-          <div class="sidebar-movie-info">
-            <h5>Бақыт (Happiness)</h5>
-            <span>2021 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zragnarek.html">
-          <div class="sidebar-movie-info">
-            <h5>Тор: Рагнарёк</h5>
-            <span>2017 • Фэнтези</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zqargysatqanaral.html">
-          <div class="sidebar-movie-info">
-            <h5>Қарғыс атқан арал</h5>
-            <span>2010 • Детектив</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zdoctorstrang.html">
-          <div class="sidebar-movie-info">
-            <h5>Доктор Стрэндж</h5>
-            <span>2016 • Приключения</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zqaraseri.html">
-          <div class="sidebar-movie-info">
-            <h5>Қара сері (The Dark Knight)</h5>
-            <span>2008 • Криминал</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zlilomensich.html">
-          <div class="sidebar-movie-info">
-            <h5>Лило мен Стич</h5>
-            <span>2002 • Мультфильм</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="zbalerina.html">
-          <div class="sidebar-movie-info">
-            <h5>Балерина (Leap!)</h5>
-            <span>2016 • Музыка</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="sidebar-movie-info">
-            <h5>Аватар: Су жолы</h5>
-            <span>2022 • Фантастика</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="sidebar-movie-info">
-            <h5>Қара пантера</h5>
-            <span>2018 • Боевик</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="sidebar-movie-info">
-            <h5>Зверополис</h5>
-            <span>2016 • Мультфильм</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="sidebar-movie-info">
-            <h5>Аладдин</h5>
-            <span>2019 • Фэнтези</span>
-          </div>
-        </a>
-      </li>
+      <li><a href="avengers.html"><div class="sidebar-movie-info"><h5>Кек алушылар: Финал</h5><span>2019 • Боевик</span></div></a></li>
+      <li><a href="zhvataisonja.html"><div class="sidebar-movie-info"><h5>Хватай Сон Джэ и беги</h5><span>2024 • Дорама</span></div></a></li>
+      <li><a href="zatakatitanov.html"><div class="sidebar-movie-info"><h5>Титандар шабуылы</h5><span>2013 • Аниме</span></div></a></li>
+      <li><a href="odyssey.html"><div class="sidebar-movie-info"><h5>Одиссея</h5><span>2026 • Фэнтези</span></div></a></li>
+      <li><a href="zesigimdiqaq.html"><div class="sidebar-movie-info"><h5>Есігімді қақ</h5><span>2020 • Сериал</span></div></a></li>
+      <li><a href="zopengamer.html"><div class="sidebar-movie-info"><h5>Оппенгеймер</h5><span>2023 • Биография</span></div></a></li>
+      <li><a href="zmagisheski%20bitva.html"><div class="sidebar-movie-info"><h5>Магическая битва</h5><span>2020 • Аниме</span></div></a></li>
+      <li><a href="ztruebeauty.html"><div class="sidebar-movie-info"><h5>Истинная красота</h5><span>2020 • Дорама</span></div></a></li>
+      <li><a href="zcherezvseleni.html"><div class="sidebar-movie-info"><h5>Человек-паук: Через вселенные</h5><span>2018 • Мультфильм</span></div></a></li>
+      <li><a href="zharrypotter.html"><div class="sidebar-movie-info"><h5>Гарри Поттер мен философ тасы</h5><span>2001 • Фэнтези</span></div></a></li>
+      <li><a href="zdemetr.html"><div class="sidebar-movie-info"><h5>Деметр жоюшы жүз</h5><span>2019 • Аниме</span></div></a></li>
+      <li><a href="zkalmaroiyn.html"><div class="sidebar-movie-info"><h5>Кальмар ойыны</h5><span>2021 • Дорама</span></div></a></li>
+      <li><a href="zintersteller.html"><div class="sidebar-movie-info"><h5>Интерстеллар</h5><span>2014 • Фантастика</span></div></a></li>
+      <li><a href="znaruto.html"><div class="sidebar-movie-info"><h5>Наруто: Дауылды хроникалар</h5><span>2007 • Аниме</span></div></a></li>
+      <li><a href="zkumiho.html"><div class="sidebar-movie-info"><h5>Тоғыз құйрықты түлкі туралы аңыз</h5><span>2020 • Дорама</span></div></a></li>
+      <li><a href="zbastau.html"><div class="sidebar-movie-info"><h5>Бастау (Inception)</h5><span>2010 • Триллер</span></div></a></li>
+      <li><a href="ztetradsmerti.html"><div class="sidebar-movie-info"><h5>Өлім дәптері (Death Note)</h5><span>2006 • Аниме</span></div></a></li>
+      <li><a href="zchorin.html"><div class="sidebar-movie-info"><h5>Чорин ханымы (Mr. Queen)</h5><span>2020 • Дорама</span></div></a></li>
+      <li><a href="zdoctorstrang.html"><div class="sidebar-movie-info"><h5>Ғарыш сақшылары 3</h5><span>2023 • Комедия</span></div></a></li>
+      <li><a href="zmyhero.html"><div class="sidebar-movie-info"><h5>Менің қаһармандық академиям</h5><span>2016 • Аниме</span></div></a></li>
+      <li><a href="zpotomkisolnce.html"><div class="sidebar-movie-info"><h5>Күн ұрпақтары</h5><span>2016 • Дорама</span></div></a></li>
+      <li><a href="ztemiradam.html"><div class="sidebar-movie-info"><h5>Темір адам</h5><span>2008 • Фантастика</span></div></a></li>
+      <li><a href="zruhtar.html"><div class="sidebar-movie-info"><h5>Рухтар баураған шаһар</h5><span>2001 • Аниме</span></div></a></li>
+      <li><a href="zhappiness.html"><div class="sidebar-movie-info"><h5>Бақыт (Happiness)</h5><span>2021 • Дорама</span></div></a></li>
+      <li><a href="zragnarek.html"><div class="sidebar-movie-info"><h5>Тор: Рагнарёк</h5><span>2017 • Фэнтези</span></div></a></li>
+      <li><a href="zqargysatqanaral.html"><div class="sidebar-movie-info"><h5>Қарғыс атқан арал</h5><span>2010 • Детектив</span></div></a></li>
+      <li><a href="zdoctorstrang.html"><div class="sidebar-movie-info"><h5>Доктор Стрэндж</h5><span>2016 • Приключения</span></div></a></li>
+      <li><a href="zqaraseri.html"><div class="sidebar-movie-info"><h5>Қара сері (The Dark Knight)</h5><span>2008 • Криминал</span></div></a></li>
+      <li><a href="zlilomensich.html"><div class="sidebar-movie-info"><h5>Лило мен Стич</h5><span>2002 • Мультфильм</span></div></a></li>
+      <li><a href="zbalerina.html"><div class="sidebar-movie-info"><h5>Балерина (Leap!)</h5><span>2016 • Музыка</span></div></a></li>
     </ul>
+
     <!-- ХАБАРЛАМАЛАР ВИДЖЕТІ -->
     <div class="sidebar-widget announcements-widget">
       <h3 class="sidebar-title">📢 Сайт хабарландырулары</h3>
-
       <div class="announcement-item">
         <span class="announcement-date">25 Қыркүйек</span>
         <h4>🍿 Жаңа маусым премьералары</h4>
         <p>Осы демалыста базамызға 50-ден астам жаңа аниме мен дорама сериялары қосылады!</p>
       </div>
-
       <div class="announcement-item">
         <span class="announcement-date">Қазан айында</span>
         <h4>🎥 4K HDR сапасы және аудиотректер</h4>
         <p>Жақында плеерге видео сапасын 4K-ға ауыстыру және қазақша дыбыстама таңдау мүмкіндігі қосылады.</p>
       </div>
-
-      <div class="announcement-item">
-        <span class="announcement-date">Жуырда</span>
-        <h4>👤 Жеке кабинет және Таңдаулылар</h4>
-        <p>Сайтқа тіркелу, сүйікті киноларды сақтап қою (Bookmark) жүйесі әзірленіп жатыр.</p>
-      </div>
     </div>
-
-  </aside> <!-- /grid-sidebar жабылуы -->
   </aside>
-
-  </ul>
-
-    </aside>
-
-  </aside>
-
-
 
   <!-- 3. MAIN CONTENT (MAIN AREA) -->
   <main class="grid-main">
+
+    <!-- TASK 7: Bootstrap Carousel (9 сурет / 3 слайд) -->
+    <section class="mb-4">
+      <h3 class="fw-bold mb-3 text-danger fs-5"> ТОП-9 Премьералар </h3>
+      <div id="movieCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner bg-dark py-3">
+          <div class="carousel-item active">
+            <div class="row px-3">
+              <div class="col-4"><img src="img/5276258587908973287.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="1"></div>
+              <div class="col-4"><img src="img/5307683948785770031.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="2"></div>
+              <div class="col-4"><img src="img/5307683948785770032.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="3"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row px-3">
+              <div class="col-4"><img src="img/5307683948785770033.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="4"></div>
+              <div class="col-4"><img src="img/5307683948785770034.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="5"></div>
+              <div class="col-4"><img src="img/5307683948785770035.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="6"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row px-3">
+              <div class="col-4"><img src="img/5307683948785770049.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="7"></div>
+              <div class="col-4"><img src="img/5307683948785770050.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="8"></div>
+              <div class="col-4"><img src="img/5307683948785770052.jpg" class="d-block w-100 rounded" style="height: 180px; object-fit: cover;" alt="9"></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TASK 2: Pure CSS Media Queries Card Group -->
+    <section class="mb-4">
+      <h5 class="fw-bold mb-2 fs-6">Жаңа Релиздер</h5>
+      <div class="custom-media-card-group">
+        <div class="custom-media-card">
+          <h6 class="fw-bold mb-2">Кек алушылар</h6>
+          <a href="avengers.html" class="btn btn-sm btn-danger">Көру</a>
+        </div>
+        <div class="custom-media-card">
+          <h6 class="fw-bold mb-2">Өрмекші адам</h6>
+          <a href="zcherezvseleni.html" class="btn btn-sm btn-danger">Көру</a>
+        </div>
+        <div class="custom-media-card">
+          <h6 class="fw-bold mb-2">Интерстеллар</h6>
+          <a href="zintersteller.html" class="btn btn-sm btn-danger">Көру</a>
+        </div>
+      </div>
+    </section>
+    <!-- TASK 3 & 6: Bootstrap Grid Layout (col-lg-6) һәм Батырмалар -->
+    <section class="row g-3 mb-4">
+      <!-- 1-секция: Сайт жаңалықтары -->
+      <div class="col-12 col-lg-6">
+        <div class="p-3 bg-body border rounded shadow-sm">
+          <h6 class="fw-bold text-danger mb-2">Сайт жаңалықтары</h6>
+          <p class="small text-muted mb-3">4K HDR сапасы және қазақша дыбыстама жақында қосылады.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="premieres.html" class="btn btn-pink-pill btn-sm">Премьералар</a>
+            <a href="announcements.html" class="btn btn-pink-pill btn-sm">Анонстар</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-секция: Таңдаулы жанрлар -->
+      <div class="col-12 col-lg-6">
+        <div class="p-3 bg-body border rounded shadow-sm">
+          <h6 class="fw-bold text-danger mb-2">Таңдаулы жанрлар </h6>
+          <p class="small text-muted mb-3">Өзіңізге ұнайтын санатты таңдап, бірден фильмдерді қараңыз:</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="xboevik.html" class="btn btn-pink-pill btn-sm">Боевик</a>
+            <a href="xfantastika.html" class="btn btn-pink-pill btn-sm">Фантастика</a>
+            <a href="xsionen.html" class="btn btn-pink-pill btn-sm">Аниме</a>
+            <a href="xdorama.html" class="btn btn-pink-pill btn-sm">Дорама</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
     <h2 class="page-title">Фильмдерді онлайн қарау</h2>
+
+    <!-- БАРЛЫҚ 26 КИНО ОЗ ОРНЫНДА -->
     <div class="movie-grid">
 
-      <!-- Мстители: Финал -->
+      <!-- 1. Мстители: Финал -->
       <article class="card">
         <a href="avengers.html" class="card-link">
           <div class="card-img-wrapper">
@@ -432,7 +270,7 @@
         </a>
       </article>
 
-      <!-- Великолепный век -->
+      <!-- 2. Великолепный век -->
       <article class="card">
         <a href="zgalamatgasyr.html" class="card-link">
           <div class="card-img-wrapper">
@@ -446,7 +284,7 @@
         </a>
       </article>
 
-      <!-- Атака титанов -->
+      <!-- 3. Атака титанов -->
       <article class="card">
         <a href="zatakatitanov.html" class="card-link">
           <div class="card-img-wrapper">
@@ -460,7 +298,7 @@
         </a>
       </article>
 
-      <!--Хватай Сон Джэ и беги -->
+      <!-- 4. Хватай Сон Джэ и беги -->
       <article class="card">
         <a href="zhvataisonja.html" class="card-link">
           <div class="card-img-wrapper">
@@ -474,12 +312,12 @@
         </a>
       </article>
 
-      <!-- Человек-паук: Нет пути домой -->
+      <!-- 5. Человек-паук: Нет пути домой -->
       <article class="card">
         <a href="zchelovekpauk.html" class="card-link">
           <div class="card-img-wrapper">
             <span class="card-badge">Мультфильм</span>
-            <img src="img/5276258587908973376.jpg" alt="Человек-паук: Паутина миров">
+            <img src="img/5276258587908973376.jpg" alt="Человек-паук">
           </div>
           <div class="card-info">
             <h4>Өрмекші адам: Үйге қайтар жол жоқ</h4>
@@ -488,21 +326,21 @@
         </a>
       </article>
 
-      <!-- Одиссея (2026) -->
+      <!-- 6. Одиссея -->
       <article class="card">
         <a href="odyssey.html" class="card-link">
           <div class="card-img-wrapper">
             <span class="card-badge">Фильм</span>
             <img src="img/5276258587908973589.jpg" alt="Одиссея 2026">
           </div>
-          <div class="card-inf  o">
+          <div class="card-info">
             <h4>Одиссея / The Odyssey</h4>
             <p>2026, США, Фэнтези, Приключения, Боевик</p>
           </div>
         </a>
       </article>
 
-      <!--  Гравити Фолз -->
+      <!-- 7. Гравити Фолз -->
       <article class="card">
         <a href="zgravitifolz.html" class="card-link">
           <div class="card-img-wrapper">
@@ -516,7 +354,7 @@
         </a>
       </article>
 
-      <!-- Кот в сапогах 2: Последнее желание -->
+      <!-- 8. Кот в сапогах 2 -->
       <article class="card">
         <a href="zetikigenmysyq.html" class="card-link">
           <div class="card-img-wrapper">
@@ -529,7 +367,8 @@
           </div>
         </a>
       </article>
-      <!-- 1. Человек-паук: Через вселенные -->
+
+      <!-- 9. Человек-паук: Через вселенные -->
       <article class="card">
         <a href="zcherezvseleni.html" class="card-link">
           <div class="card-img-wrapper">
@@ -543,7 +382,7 @@
         </a>
       </article>
 
-      <!-- 2. Стражи Галактики 3 -->
+      <!-- 10. Стражи Галактики 3 -->
       <article class="card">
         <a href="zdoctorstrang.html" class="card-link">
           <div class="card-img-wrapper">
@@ -557,7 +396,7 @@
         </a>
       </article>
 
-      <!-- 3. Железный человек -->
+      <!-- 11. Железный человек -->
       <article class="card">
         <a href="ztemiradam.html" class="card-link">
           <div class="card-img-wrapper">
@@ -571,7 +410,7 @@
         </a>
       </article>
 
-      <!-- 4. Тор: Рагнарёк -->
+      <!-- 12. Тор: Рагнарёк -->
       <article class="card">
         <a href="zragnarek.html" class="card-link">
           <div class="card-img-wrapper">
@@ -585,7 +424,7 @@
         </a>
       </article>
 
-      <!-- 5. Доктор Стрэндж -->
+      <!-- 13. Доктор Стрэндж -->
       <article class="card">
         <a href="zdoctorstrang.html" class="card-link">
           <div class="card-img-wrapper">
@@ -599,7 +438,7 @@
         </a>
       </article>
 
-      <!-- 6. Магическая битва -->
+      <!-- 14. Магическая битва -->
       <article class="card">
         <a href="zmagisheski%20bitva.html" class="card-link">
           <div class="card-img-wrapper">
@@ -613,12 +452,12 @@
         </a>
       </article>
 
-      <!-- 7. Клинок, рассекающий демонов -->
+      <!-- 15. Клинок, рассекающий демонов -->
       <article class="card">
         <a href="zdemetr.html" class="card-link">
           <div class="card-img-wrapper">
             <span class="card-badge">Аниме</span>
-            <img src="img/5307683948785770037.jpg" alt="Клинок, рассекающий демонов">
+            <img src="img/5307683948785770037.jpg" alt="Клинок">
           </div>
           <div class="card-info">
             <h4>Деметр жоюшы жүз</h4>
@@ -627,7 +466,7 @@
         </a>
       </article>
 
-      <!-- 8. Наруто: Шиппуден -->
+      <!-- 16. Наруто: Шиппуден -->
       <article class="card">
         <a href="znaruto.html" class="card-link">
           <div class="card-img-wrapper">
@@ -641,7 +480,7 @@
         </a>
       </article>
 
-      <!-- 9. Тетрадь смерти -->
+      <!-- 17. Тетрадь смерти -->
       <article class="card">
         <a href="ztetradsmerti.html" class="card-link">
           <div class="card-img-wrapper">
@@ -655,7 +494,7 @@
         </a>
       </article>
 
-      <!-- 10. Моя академия героев -->
+      <!-- 18. Моя академия героев -->
       <article class="card">
         <a href="zmyhero.html" class="card-link">
           <div class="card-img-wrapper">
@@ -669,7 +508,7 @@
         </a>
       </article>
 
-      <!-- 11. Унесенные призраками -->
+      <!-- 19. Унесенные призраками -->
       <article class="card">
         <a href="zruhtar.html" class="card-link">
           <div class="card-img-wrapper">
@@ -683,7 +522,7 @@
         </a>
       </article>
 
-      <!-- 12. Игра в кальмара -->
+      <!-- 20. Игра в кальмара -->
       <article class="card">
         <a href="zkalmaroiyn.html" class="card-link">
           <div class="card-img-wrapper">
@@ -697,7 +536,7 @@
         </a>
       </article>
 
-      <!-- 13. Истинная красота -->
+      <!-- 21. Истинная красота -->
       <article class="card">
         <a href="ztruebeauty.html" class="card-link">
           <div class="card-img-wrapper">
@@ -711,7 +550,7 @@
         </a>
       </article>
 
-      <!-- 14. Сказка о кумихо -->
+      <!-- 22. Сказка о кумихо -->
       <article class="card">
         <a href="zkumiho.html" class="card-link">
           <div class="card-img-wrapper">
@@ -725,7 +564,7 @@
         </a>
       </article>
 
-      <!-- 15. Счастье -->
+      <!-- 23. Счастье -->
       <article class="card">
         <a href="zhappiness.html" class="card-link">
           <div class="card-img-wrapper">
@@ -739,7 +578,7 @@
         </a>
       </article>
 
-      <!-- 16. Королева Чорин -->
+      <!-- 24. Королева Чорин -->
       <article class="card">
         <a href="zchorin.html" class="card-link">
           <div class="card-img-wrapper">
@@ -753,7 +592,7 @@
         </a>
       </article>
 
-      <!-- 17. Потомки солнца -->
+      <!-- 25. Потомки солнца -->
       <article class="card">
         <a href="zpotomkisolnce.html" class="card-link">
           <div class="card-img-wrapper">
@@ -766,7 +605,6 @@
           </div>
         </a>
       </article>
-
       <!-- 18. Алтарь любви (Постучись в мою дверь) -->
       <article class="card">
         <a href="zesigimdiqaq.html" class="card-link">
@@ -892,17 +730,19 @@
           </div>
         </a>
       </article>
+
     </div>
   </main>
 
   <!-- 4. FOOTER (FOOTER AREA) -->
   <footer class="grid-footer">
-    <p>Created by:</p>
-    <p><b><i>Symbat Abdirakhman, Akerke Zulpubek</i></b></p>
+    <p class="mb-1">Created by:</p>
+    <p class="mb-0"><b><i>Symbat Abdirakhman, Akerke Zulpubek</i></b></p>
   </footer>
-
 </div> <!-- /page-layout-wrapper -->
 
+<!-- Bootstrap 5 Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

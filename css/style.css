@@ -724,3 +724,524 @@ footer {
   text-align: right;
   margin: 0;
 }
+:root {
+  --bg-color: #f4f4f4;
+  --header-bg: #ffffff;
+  --text-color: #222222;
+  --card-bg: #ffffff;
+  --accent-color: #800020;
+  --border-color: #e0e0e0;
+  --link-color: #006699;
+}
+
+body.dark-mode {
+  --bg-color: #141414;
+  --header-bg: #1b1b1b;
+  --text-color: #cccccc;
+  --card-bg: #1f1f1f;
+  --border-color: #2a2a2a;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* --- TASK 1: Responsive Typography (Media Queries) --- */
+/* Мобильді құрылғылар үшін (шағын шрифт) */
+@media (max-width: 576px) {
+  h1, .page-title { font-size: 1.2rem !important; }
+  h2 { font-size: 1.1rem !important; }
+  p, body { font-size: 0.85rem !important; }
+}
+
+/* Планшеттер үшін (орташа шрифт) */
+@media (min-width: 577px) and (max-width: 991px) {
+  h1, .page-title { font-size: 1.5rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  p, body { font-size: 0.95rem !important; }
+}
+
+/* Десктоп/Компьютер үшін (үлкен шрифт) */
+@media (min-width: 992px) {
+  h1, .page-title { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  p, body { font-size: 1.05rem !important; }
+}
+
+/* --- TASK 2: Pure CSS Media Queries Card Group (No Bootstrap) --- */
+.custom-media-card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.custom-media-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Десктоп: 1 қатарда 3 карточка (33.3%) */
+@media (min-width: 992px) {
+  .custom-media-card {
+    flex: 0 0 calc(33.333% - 10px);
+  }
+}
+
+/* Планшет: 1 қатарда 2 карточка (50%) */
+@media (min-width: 577px) and (max-width: 991px) {
+  .custom-media-card {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+/* Мобиль: бірінің астына бірі (100%) */
+@media (max-width: 576px) {
+  .custom-media-card {
+    flex: 0 0 100%;
+  }
+}
+
+/* Жалпы тор құрылымы */
+.page-layout-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+footer {
+  border-top: 1px solid var(--border-color);
+}
+/* --- TASK 1: Responsive Typography (Media Queries) --- */
+@media (max-width: 576px) {
+  h1, .page-title { font-size: 1.2rem !important; }
+  h2 { font-size: 1.1rem !important; }
+  p, body { font-size: 0.85rem !important; }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  h1, .page-title { font-size: 1.5rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  p, body { font-size: 0.95rem !important; }
+}
+
+@media (min-width: 992px) {
+  h1, .page-title { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  p, body { font-size: 1.05rem !important; }
+}
+
+/* --- TASK 2: Pure CSS Media Queries Card Group --- */
+.custom-media-card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.custom-media-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  .custom-media-card {
+    flex: 0 0 calc(33.333% - 10px);
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .custom-media-card {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-media-card {
+    flex: 0 0 100%;
+  }
+}
+:root {
+  --bg-color: #f4f4f4;
+  --header-bg: #ffffff;
+  --text-color: #222222;
+  --card-bg: #ffffff;
+  --accent-color: #800020;
+  --accent-hover: #b01235;
+  --border-color: #e0e0e0;
+  --link-color: #006699;
+  --dropdown-bg: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #141414;
+  --header-bg: #1b1b1b;
+  --text-color: #cccccc;
+  --card-bg: #1f1f1f;
+  --border-color: #2a2a2a;
+  --link-color: #2b7bb9;
+  --dropdown-bg: #1f1f1f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 13px;
+}
+
+/* --- TASK 1: Responsive Typography (Media Queries) --- */
+@media (max-width: 576px) {
+  h1, .page-title { font-size: 1.2rem !important; }
+  h2 { font-size: 1.1rem !important; }
+  p, body { font-size: 0.85rem !important; }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  h1, .page-title { font-size: 1.5rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  p, body { font-size: 0.95rem !important; }
+}
+
+@media (min-width: 992px) {
+  h1, .page-title { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  p, body { font-size: 1.05rem !important; }
+}
+
+/* --- TASK 2: Pure CSS Media Queries Card Group --- */
+.custom-media-card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.custom-media-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+}
+
+.custom-media-card .btn {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+@media (min-width: 992px) {
+  .custom-media-card {
+    flex: 0 0 calc(33.333% - 10px);
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .custom-media-card {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-media-card {
+    flex: 0 0 100%;
+  }
+}
+
+/* --- PAGE LAYOUT GRID (Футерди ровно кылуу) --- */
+.page-layout-wrapper {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.grid-header {
+  grid-column: 1 / -1; /* Хедер бардык кеңдикке созулат */
+}
+
+.grid-sidebar {
+  padding: 15px 15px 20px 20px;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--border-color);
+}
+
+.grid-main {
+  padding: 15px 20px 20px 20px;
+}
+
+.grid-footer {
+  grid-column: 1 / -1; /* Футер 1-балкадан аягына чейин ровно турат */
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: var(--card-bg);
+}
+/* Movie Grid (4 бағандық фильмдер торы) */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background-color: #eee;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.card-info {
+  padding: 10px;
+}
+
+.card-info h4 {
+  color: var(--link-color);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.card-info p {
+  color: #666;
+  font-size: 11px;
+}
+
+/* Sidebar Styling */
+.sidebar-title {
+  font-size: 15px;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 6px;
+  line-height: 1.2;
+}
+
+.sidebar-movie-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-movie-list li {
+  border-bottom: 1px dashed var(--border-color);
+  padding: 8px 0;
+}
+
+.sidebar-movie-list a {
+  text-decoration: none;
+  color: var(--text-color);
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-movie-list a:hover {
+  transform: translateX(4px);
+}
+
+.sidebar-movie-info h5 {
+  font-size: 13px;
+  margin: 0 0 3px 0;
+  color: var(--link-color);
+}
+
+.sidebar-movie-info span {
+  font-size: 11px;
+  color: #888;
+}
+
+/* Widget Announcements */
+.announcements-widget {
+  margin-top: 25px;
+}
+
+.announcement-item {
+  background-color: var(--bg-color);
+  border-left: 3px solid var(--accent-color);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 0 4px 4px 0;
+}
+
+.announcement-date {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.announcement-item h4 {
+  font-size: 12px;
+  color: var(--link-color);
+  margin-bottom: 4px;
+}
+
+.announcement-item p {
+  font-size: 11px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1100px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .page-layout-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+  }
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* Рызғылт-қызыл батырмалар стилі (Task 6 Custom Badge Style) */
+.btn-pink-pill {
+  background-color: #fff0f3;
+  color: #800020;
+  border: 1px solid #ffccd5;
+  border-radius: 50px;
+  font-weight: bold;
+  padding: 6px 16px;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-pink-pill:hover {
+  background-color: #ffccd5;
+  color: #5c0017;
+  border-color: #ffb3c1;
+}
+.grid-footer {
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 0.00001px;
+  width: 100%;
+}
+/* --- MOVIE GRID  --- */
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+}
+
+
+.movie-grid .card {
+  flex: 0 0 calc(25% - 11.25px);
+  max-width: calc(25% - 11.25px);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 1100px) {
+  .movie-grid .card {
+    flex: 0 0 calc(33.333% - 10px);
+    max-width: calc(33.333% - 10px);
+  }
+}
+
+
+@media (max-width: 800px) {
+  .movie-grid .card {
+    flex: 0 0 calc(50% - 7.5px);
+    max-width: calc(50% - 7.5px);
+  }
+}
+
+
+@media (max-width: 576px) {
+  .movie-grid .card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background-color: #eee;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
