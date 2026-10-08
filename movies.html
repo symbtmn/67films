@@ -1,139 +1,570 @@
 <!DOCTYPE html>
-<html lang="kk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кинолар тізімі - 67FILMS (Grid Layout)</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<!-- TASK 3: GRID TEMPLATE AREAS WRAPPER -->
-<div class="full-grid-wrapper">
-
-  <!-- 1. HEADER AREA -->
-  <header id="main-header" class="grid-header">
-    <div class="top-bar">
-      <div class="logo">
-        67 <span>FILMS</span>
+<html lang="kk" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
+    <title>
+      Танымал туындылар | 67Films
+    </title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="vendor/bootstrap.bundle.min.js" defer>
+    </script>
+    <script src="js/script.js" defer>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link visually-hidden-focusable" href="#mainContent">
+      Негізгі мазмұнға өту
+    </a>
+    <div class="page-layout-wrapper min-vh-100 d-flex flex-column">
+      <header class="grid-header bg-body border-bottom">
+        <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">
+            67 
+            <span class="text-danger">
+              FILMS
+            </span>
+          </a>
+          <form class="site-search input-group" action="index.html" method="get" role="search">
+            <label class="visually-hidden" for="navSearch">
+              Кино іздеу
+            </label>
+            <input id="navSearch" name="q" type="search" class="form-control" placeholder="Кино атауын іздеу…" maxlength="100">
+            <button class="btn btn-outline-danger" type="submit">
+              Іздеу
+            </button>
+          </form>
+          <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
+            Түнгі режим
+          </button>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
+          <div class="container-fluid p-0">
+            <button class="btn btn-outline-danger btn-sm d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#trendingPanel" aria-controls="trendingPanel">
+              Трендтегілер
+            </button>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Мәзірді ашу">
+              <span class="navbar-toggler-icon">
+              </span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav flex-wrap align-items-lg-center gap-lg-2 mb-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html" >
+                    Басты бет
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="categories.html" >
+                    Санаттар
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html" >
+                    Біз туралы
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html" >
+                    Байланыс
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Фильмдер
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xfantastika.html">
+                        Фантастика
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xboevik.html">
+                        Боевик
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xfentezi.html">
+                        Фэнтези
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xprikliucheniya.html">
+                        Шытырман
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdrama.html">
+                        Драма
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xtriller.html">
+                        Триллер
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdetektiv.html">
+                        Детектив
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Сериалдар
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xkomediya.html">
+                        Комедиялық сериалдар
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmelodrama.html">
+                        Мелодрамалар
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xtarihy.html">
+                        Тарихи сериалдар
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Мультфильмдер
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xanimatsia.html">
+                        Толықметражды
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmultserial.html">
+                        Мультсериалдар
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xotbasylyk.html">
+                        Отбасылық
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmuzikalik.html">
+                        Музыкалық
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Аниме
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xsionen.html">
+                        Сёнэн
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmistika.html">
+                        Мистика
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xanimeboevik.html">
+                        Экшн және боевик
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xskazka.html">
+                        Ертегі және фэнтези
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Дорамалар
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xdorama.html">
+                        Оңтүстік Кореялық
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xromantika.html">
+                        Романтика
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdoramatriller.html">
+                        Триллер және қорқынышты
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdoramagistorya.html">
+                        Тарихи дорамалар
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="content-shell container-fluid px-3 px-lg-4 py-4 flex-grow-1">
+        <div class="row g-4">
+          <aside class="col-lg-2 grid-sidebar p-0 p-lg-3" aria-label="Трендтегі туындылар">
+            <div class="offcanvas-lg offcanvas-start bg-body" tabindex="-1" id="trendingPanel" aria-labelledby="trendingTitle">
+              <div class="offcanvas-header d-lg-none">
+                <span class="fw-bold">
+                  67FILMS
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#trendingPanel" aria-label="Панельді жабу">
+                </button>
+              </div>
+              <div class="offcanvas-body d-block p-3 p-lg-0">
+                <h2 class="h5 fw-bold mb-3" id="trendingTitle">
+                  Трендтегілер
+                </h2>
+                <div class="list-group list-group-flush">
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="avengers.html">
+                    <span class="d-block fw-semibold">
+                      Кек алушылар: Финал
+                    </span>
+                    <small class="text-body-secondary">
+                      2019, США, Фантастика, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zgalamatgasyr.html">
+                    <span class="d-block fw-semibold">
+                      Ғаламат ғасыр
+                    </span>
+                    <small class="text-body-secondary">
+                      2011, Түркия, Мелодрама, История
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zatakatitanov.html">
+                    <span class="d-block fw-semibold">
+                      Алыптар шабуылы
+                    </span>
+                    <small class="text-body-secondary">
+                      2013, Жапония, Фэнтези, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zhvataisonja.html">
+                    <span class="d-block fw-semibold">
+                      Хватай Сон Джэ и беги
+                    </span>
+                    <small class="text-body-secondary">
+                      2024, Южная Корея, Романтика, Фэнтези
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zchelovekpauk.html">
+                    <span class="d-block fw-semibold">
+                      Өрмекші адам: Үйге қайтар жол жоқ
+                    </span>
+                    <small class="text-body-secondary">
+                      2021, США, Приключения, Фантастика
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="odyssey.html">
+                    <span class="d-block fw-semibold">
+                      Одиссея / The Odyssey
+                    </span>
+                    <small class="text-body-secondary">
+                      2026, США, Фэнтези, Приключения, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zgravitifolz.html">
+                    <span class="d-block fw-semibold">
+                      Гравити Фолз
+                    </span>
+                    <small class="text-body-secondary">
+                      2012, США, Комедия, Мистика
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zetikigenmysyq.html">
+                    <span class="d-block fw-semibold">
+                      Етік киген мысық 2: Соңғы тілек
+                    </span>
+                    <small class="text-body-secondary">
+                      2022, АҚШ, Отбасылық, Комедия
+                    </small>
+                  </a>
+                </div>
+                <section class="mt-4">
+                  <h3 class="h6">
+                    Кино әлемі
+                  </h3>
+                  <p class="small text-body-secondary mb-2">
+                    Туындыларды жанр бойынша таңдаңыз, трейлер көріңіз және жеке бағаңызды сақтаңыз.
+                  </p>
+                  <a class="btn btn-outline-danger btn-sm" href="premieres.html">
+                    Премьералар
+                  </a>
+                </section>
+              </div>
+            </div>
+          </aside>
+          <main class="col-12 col-lg-10 grid-main p-3 p-lg-4" id="mainContent" tabindex="-1">
+            <h1 class="page-title mb-4">
+              Танымал туындылар
+            </h1>
+            <div class="row row-cols-2 row-cols-lg-4 g-3 movie-grid align-items-stretch">
+              <div class="col d-flex movie-item" data-search="Кек алушылар: Финал Кек алушылар: Финал (2019) 2019, США, Фантастика, Боевик">
+                <article class="card movie-card h-100 w-100">
+                  <a href="avengers.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973287.jpg" alt="Кек алушылар: Финал постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Фильм
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="avengers.html">
+                        Кек алушылар: Финал
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2019, США, Фантастика, Боевик
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="avengers.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Кек алушылар: Финал
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="col d-flex movie-item" data-search="Ғаламат ғасыр Ғаламат ғасыр / Muhteşem Yüzyıl 2011, Түркия, Мелодрама, История">
+                <article class="card movie-card h-100 w-100">
+                  <a href="zgalamatgasyr.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973304.jpg" alt="Ғаламат ғасыр постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Сериал
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="zgalamatgasyr.html">
+                        Ғаламат ғасыр
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2011, Түркия, Мелодрама, История
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="zgalamatgasyr.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Ғаламат ғасыр
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="col d-flex movie-item" data-search="Алыптар шабуылы Алыптар шабуылы / Attack on Titan 2013, Жапония, Фэнтези, Боевик">
+                <article class="card movie-card h-100 w-100">
+                  <a href="zatakatitanov.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/d83491ac30d4c7a2b64b42c7ed67b7b8.jpg" alt="Алыптар шабуылы постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Аниме
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="zatakatitanov.html">
+                        Алыптар шабуылы
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2013, Жапония, Фэнтези, Боевик
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="zatakatitanov.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Алыптар шабуылы
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="col d-flex movie-item" data-search="Хватай Сон Джэ и беги Хватай Сон Джэ и беги / Lovely Runner 2024, Южная Корея, Романтика, Фэнтези">
+                <article class="card movie-card h-100 w-100">
+                  <a href="zhvataisonja.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973596.jpg" alt="Хватай Сон Джэ и беги постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Дорама
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="zhvataisonja.html">
+                        Хватай Сон Джэ и беги
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2024, Южная Корея, Романтика, Фэнтези
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="zhvataisonja.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Хватай Сон Джэ и беги
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="col d-flex movie-item" data-search="Өрмекші адам: Үйге қайтар жол жоқ Өрмекші адам: Үйге қарай жол жоқ / Spider-Man: No Way Home 2021, США, Приключения, Фантастика">
+                <article class="card movie-card h-100 w-100">
+                  <a href="zchelovekpauk.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973376.jpg" alt="Өрмекші адам: Үйге қайтар жол жоқ постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Мультфильм
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="zchelovekpauk.html">
+                        Өрмекші адам: Үйге қайтар жол жоқ
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2021, США, Приключения, Фантастика
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="zchelovekpauk.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Өрмекші адам: Үйге қайтар жол жоқ
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="col d-flex movie-item" data-search="Одиссея / The Odyssey Одиссея / The Odyssey (2026) 2026, США, Фэнтези, Приключения, Боевик">
+                <article class="card movie-card h-100 w-100">
+                  <a href="odyssey.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973589.jpg" alt="Одиссея / The Odyssey постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Фильм
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="odyssey.html">
+                        Одиссея / The Odyssey
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2026, США, Фэнтези, Приключения, Боевик
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="odyssey.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Одиссея / The Odyssey
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="col d-flex movie-item" data-search="Гравити Фолз Гравити Фолз / Gravity Falls 2012, США, Комедия, Мистика">
+                <article class="card movie-card h-100 w-100">
+                  <a href="zgravitifolz.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973584.jpg" alt="Гравити Фолз постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Мультсериал
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="zgravitifolz.html">
+                        Гравити Фолз
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2012, США, Комедия, Мистика
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="zgravitifolz.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Гравити Фолз
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+              <div class="col d-flex movie-item" data-search="Етік киген мысық 2: Соңғы тілек Етік киген мысық 2: Соңғы тілек / Puss in Boots: The Last Wish 2022, АҚШ, Отбасылық, Комедия">
+                <article class="card movie-card h-100 w-100">
+                  <a href="zetikigenmysyq.html" class="poster-link ratio ratio-4x3">
+                    <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973591.jpg" alt="Етік киген мысық 2: Соңғы тілек постері" width="480" height="360" loading="lazy">
+                  </a>
+                  <div class="card-body d-flex flex-column p-3">
+                    <span class="badge text-bg-danger align-self-start mb-2">
+                      Мультфильм
+                    </span>
+                    <h3 class="h6 card-title">
+                      <a class="text-body text-decoration-none" href="zetikigenmysyq.html">
+                        Етік киген мысық 2: Соңғы тілек
+                      </a>
+                    </h3>
+                    <p class="card-text small text-body-secondary">
+                      2022, АҚШ, Отбасылық, Комедия
+                    </p>
+                    <a class="btn btn-outline-danger btn-sm mt-auto align-self-start" href="zetikigenmysyq.html">
+                      Толығырақ
+                      <span class="visually-hidden">
+                        : Етік киген мысық 2: Соңғы тілек
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <p id="noResults" class="alert alert-secondary mt-3" role="status" hidden>
+              Бұл атаумен кино табылмады.
+            </p>
+          </main>
+        </div>
       </div>
-      <button id="theme-toggle" class="theme-toggle-btn">night mode</button>
+      <footer class="grid-footer bg-body-tertiary border-top px-3 px-lg-4 py-4 mt-auto">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+          <div>
+            <a class="fw-bold text-body text-decoration-none" href="index.html">
+              67FILMS
+            </a>
+            <p class="small text-body-secondary mb-0">
+              Кино, сериал, аниме және дорама каталогы.
+            </p>
+          </div>
+          <nav class="d-flex flex-wrap gap-3" aria-label="Футер навигациясы">
+            <a href="about.html">
+              Біз туралы
+            </a>
+            <a href="contact.html">
+              Байланыс
+            </a>
+            <a href="categories.html">
+              Санаттар
+            </a>
+          </nav>
+        </div>
+        <p class="small mb-0 mt-3">
+          Created by: 
+          <strong>
+            Symbat Abdirakhman, Akerke Zulpubek
+          </strong>
+        </p>
+      </footer>
     </div>
-    <nav class="nav-bar">
-      <ul class="nav-container">
-        <li><a href="index.html">Басты бет</a></li>
-        <li><a href="movies.html">Кинолар</a></li>
-        <li><a href="top-rated.html">Топ Топтама</a></li>
-        <li><a href="about.html">Біз туралы</a></li>
-        <li><a href="contact.html">Байланыс</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- 2. SIDEBAR AREA (Кинолар тізімі) -->
-  <aside class="grid-sidebar">
-    <h3 class="sidebar-title">🔥 Жаңа қосылғандар</h3>
-
-    <ul class="sidebar-movie-list">
-      <li>
-        <a href="movie-details.html">
-          <img src="img/5276258587908973596.jpg" alt="Хватай Сон Джэ и беги">
-          <div class="sidebar-movie-info">
-            <h5>Хватай Сон Джэ и беги</h5>
-            <span>2024 • Дорама</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="avengers.html">
-          <img src="img/5276258587908973287.jpg" alt="Мстители: Финал">
-          <div class="sidebar-movie-info">
-            <h5>Мстители: Финал</h5>
-            <span>2019 • Боевик</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="movie-details.html">
-          <img src="img/d83491ac30d4c7a2b64b42c7ed67b7b8.jpg" alt="Атака титанов">
-          <div class="sidebar-movie-info">
-            <h5>Атака титанов</h5>
-            <span>2013 • Аниме</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="odyssey2026.html">
-          <img src="img/5276258587908973589.jpg" alt="Одиссея">
-          <div class="sidebar-movie-info">
-            <h5>Одиссея</h5>
-            <span>2026 • Фэнтези</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </aside>
-
-  <!-- 3. MAIN CONTENT AREA -->
-  <main class="grid-main">
-    <h2 class="page-title">Танымал туындылар</h2>
-    <p style="margin-bottom: 20px; color: #888;">Бұл бет CSS Grid (grid-template-areas) арқылы құрастырылған.</p>
-
-    <div class="movie-grid">
-      <!-- Человек-паук -->
-      <article class="card">
-        <a href="movie-details.html" class="card-link">
-          <div class="card-img-wrapper">
-            <span class="card-badge">Мультфильм</span>
-            <img src="img/5276258587908973376.jpg" alt="Человек-паук">
-          </div>
-          <div class="card-info">
-            <h4>Человек-паук: Нет пути домой</h4>
-            <p>2021, США, Фантастика</p>
-          </div>
-        </a>
-      </article>
-
-      <!-- Гравити Фолз -->
-      <article class="card">
-        <a href="movie-details.html" class="card-link">
-          <div class="card-img-wrapper">
-            <span class="card-badge">Мультсериал</span>
-            <img src="img/5276258587908973584.jpg" alt="Гравити Фолз">
-          </div>
-          <div class="card-info">
-            <h4>Гравити Фолз</h4>
-            <p>2012, США, Мистика</p>
-          </div>
-        </a>
-      </article>
-
-      <!-- Кот в сапогах -->
-      <article class="card">
-        <a href="movie-details.html" class="card-link">
-          <div class="card-img-wrapper">
-            <span class="card-badge">Мультфильм</span>
-            <img src="img/5276258587908973591.jpg" alt="Кот в сапогах 2">
-          </div>
-          <div class="card-info">
-            <h4>Кот в сапогах 2</h4>
-            <p>2022, США, Комедия</p>
-          </div>
-        </a>
-      </article>
-    </div>
-  </main>
-
-
-
-  <!-- 4. FOOTER AREA -->
-  <footer class="grid-footer">
-    <p>Created by:</p>
-    <p><b><i>Әбдірахман Сымбат Нұрланқызы, Akerke Zulpubek</i></b></p>
-  </footer>
-
-</div>
-
-<script src="js/script.js"></script>
-</body>
+  </body>
 </html>

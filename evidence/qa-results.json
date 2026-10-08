@@ -1,0 +1,32 @@
+{
+  "pages_loaded": 66,
+  "page_viewport_checks": 198,
+  "responsive_checks": [
+    {
+      "edition": "assignment3",
+      "width": 375,
+      "cards_per_row": 2,
+      "overflow": false
+    },
+    {
+      "edition": "assignment3",
+      "width": 768,
+      "cards_per_row": 2,
+      "overflow": false
+    },
+    {
+      "edition": "assignment3",
+      "width": 1440,
+      "cards_per_row": 4,
+      "overflow": false
+    }
+  ],
+  "javascript_errors": [],
+  "carousel": "9 linked single-image slides; controls and indicators passed",
+  "bootstrap_only_fallback": "home + form passed",
+  "form": "native validation and CSV download passed",
+  "search": "matching + empty results passed",
+  "movie_status_and_rating": "persist across reload",
+  "theme": "persists between pages",
+  "external_trailers": "original embeds retained; external playback not tested"
+}

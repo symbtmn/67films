@@ -1,189 +1,363 @@
 <!DOCTYPE html>
-<html lang="kk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Анонстар - 67Films</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<!-- ОБЩИЙ GRID-КОНТЕЙНЕР ДЛЯ ВСЕЙ СТРАНИЦЫ -->
-<div class="page-layout-wrapper">
-
-  <!-- 1. HEADER (HEADER AREA - TASK 5 & 10) -->
-  <header id="main-header" class="grid-header">
-    <div class="top-bar d-flex justify-content-between align-items-center p-2">
-      <div class="logo fw-bold fs-3">
-        67 <span class="text-danger">FILMS</span>
-      </div>
-      <div class="search-box d-flex align-items-center gap-2">
-        <input type="text" placeholder="Іздеу..." id="navSearch" class="form-control form-control-sm">
-        <button type="submit" aria-label="Search" class="btn btn-sm btn-outline-danger">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Режим ауыстыратын батырма (TASK 6) -->
-      <button id="theme-toggle" class="btn btn-sm btn-dark theme-toggle-btn">night mode</button>
-    </div>
-
-    <!-- Bootstrap Navbar Component -->
-    <nav class="nav-bar navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="nav-container navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Басты бет</a></li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Фильмдер</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="xfantastika.html">Фантастика</a>
-                <a class="dropdown-item" href="xboevik.html">Боевик</a>
-                <a class="dropdown-item" href="xfentezi.html">Фэнтези</a>
-                <a class="dropdown-item" href="xprikliucheniya.html">Шытырман</a>
-                <a class="dropdown-item" href="xdrama.html">Драма</a>
-                <a class="dropdown-item" href="xtriller.html">Триллер</a>
-                <a class="dropdown-item" href="xdetektiv.html">Детектив</a>
+<html lang="kk" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
+    <title>
+      Жаңалықтар | 67Films
+    </title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="vendor/bootstrap.bundle.min.js" defer>
+    </script>
+    <script src="js/script.js" defer>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link visually-hidden-focusable" href="#mainContent">
+      Негізгі мазмұнға өту
+    </a>
+    <div class="page-layout-wrapper min-vh-100 d-flex flex-column">
+      <header class="grid-header bg-body border-bottom">
+        <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">
+            67 
+            <span class="text-danger">
+              FILMS
+            </span>
+          </a>
+          <form class="site-search input-group" action="index.html" method="get" role="search">
+            <label class="visually-hidden" for="navSearch">
+              Кино іздеу
+            </label>
+            <input id="navSearch" name="q" type="search" class="form-control" placeholder="Кино атауын іздеу…" maxlength="100">
+            <button class="btn btn-outline-danger" type="submit">
+              Іздеу
+            </button>
+          </form>
+          <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
+            Түнгі режим
+          </button>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
+          <div class="container-fluid p-0">
+            <button class="btn btn-outline-danger btn-sm d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#trendingPanel" aria-controls="trendingPanel">
+              Трендтегілер
+            </button>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Мәзірді ашу">
+              <span class="navbar-toggler-icon">
+              </span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav flex-wrap align-items-lg-center gap-lg-2 mb-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html" >
+                    Басты бет
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="categories.html" >
+                    Санаттар
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html" >
+                    Біз туралы
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html" >
+                    Байланыс
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Фильмдер
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xfantastika.html">
+                        Фантастика
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xboevik.html">
+                        Боевик
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xfentezi.html">
+                        Фэнтези
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xprikliucheniya.html">
+                        Шытырман
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdrama.html">
+                        Драма
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xtriller.html">
+                        Триллер
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdetektiv.html">
+                        Детектив
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Сериалдар
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xkomediya.html">
+                        Комедиялық сериалдар
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmelodrama.html">
+                        Мелодрамалар
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xtarihy.html">
+                        Тарихи сериалдар
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Мультфильмдер
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xanimatsia.html">
+                        Толықметражды
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmultserial.html">
+                        Мультсериалдар
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xotbasylyk.html">
+                        Отбасылық
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmuzikalik.html">
+                        Музыкалық
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Аниме
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xsionen.html">
+                        Сёнэн
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xmistika.html">
+                        Мистика
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xanimeboevik.html">
+                        Экшн және боевик
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xskazka.html">
+                        Ертегі және фэнтези
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Дорамалар
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="xdorama.html">
+                        Оңтүстік Кореялық
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xromantika.html">
+                        Романтика
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdoramatriller.html">
+                        Триллер және қорқынышты
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="xdoramagistorya.html">
+                        Тарихи дорамалар
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="content-shell container-fluid px-3 px-lg-4 py-4 flex-grow-1">
+        <div class="row g-4">
+          <aside class="col-lg-2 grid-sidebar p-0 p-lg-3" aria-label="Трендтегі туындылар">
+            <div class="offcanvas-lg offcanvas-start bg-body" tabindex="-1" id="trendingPanel" aria-labelledby="trendingTitle">
+              <div class="offcanvas-header d-lg-none">
+                <span class="fw-bold">
+                  67FILMS
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#trendingPanel" aria-label="Панельді жабу">
+                </button>
               </div>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Сериалдар</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="xkomediya.html">Комедиялық сериалдар</a>
-                <a class="dropdown-item" href="xmelodrama.html">Мелодрамалар</a>
-                <a class="dropdown-item" href="xtarihy.html">Тарихи сериалдар</a>
+              <div class="offcanvas-body d-block p-3 p-lg-0">
+                <h2 class="h5 fw-bold mb-3" id="trendingTitle">
+                  Трендтегілер
+                </h2>
+                <div class="list-group list-group-flush">
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="avengers.html">
+                    <span class="d-block fw-semibold">
+                      Кек алушылар: Финал
+                    </span>
+                    <small class="text-body-secondary">
+                      2019, США, Фантастика, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zgalamatgasyr.html">
+                    <span class="d-block fw-semibold">
+                      Ғаламат ғасыр
+                    </span>
+                    <small class="text-body-secondary">
+                      2011, Түркия, Мелодрама, История
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zatakatitanov.html">
+                    <span class="d-block fw-semibold">
+                      Алыптар шабуылы
+                    </span>
+                    <small class="text-body-secondary">
+                      2013, Жапония, Фэнтези, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zhvataisonja.html">
+                    <span class="d-block fw-semibold">
+                      Хватай Сон Джэ и беги
+                    </span>
+                    <small class="text-body-secondary">
+                      2024, Южная Корея, Романтика, Фэнтези
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zchelovekpauk.html">
+                    <span class="d-block fw-semibold">
+                      Өрмекші адам: Үйге қайтар жол жоқ
+                    </span>
+                    <small class="text-body-secondary">
+                      2021, США, Приключения, Фантастика
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="odyssey.html">
+                    <span class="d-block fw-semibold">
+                      Одиссея / The Odyssey
+                    </span>
+                    <small class="text-body-secondary">
+                      2026, США, Фэнтези, Приключения, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zgravitifolz.html">
+                    <span class="d-block fw-semibold">
+                      Гравити Фолз
+                    </span>
+                    <small class="text-body-secondary">
+                      2012, США, Комедия, Мистика
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zetikigenmysyq.html">
+                    <span class="d-block fw-semibold">
+                      Етік киген мысық 2: Соңғы тілек
+                    </span>
+                    <small class="text-body-secondary">
+                      2022, АҚШ, Отбасылық, Комедия
+                    </small>
+                  </a>
+                </div>
+                <section class="mt-4">
+                  <h3 class="h6">
+                    Кино әлемі
+                  </h3>
+                  <p class="small text-body-secondary mb-2">
+                    Туындыларды жанр бойынша таңдаңыз, трейлер көріңіз және жеке бағаңызды сақтаңыз.
+                  </p>
+                  <a class="btn btn-outline-danger btn-sm" href="premieres.html">
+                    Премьералар
+                  </a>
+                </section>
               </div>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Мультфильмдер</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="xanimatsia.html">Толықметражды</a>
-                <a class="dropdown-item" href="xmultserial.html">Мультсериалдар</a>
-                <a class="dropdown-item" href="xotbasylyk.html">Отбасылық</a>
-                <a class="dropdown-item" href="xmuzikalik.html">Музыкалық</a>
-              </div>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Аниме</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="xsionen.html">Сёнэн</a>
-                <a class="dropdown-item" href="xmistika.html">Мистика</a>
-                <a class="dropdown-item" href="xanimeboevik.html">Экшн & Боевик</a>
-                <a class="dropdown-item" href="xskazka.html">Ертегі & Фэнтези</a>
-              </div>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Дорамалар</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="xdorama.html">Оңтүстік Кореялық</a>
-                <a class="dropdown-item" href="xromantika.html">Романтика</a>
-                <a class="dropdown-item" href="xdoramatriller.html">Триллер & Қорқынышты</a>
-                <a class="dropdown-item" href="xdoramagistorya.html">Тарихи</a>
-              </div>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="about.html">Біз туралы</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Байланыс</a></li>
-          </ul>
+            </div>
+          </aside>
+          <main class="col-12 col-lg-10 grid-main p-3 p-lg-4" id="mainContent" tabindex="-1">
+            <h1 class="page-title mb-3">
+              Кино әлеміндегі жаңалықтар
+            </h1>
+            <p class="intro-text">
+              Жанрлық каталогты қарап, көру тізіміңізге жаңа туынды қосыңыз.
+            </p>
+            <a class="btn btn-danger" href="premieres.html">
+              Премьераларды көру
+            </a>
+          </main>
         </div>
       </div>
-    </nav>
-  </header>
-
-  <!-- 2. SIDEBAR (SIDEBAR AREA) -->
-  <aside class="grid-sidebar">
-    <h3 class="sidebar-title">🔥 Трендтегілер</h3>
-
-    <ul class="sidebar-movie-list">
-      <li><a href="avengers.html"><div class="sidebar-movie-info"><h5>Кек алушылар: Финал</h5><span>2019 • Боевик</span></div></a></li>
-      <li><a href="zhvataisonja.html"><div class="sidebar-movie-info"><h5>Хватай Сон Джэ и беги</h5><span>2024 • Дорама</span></div></a></li>
-      <li><a href="zatakatitanov.html"><div class="sidebar-movie-info"><h5>Титандар шабуылы</h5><span>2013 • Аниме</span></div></a></li>
-      <li><a href="odyssey.html"><div class="sidebar-movie-info"><h5>Одиссея</h5><span>2026 • Фэнтези</span></div></a></li>
-      <li><a href="zesigimdiqaq.html"><div class="sidebar-movie-info"><h5>Есігімді қақ</h5><span>2020 • Сериал</span></div></a></li>
-      <li><a href="zopengamer.html"><div class="sidebar-movie-info"><h5>Оппенгеймер</h5><span>2023 • Биография</span></div></a></li>
-      <li><a href="zmagisheski%20bitva.html"><div class="sidebar-movie-info"><h5>Магическая битва</h5><span>2020 • Аниме</span></div></a></li>
-      <li><a href="ztruebeauty.html"><div class="sidebar-movie-info"><h5>Истинная красота</h5><span>2020 • Дорама</span></div></a></li>
-      <li><a href="zcherezvseleni.html"><div class="sidebar-movie-info"><h5>Человек-паук: Через вселенные</h5><span>2018 • Мультфильм</span></div></a></li>
-      <li><a href="zharrypotter.html"><div class="sidebar-movie-info"><h5>Гарри Поттер мен философ тасы</h5><span>2001 • Фэнтези</span></div></a></li>
-      <li><a href="zdemetr.html"><div class="sidebar-movie-info"><h5>Деметр жоюшы жүз</h5><span>2019 • Аниме</span></div></a></li>
-      <li><a href="zkalmaroiyn.html"><div class="sidebar-movie-info"><h5>Кальмар ойыны</h5><span>2021 • Дорама</span></div></a></li>
-      <li><a href="zintersteller.html"><div class="sidebar-movie-info"><h5>Интерстеллар</h5><span>2014 • Фантастика</span></div></a></li>
-      <li><a href="znaruto.html"><div class="sidebar-movie-info"><h5>Наруто: Дауылды хроникалар</h5><span>2007 • Аниме</span></div></a></li>
-      <li><a href="zkumiho.html"><div class="sidebar-movie-info"><h5>Тоғыз құйрықты түлкі туралы аңыз</h5><span>2020 • Дорама</span></div></a></li>
-      <li><a href="zbastau.html"><div class="sidebar-movie-info"><h5>Бастау (Inception)</h5><span>2010 • Триллер</span></div></a></li>
-      <li><a href="ztetradsmerti.html"><div class="sidebar-movie-info"><h5>Өлім дәптері (Death Note)</h5><span>2006 • Аниме</span></div></a></li>
-      <li><a href="zchorin.html"><div class="sidebar-movie-info"><h5>Чорин ханымы (Mr. Queen)</h5><span>2020 • Дорама</span></div></a></li>
-      <li><a href="zdoctorstrang.html"><div class="sidebar-movie-info"><h5>Ғарыш сақшылары 3</h5><span>2023 • Комедия</span></div></a></li>
-      <li><a href="zmyhero.html"><div class="sidebar-movie-info"><h5>Менің қаһармандық академиям</h5><span>2016 • Аниме</span></div></a></li>
-      <li><a href="zpotomkisolnce.html"><div class="sidebar-movie-info"><h5>Күн ұрпақтары</h5><span>2016 • Дорама</span></div></a></li>
-      <li><a href="ztemiradam.html"><div class="sidebar-movie-info"><h5>Темір адам</h5><span>2008 • Фантастика</span></div></a></li>
-      <li><a href="zruhtar.html"><div class="sidebar-movie-info"><h5>Рухтар баураған шаһар</h5><span>2001 • Аниме</span></div></a></li>
-      <li><a href="zhappiness.html"><div class="sidebar-movie-info"><h5>Бақыт (Happiness)</h5><span>2021 • Дорама</span></div></a></li>
-      <li><a href="zragnarek.html"><div class="sidebar-movie-info"><h5>Тор: Рагнарёк</h5><span>2017 • Фэнтези</span></div></a></li>
-      <li><a href="zqargysatqanaral.html"><div class="sidebar-movie-info"><h5>Қарғыс атқан арал</h5><span>2010 • Детектив</span></div></a></li>
-      <li><a href="zdoctorstrang.html"><div class="sidebar-movie-info"><h5>Доктор Стрэндж</h5><span>2016 • Приключения</span></div></a></li>
-      <li><a href="zqaraseri.html"><div class="sidebar-movie-info"><h5>Қара сері (The Dark Knight)</h5><span>2008 • Криминал</span></div></a></li>
-      <li><a href="zlilomensich.html"><div class="sidebar-movie-info"><h5>Лило мен Стич</h5><span>2002 • Мультфильм</span></div></a></li>
-      <li><a href="zbalerina.html"><div class="sidebar-movie-info"><h5>Балерина (Leap!)</h5><span>2016 • Музыка</span></div></a></li>
-    </ul>
-
-    <!-- ХАБАРЛАМАЛАР ВИДЖЕТІ -->
-    <div class="sidebar-widget announcements-widget">
-      <h3 class="sidebar-title">📢 Сайт хабарландырулары</h3>
-      <div class="announcement-item">
-        <span class="announcement-date">25 Қыркүйек</span>
-        <h4>🍿 Жаңа маусым премьералары</h4>
-        <p>Осы демалыста базамызға 50-ден астам жаңа аниме мен дорама сериялары қосылады!</p>
-      </div>
-      <div class="announcement-item">
-        <span class="announcement-date">Қазан айында</span>
-        <h4>🎥 4K HDR сапасы және аудиотректер</h4>
-        <p>Жақында плеерге видео сапасын 4K-ға ауыстыру және қазақша дыбыстама таңдау мүмкіндігі қосылады.</p>
-      </div>
-    </div>
-  </aside>
-
-
-  <main class="grid-main w-100 p-4">
-    <h2 class="page-title text-danger mb-3">📢 Сайт анонстары мен жаңалықтары</h2>
-    <p class="text-muted mb-4">67Films платформасында күтілетін жаңартулар мен алдағы Премьералар тізімі.</p>
-
-    <div class="row g-3">
-      <div class="col-12 col-md-6">
-        <div class="p-3 bg-body border rounded shadow-sm border-start border-danger border-4">
-          <span class="badge bg-danger mb-2">25 Қыркүйек</span>
-          <h5 class="fw-bold">🍿 Жаңа маусым премьералары</h5>
-          <p class="small text-muted">Осы демалыста базамызға 50-ден астам жаңа аниме мен дорама сериялары қосылады!</p>
+      <footer class="grid-footer bg-body-tertiary border-top px-3 px-lg-4 py-4 mt-auto">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+          <div>
+            <a class="fw-bold text-body text-decoration-none" href="index.html">
+              67FILMS
+            </a>
+            <p class="small text-body-secondary mb-0">
+              Кино, сериал, аниме және дорама каталогы.
+            </p>
+          </div>
+          <nav class="d-flex flex-wrap gap-3" aria-label="Футер навигациясы">
+            <a href="about.html">
+              Біз туралы
+            </a>
+            <a href="contact.html">
+              Байланыс
+            </a>
+            <a href="categories.html">
+              Санаттар
+            </a>
+          </nav>
         </div>
-      </div>
-
-      <div class="col-12 col-md-6">
-        <div class="p-3 bg-body border rounded shadow-sm border-start border-danger border-4">
-          <span class="badge bg-danger mb-2">Қазан айында</span>
-          <h5 class="fw-bold">🎥 4K HDR сапасы және аудиотректер</h5>
-          <p class="small text-muted">Жақында плеерге видео сапасын 4K-ға ауыстыру және қазақша дыбыстама таңдау мүмкіндігі қосылады.</p>
-        </div>
-      </div>
+        <p class="small mb-0 mt-3">
+          Created by: 
+          <strong>
+            Symbat Abdirakhman, Akerke Zulpubek
+          </strong>
+        </p>
+      </footer>
     </div>
-
-    <footer class="grid-footer mt-5">
-      <p class="mb-1">Created by:</p>
-      <p class="mb-0"><b><i>Symbat Abdirakhman, Akerke Zulpubek</i></b></p>
-    </footer>
-  </main>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
