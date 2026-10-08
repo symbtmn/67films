@@ -47,7 +47,7 @@ The custom Grid layout targets only the project wrapper. Bootstrap classes remai
 | Criterion | Points | Evidence / final action |
 |---|---:|---|
 | Responsiveness | 15 | Shared responsive layout; browser checks at mobile, tablet and desktop widths; working hamburger and side drawer |
-| Hosting | 10 | Existing GitHub Pages URL above; upload the corrected source and verify the updated site; this README belongs in the repository |
+| Hosting | 10 | Live GitHub Pages URL above; the corrected combined project is published and this README is in the repository |
 | Design quality | 20 | Valid local links/assets, readable colors, consistent components and full-width footer; separate HTML pages for both students |
 | Theme and cohesion | 15 | Genres, trailers, search, recommendations, watch status and rating all support the cinema catalogue |
 
@@ -81,7 +81,7 @@ Edit a page directly if you only need a local change. For consistent repeated ch
 
 A new film needs a unique page filename, poster, title, information table, plot and trailer. Add its card to home/relevant genres, and use a unique `data-movie` value so its saved rating is separate. Keep Bootstrap imports and both member names in the footer.
 
-## Host on GitHub Pages
+## Update the GitHub Pages site
 
 1. Back up the existing repository or use a new branch.
 2. Copy this complete project's contents into the repository root, including every HTML page, `img/`, `css/`, `js/`, `vendor/` and `README.md`.
