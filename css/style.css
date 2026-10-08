@@ -42,6 +42,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
   .carousel-caption p { font-size: 1.15rem; }
 }
 @media (max-width: 575.98px) {
+  .detail-poster { display: block; max-width: 180px; max-height: 270px; width: 100%; object-fit: contain; margin-inline: auto; }
   .site-search { flex-basis: 100%; max-width: none; order: 3; }
   .movie-card .card-title { font-size: .9rem; }
   .movie-card .card-text { font-size: .75rem; }
@@ -88,12 +89,13 @@ body { font-family: Arial, Helvetica, sans-serif; }
 .top-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
 .movie-grid { display: flex; flex-wrap: wrap; align-items: stretch; }
 .movie-card .card-body { display: flex; flex-direction: column; }
-#trendingPanel { --bs-offcanvas-width: 320px; }
+#trendingPanel { --bs-offcanvas-width: min(320px, calc(100vw - 3rem)); }
 @media (max-width: 991.98px) {
   .page-layout-wrapper {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "header" "main" "footer";
   }
-  /* The fixed Bootstrap drawer occupies no space in the mobile content row. */
-  .grid-sidebar { position: fixed; inset: 0 auto auto 0; width: 0; }
+  /* A fixed aside creates a stacking context that traps the drawer under
+     carousel/card transforms. Only the Bootstrap drawer should be fixed. */
+  .grid-sidebar { display: contents; }
 }

@@ -136,7 +136,7 @@ def detail(m,bs):
     trailer=m['trailer']
     trailerblock=f'''<section class="mt-4"><h2 class="h5 mb-3">Трейлер</h2><div class="ratio ratio-16x9 video-responsive"><iframe src="{esc(trailer,quote=True)}" title="{esc(m['short'],quote=True)} трейлері" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="small mt-2 mb-0"><a href="{esc(trailer.replace('/embed/','/watch?v='),quote=True)}" target="_blank" rel="noopener noreferrer">Трейлерді YouTube сайтында ашу</a></p></section>''' if trailer else ''
     rec=[x['file'] for x in MOVIES if x['file']!=m['file']][:4]
-    return f'''<nav aria-label="Бет жолы"><ol class="breadcrumb mb-3"><li class="breadcrumb-item"><a href="index.html">Басты бет</a></li><li class="breadcrumb-item active" aria-current="page">{esc(m['short'])}</li></ol></nav><h1 class="page-title mb-4">{esc(m['title'])}</h1><div class="row g-4 movie-details-flex"><div class="col-12 col-sm-4 col-lg-3"><img class="img-fluid rounded detail-poster" src="{m['image']}" alt="{esc(m['short'])} постері" width="480" height="640"></div><div class="col-12 col-sm-8 col-lg-9"><div class="table-responsive"><table class="table align-middle"><caption class="visually-hidden">{esc(m['short'])} туралы ақпарат</caption><tbody>{rows}</tbody></table></div><h2 class="h5">Сюжет</h2><p class="intro-text">{esc(m['description'])}</p></div></div>{trailerblock}{status(m)}<section class="mt-5"><h2 class="h4 mb-3">Қарап шығуға кеңес береміз</h2>{cards(rec,bs)}</section>'''
+    return f'''<nav aria-label="Бет жолы"><ol class="breadcrumb mb-3"><li class="breadcrumb-item"><a href="index.html">Басты бет</a></li><li class="breadcrumb-item active" aria-current="page">{esc(m['short'])}</li></ol></nav><h1 class="page-title mb-4">{esc(m['title'])}</h1><div class="row g-4 movie-details-flex"><div class="col-6 col-sm-4 col-lg-3 mx-auto mx-sm-0"><img class="img-fluid rounded detail-poster" src="{m['image']}" alt="{esc(m['short'])} постері" width="480" height="640"></div><div class="col-12 col-sm-8 col-lg-9"><div class="table-responsive"><table class="table align-middle"><caption class="visually-hidden">{esc(m['short'])} туралы ақпарат</caption><tbody>{rows}</tbody></table></div><h2 class="h5">Сюжет</h2><p class="intro-text">{esc(m['description'])}</p></div></div>{trailerblock}{status(m)}<section class="mt-5"><h2 class="h4 mb-3">Қарап шығуға кеңес береміз</h2>{cards(rec,bs)}</section>'''
 
 def about(bs):
     authors=[('Әбдірахман Сымбат','img/5309935748599455000.jpg','Веб құрылымы, навигация және негізгі функциялар.'),('Зұлпубек Ақерке','img/5309935748599455006.jpg','Кино карточкалары, жанрлар және медиа мазмұны.')]
@@ -171,7 +171,7 @@ def page(dest,file,title,body,bs):
   <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
   <title>{esc(title)} | 67Films</title>
   {css}
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=mobile-2">
   {js}
   <script src="js/script.js" defer></script>
 </head>

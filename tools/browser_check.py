@@ -74,6 +74,8 @@ async def main(chrome):
   assert not await page.locator('#trendingPanel').is_visible()
   await page.get_by_role('button',name='Трендтегілер',exact=True).click()
   await page.wait_for_function("document.querySelector('#trendingPanel').classList.contains('show')")
+  await page.wait_for_function("!document.querySelector('#trendingPanel').classList.contains('showing')")
+  assert await page.locator('#trendingPanel').evaluate("p=>[200,500,800].every(y=>p.contains(document.elementFromPoint(p.getBoundingClientRect().width/2,y)))"), 'Content covers the trending drawer'
   await snap('a3-sidebar-mobile')
   await page.get_by_role('button',name='Панельді жабу').click()
   await page.wait_for_function("!document.querySelector('#trendingPanel').classList.contains('show')")
@@ -104,7 +106,7 @@ async def main(chrome):
    await snap(f'a3-mq-cards-{width}')
   # Bootstrap-only fallback, including mobile offcanvas and a real CSV submission.
   await page.set_viewport_size({'width':375,'height':1000});await visit('contact.html')
-  await page.evaluate("document.querySelector('link[href=\"css/style.css\"]').disabled=true")
+  await page.evaluate("document.querySelector('link[href^=\"css/style.css\"]').disabled=true")
   assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth')
   assert not await page.locator('#trendingPanel').is_visible()
   await snap('a3-form-without-custom-css',True)
@@ -119,7 +121,7 @@ async def main(chrome):
   await download.save_as(str(OUT/'test-feedback.csv'))
   assert 'Test Student' in (OUT/'test-feedback.csv').read_text(encoding='utf-8-sig')
   await page.set_viewport_size({'width':1440,'height':1000});await visit('index.html')
-  await page.evaluate("document.querySelector('link[href=\"css/style.css\"]').disabled=true")
+  await page.evaluate("document.querySelector('link[href^=\"css/style.css\"]').disabled=true")
   assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth')
   await snap('a3-home-without-custom-css')
   await visit('contact.html');await page.get_by_role('button',name='Түнгі режим').click()

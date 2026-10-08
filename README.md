@@ -40,6 +40,7 @@ The custom Grid layout targets only the project wrapper. Bootstrap classes remai
 - Search with live matching and an empty-results message.
 - Persistent light/dark mode, movie watch status and five-point rating.
 - Labeled, responsive feedback form with validation, input group, select, radios and checkbox. It downloads a CSV locally; it does not send mail or store data on a server.
+- Compact, centered film-detail posters on phones (at most 180 × 270 px); Bootstrap keeps the poster column narrow even without custom CSS.
 - Full-width footer containing both team members on every page.
 
 ## Final project requirements — 60 points
@@ -73,7 +74,7 @@ npm test
 npm run build
 ```
 
-The test checks HTML IDs, page/image/script links, author names, imports and carousel structure. The build copies all 66 HTML files and assets to `dist/`. Optional full browser tests are in `tools/browser_check.py` and require Playwright plus Chromium. Test results are in `evidence/qa-results.json`. The final version passed 198 page/viewport checks (66 pages at 375, 768 and 1440 px), with no horizontal overflow or JavaScript errors. All 37 supplied JPEG files were verified; local image/link targets exist. External YouTube playback was not tested.
+The test checks HTML IDs, page/image/script links, author names, imports and carousel structure. The build copies all 66 HTML files and assets to `dist/`. Optional full browser tests are in `tools/browser_check.py` and require Playwright plus Chromium. `tools/mobile_check.py` also checks poster size and the actual paint order of the opened mobile drawer, so carousel/card transforms cannot cover it. Test results are in `evidence/qa-results.json`. The final version passed 198 page/viewport checks (66 pages at 375, 768 and 1440 px), with no horizontal overflow or JavaScript errors. All 37 supplied JPEG files were verified; local image/link targets exist. External YouTube playback was not tested.
 
 ## Edit and add content
 
