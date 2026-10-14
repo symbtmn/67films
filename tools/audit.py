@@ -26,6 +26,8 @@ for edition in [ROOT]:
    if parsed.scheme or link.startswith('#'):continue
    target=file.parent/unquote(parsed.path)
    assert target.exists(),f'{file}: missing {target}'
+  for script in ['validation','accordion','newsletter','background','clock']:
+   assert f'js/{script}.js' in text,f'{file}: missing Assignment 4 script {script}'
   assert 'vendor/bootstrap.min.css' in text and 'vendor/bootstrap.bundle.min.js' in text
 index=Parser();index.feed((ROOT/'index.html').read_text())
 assert index.slides==9 and index.indicators==9

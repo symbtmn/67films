@@ -8,10 +8,20 @@
       Қарғыс атқан арал / Shutter Island | 67Films
     </title>
     <link rel="stylesheet" href="vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css?v=mobile-2">
+    <link rel="stylesheet" href="css/style.css?v=assignment-4">
     <script src="vendor/bootstrap.bundle.min.js" defer>
     </script>
     <script src="js/script.js" defer>
+    </script>
+    <script src="js/validation.js?v=assignment-4" defer>
+    </script>
+    <script src="js/accordion.js?v=assignment-4" defer>
+    </script>
+    <script src="js/newsletter.js?v=assignment-4" defer>
+    </script>
+    <script src="js/background.js?v=assignment-4" defer>
+    </script>
+    <script src="js/clock.js?v=assignment-4" defer>
     </script>
   </head>
   <body>
@@ -36,9 +46,17 @@
               Іздеу
             </button>
           </form>
-          <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
-            Түнгі режим
-          </button>
+          <div class="d-flex flex-wrap gap-2">
+            <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
+              Түнгі режим
+            </button>
+            <button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">
+              Фонды өзгерту
+            </button>
+            <button class="btn btn-outline-danger btn-sm" type="button" data-newsletter-open>
+              Жаңалыққа жазылу
+            </button>
+          </div>
         </div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
           <div class="container-fluid p-0">
@@ -69,6 +87,16 @@
                 <li class="nav-item">
                   <a class="nav-link" href="contact.html" >
                     Байланыс
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="club.html" >
+                    Кино клубы
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="faq.html" >
+                    FAQ
                   </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -623,6 +651,16 @@
             </a>
           </nav>
         </div>
+        <div class="small mt-3 mb-3">
+          <time data-live-clock aria-live="off">
+            Уақыт жүктелуде...
+          </time>
+          <span class="text-body-secondary d-block">
+            Жергілікті уақыт · 
+            <span data-clock-zone>
+            </span>
+          </span>
+        </div>
         <p class="small mb-0 mt-3">
           Created by: 
           <strong>
@@ -631,5 +669,79 @@
         </p>
       </footer>
     </div>
+    <dialog id="newsletter-dialog" class="newsletter-dialog bg-body text-body rounded" aria-labelledby="newsletterTitle" aria-describedby="newsletterHelp">
+      <div class="newsletter-card p-3 p-sm-4">
+        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+          <div>
+            <p class="text-danger fw-bold small mb-1">
+              67FILMS ЖАҢАЛЫҚТАРЫ
+            </p>
+            <h2 class="h4 mb-0" id="newsletterTitle">
+              Кино жаңалықтарына жазылу
+            </h2>
+          </div>
+          <button class="btn-close flex-shrink-0" type="button" data-newsletter-close aria-label="Жазылым терезесін жабу">
+          </button>
+        </div>
+        <p class="small text-body-secondary" id="newsletterHelp">
+          Сүйікті жанрыңызды таңдаңыз. Бұл оқу демосы: нақты email хаттары жіберілмейді.
+        </p>
+        <form id="newsletter-form" data-js-validation>
+          <div class="alert alert-danger" data-error-summary role="alert" hidden>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newsletterName">
+              Атыңыз
+            </label>
+            <input class="form-control" id="newsletterName" name="newsletterName" type="text" autocomplete="name" minlength="2" maxlength="80" autofocus required data-validate-field aria-describedby="newsletterName-error">
+            <div class="invalid-feedback d-block" id="newsletterName-error" hidden>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newsletterEmail">
+              Email
+            </label>
+            <input class="form-control" id="newsletterEmail" name="newsletterEmail" type="email" autocomplete="email" maxlength="120" required data-validate-field aria-describedby="newsletterEmail-error">
+            <div class="invalid-feedback d-block" id="newsletterEmail-error" hidden>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newsletterGenre">
+              Қай жанр қызықтырады?
+            </label>
+            <select class="form-select" id="newsletterGenre" name="genre">
+              <option>
+                Барлық жанр
+              </option>
+              <option>
+                Фантастика
+              </option>
+              <option>
+                Комедия
+              </option>
+              <option>
+                Аниме
+              </option>
+              <option>
+                Дорама
+              </option>
+            </select>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="newsletterConsent" name="newsletterConsent" required data-validate-field aria-describedby="newsletterConsent-error">
+            <label class="form-check-label" for="newsletterConsent">
+              Бұл жазылым оқу демосы екенін түсінемін.
+            </label>
+            <div class="invalid-feedback d-block" id="newsletterConsent-error" hidden>
+            </div>
+          </div>
+          <button class="btn btn-danger w-100" type="submit">
+            Жазылымды тексеру
+          </button>
+          <p class="form-success mt-3 mb-0" data-form-status role="status">
+          </p>
+        </form>
+      </div>
+    </dialog>
   </body>
 </html>

@@ -1,6 +1,6 @@
 # 67Films — responsive cinema catalogue
 
-67Films is our team project about movies, series, anime and dramas. Visitors can browse genres, open a film's details and trailer, search the catalogue, and save a personal watch status and rating. It combines the Flexbox/Grid techniques from Assignment 2 and the responsive Bootstrap components from Assignment 3 in **one website**.
+67Films is our team project about movies, series, anime and dramas. Visitors can browse genres, open a film's details and trailer, search the catalogue, and save a personal watch status and rating. It combines the Flexbox/Grid techniques from Assignment 2 and the responsive Bootstrap components from Assignment 3 in **one website**. Assignment 4 adds five custom JavaScript components and a cinema club.
 
 **Team:** Symbat Abdirakhman and Akerke Zulpubek.
 
@@ -10,11 +10,27 @@
 
 This repository contains the corrected final project combining Assignment 2 and Assignment 3. The GitHub Pages URL above is the website link for submission.
 
+## Assignment 4 - Introduction to JavaScript
+
+Open **[Cinema Club](https://symbtmn.github.io/67films/club.html)** for the membership form and FAQ. The header offers a subscription popup and background-color button; live date/time also appears in every footer.
+
+| Task | File | Behavior |
+|---|---|---|
+| 1. Form validation (15%) | `js/validation.js`, `club.html` | Required fields, email format, minimum 8-character password, confirmation, inline errors, live corrections and success state |
+| 2. FAQ accordion (15%) | `js/accordion.js`, `faq.html` and `club.html` | Initially hidden answers, animated open/close, keyboard support and safe rapid toggling |
+| 3. Popup form (10%) | `js/newsletter.js` | Opens on click; closes with X, outside click or Escape; traps/restores keyboard focus |
+| 4. Background (5%) | `js/background.js` | Four predefined palettes, smooth color change, persistence and readable dark-mode variants |
+| 5. Date/time (5%) | `js/clock.js` | `new Date()`, readable local time and timezone, immediate render and 1-second updates |
+| Report (10%) | PDF supplied with the submission ZIP | Team, editable group field, steps, screenshots, deployed URL, tests and reflection |
+| Individual defense (40%) | `DEFENSE_Assignment4.md` | Code explanations, questions and live modification exercises |
+
+These five scripts use custom JavaScript; Bootstrap still supplies shared layout and styling. Every full HTML page links all scripts with `defer`. Membership and subscription are clearly labeled static demos: no accounts are created, no email is sent and passwords are never stored. `ASSIGNMENT4.md` contains the full criterion mapping.
+
 ## Pages and content
 
-The project contains 66 separate HTML files, including 34 film/detail pages and 22 genre pages. Each file contains its complete header, sidebar, main content, footer and Bootstrap imports. Images and Bootstrap are included locally. All original film descriptions, information tables, image filenames and trailer URLs are preserved.
+The project contains 68 separate HTML files, including 34 film/detail pages and 22 genre pages. Each file contains its complete header, sidebar, main content, footer and Bootstrap imports. Images and Bootstrap are included locally. All original film descriptions, information tables, image filenames and trailer URLs are preserved.
 
-Main pages: `index.html`, `categories.html`, `about.html`, `contact.html`, `movies.html`, `premieres.html`, `announcements.html`, `responsive-cards.html` and `404.html`. Each film and genre has its own HTML file, such as `avengers.html` and `xboevik.html`.
+Main pages: `index.html`, `categories.html`, `about.html`, `contact.html`, `movies.html`, `premieres.html`, `announcements.html`, `responsive-cards.html` and `404.html`, `club.html` and `faq.html`. Each film and genre has its own HTML file, such as `avengers.html` and `xboevik.html`.
 
 ## Where the technologies are used
 
@@ -74,7 +90,7 @@ npm test
 npm run build
 ```
 
-The test checks HTML IDs, page/image/script links, author names, imports and carousel structure. The build copies all 66 HTML files and assets to `dist/`. Optional full browser tests are in `tools/browser_check.py` and require Playwright plus Chromium. `tools/mobile_check.py` also checks poster size and the actual paint order of the opened mobile drawer, so carousel/card transforms cannot cover it. Test results are in `evidence/qa-results.json`. The final version passed 198 page/viewport checks (66 pages at 375, 768 and 1440 px), with no horizontal overflow or JavaScript errors. All 37 supplied JPEG files were verified; local image/link targets exist. External YouTube playback was not tested.
+The test checks HTML IDs, page/image/script links, author names, imports and carousel structure. The build copies all 68 HTML files and assets to `dist/`. Optional full browser tests are in `tools/browser_check.py` and require Playwright plus Chromium. `tools/mobile_check.py` also checks poster size and the actual paint order of the opened mobile drawer, so carousel/card transforms cannot cover it. Test results are in `evidence/qa-results.json`. The final version passed 204 page/viewport checks (68 pages at 375, 768 and 1440 px), with no horizontal overflow or JavaScript errors. All 37 supplied JPEG files were verified; local image/link targets exist. External YouTube playback was not tested.
 
 ## Edit and add content
 

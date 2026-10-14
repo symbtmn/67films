@@ -5,6 +5,22 @@
 html { scroll-behavior: smooth; }
 body { font-family: Arial, Helvetica, sans-serif; }
 .grid-main, .grid-sidebar { min-width: 0; }
+/* Assignment 4: native dialog stays in the top layer above cards and drawers. */
+body { transition: background-color .25s ease; }
+body.newsletter-open { overflow: hidden; }
+.newsletter-dialog { border: 1px solid var(--bs-border-color); padding: 0; width: min(520px, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; margin: auto; box-shadow: 0 1rem 4rem rgba(0,0,0,.25); }
+.newsletter-dialog::backdrop { background: rgba(0,0,0,.65); }
+.faq-trigger { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 100%; border: 0; padding: 1.1rem 1.25rem; background: transparent; color: inherit; text-align: left; font: inherit; border-radius: .4rem; }
+.faq-trigger:hover, .faq-trigger[aria-expanded="true"] { color: var(--bs-danger); }
+.faq-chevron { flex-shrink: 0; font-size: 1.4rem; transition: transform .25s ease; }
+.faq-trigger[aria-expanded="true"] .faq-chevron { transform: rotate(45deg); }
+.faq-panel { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .25s ease, opacity .25s ease; }
+.faq-panel.is-open { grid-template-rows: 1fr; opacity: 1; }
+.faq-inner { min-height: 0; overflow: hidden; }
+.faq-text { margin: 0; padding: 0 1.25rem 1.25rem; line-height: 1.65; }
+.form-success { color: var(--bs-success-text-emphasis); font-weight: 600; }
+.clock-card time { font-size: 1.1rem; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: reduce) { body, .faq-panel, .faq-chevron { transition: none; } }
 .site-search { flex: 1 1 220px; max-width: 480px; }
 .logo { white-space: nowrap; }
 .page-title { font-size: 1.5rem; font-weight: 700; line-height: 1.2; }

@@ -1,5 +1,5 @@
 {
  "name":"67films", "version":"1.0.0", "private":true,
- "description":"Static cinema catalogue: Assignment 2 and Assignment 3",
+ "description":"Static cinema catalogue: Assignments 2, 3 and 4",
  "scripts":{"start":"node tools/serve.cjs","build":"node tools/build.cjs","test":"python3 tools/audit.py"}
 }

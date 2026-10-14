@@ -62,7 +62,7 @@ def formatted_html(text):
     return '\n'.join(formatter.lines)+'\n'
 
 def header(bs, current):
-    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('about.html','Біз туралы'),('contact.html','Байланыс')]
+    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
     navlinks = ''.join(f'<li class="nav-item"><a class="nav-link{" active" if current == file else ""}" href="{file}" {"aria-current=\"page\"" if current == file else ""}>{name}</a></li>' for file,name in links)
     dropdowns = ''
     for name,pairs in GENRES:
@@ -77,7 +77,7 @@ def header(bs, current):
   <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
     <a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">67 <span class="text-danger">FILMS</span></a>
     {search}
-    <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">Түнгі режим</button>
+    <div class="d-flex flex-wrap gap-2"><button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">Түнгі режим</button><button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">Фонды өзгерту</button><button class="btn btn-outline-danger btn-sm" type="button" data-newsletter-open>Жаңалыққа жазылу</button></div>
   </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
     <div class="container-fluid p-0">
@@ -97,7 +97,7 @@ def sidebar(bs):
     return f'<aside class="grid-sidebar"><details class="trending-details" open><summary>Трендтегілер</summary><div>{body}</div></details></aside>'
 
 def footer(bs):
-    return f'''<footer class="grid-footer bg-body-tertiary border-top px-3 px-lg-4 py-4 mt-auto"><div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3"><div><a class="fw-bold text-body text-decoration-none" href="index.html">67FILMS</a><p class="small text-body-secondary mb-0">Кино, сериал, аниме және дорама каталогы.</p></div><nav class="d-flex flex-wrap gap-3" aria-label="Футер навигациясы"><a href="about.html">Біз туралы</a><a href="contact.html">Байланыс</a><a href="categories.html">Санаттар</a></nav></div><p class="small mb-0 mt-3">Created by: <strong>{NAMES}</strong></p></footer>'''
+    return f'''<footer class="grid-footer bg-body-tertiary border-top px-3 px-lg-4 py-4 mt-auto"><div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3"><div><a class="fw-bold text-body text-decoration-none" href="index.html">67FILMS</a><p class="small text-body-secondary mb-0">Кино, сериал, аниме және дорама каталогы.</p></div><nav class="d-flex flex-wrap gap-3" aria-label="Футер навигациясы"><a href="about.html">Біз туралы</a><a href="contact.html">Байланыс</a><a href="categories.html">Санаттар</a></nav></div><div class="small mt-3 mb-3"><time data-live-clock aria-live="off">Уақыт жүктелуде...</time><span class="text-body-secondary d-block">Жергілікті уақыт · <span data-clock-zone></span></span></div><p class="small mb-0 mt-3">Created by: <strong>{NAMES}</strong></p></footer>'''
 
 def card(m,bs):
     alt = esc(m['short']); href=m['href']
@@ -171,9 +171,14 @@ def page(dest,file,title,body,bs):
   <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
   <title>{esc(title)} | 67Films</title>
   {css}
-  <link rel="stylesheet" href="css/style.css?v=mobile-2">
+  <link rel="stylesheet" href="css/style.css?v=assignment-4">
   {js}
   <script src="js/script.js" defer></script>
+  <script src="js/validation.js?v=assignment-4" defer></script>
+  <script src="js/accordion.js?v=assignment-4" defer></script>
+  <script src="js/newsletter.js?v=assignment-4" defer></script>
+  <script src="js/background.js?v=assignment-4" defer></script>
+  <script src="js/clock.js?v=assignment-4" defer></script>
 </head>
 <body>
 <a class="skip-link visually-hidden-focusable" href="#mainContent">Негізгі мазмұнға өту</a>
@@ -182,13 +187,15 @@ def page(dest,file,title,body,bs):
         shell=f'''<div class="page-layout-wrapper min-vh-100 d-flex flex-column">{header(True,file)}<div class="content-shell container-fluid px-3 px-lg-4 py-4 flex-grow-1"><div class="row g-4">{sidebar(True)}<main class="col-12 col-lg-10 grid-main p-3 p-lg-4" id="mainContent" tabindex="-1">{body}</main></div></div>{footer(True)}</div>'''
     else:
         shell=f'<div class="page-layout-wrapper">{header(False,file)}{sidebar(False)}<main class="grid-main" id="mainContent" tabindex="-1">{body}</main>{footer(False)}</div>'
-    (dest/file).write_text(formatted_html(head+shell+'\n</body>\n</html>\n'))
+    (dest/file).write_text(formatted_html(head+shell+(ROOT/'data/newsletter.tpl').read_text()+'\n</body>\n</html>\n'))
 
 def build(dest,bs):
     dest.mkdir(exist_ok=True)
     page(dest,'index.html','Басты бет',homepage(bs),bs)
     page(dest,'about.html','Біз туралы',about(bs),bs)
     page(dest,'contact.html','Байланыс',contact(bs),bs)
+    page(dest,'club.html','Кино клубы',(ROOT/'data/club.tpl').read_text(),bs)
+    page(dest,'faq.html','Жиі қойылатын сұрақтар','<h1 class="page-title">67Films туралы сұрақтар</h1>'+(ROOT/'data/faq.tpl').read_text(),bs)
     page(dest,'categories.html','Санаттар',categories(bs),bs)
     page(dest,'responsive-cards.html','Кино таңдауы',layout_lab(bs),bs)
     for file,name in GENRE_NAMES.items():

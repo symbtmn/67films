@@ -128,7 +128,7 @@ async def main(chrome):
   await visit('about.html');assert await page.locator('html').get_attribute('data-bs-theme')=='dark'
   await snap('a3-dark-about')
   assert not errors,errors
-  (OUT/'qa-results.json').write_text(json.dumps({'pages_loaded':66,'page_viewport_checks':198,'responsive_checks':results,'javascript_errors':errors,'carousel':'9 linked single-image slides; controls and indicators passed','bootstrap_only_fallback':'home + form passed','form':'native validation and CSV download passed','search':'matching + empty results passed','movie_status_and_rating':'persist across reload','theme':'persists between pages','external_trailers':'original embeds retained; external playback not tested'},indent=2))
+  (OUT/'qa-results.json').write_text(json.dumps({'pages_loaded':len(list(ROOT.glob('*.html'))),'page_viewport_checks':3*len(list(ROOT.glob('*.html'))),'responsive_checks':results,'javascript_errors':errors,'carousel':'9 linked single-image slides; controls and indicators passed','bootstrap_only_fallback':'home + form passed','form':'native validation and CSV download passed','search':'matching + empty results passed','movie_status_and_rating':'persist across reload','theme':'persists between pages','external_trailers':'original embeds retained; external playback not tested'},indent=2))
   await browser.close();print('Browser checks passed; screenshots in evidence/.')
 if __name__=='__main__':
  args=argparse.ArgumentParser();args.add_argument('--browser',required=True);asyncio.run(main(args.parse_args().browser))
