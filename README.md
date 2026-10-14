@@ -21,7 +21,7 @@ Open **[Cinema Club](https://symbtmn.github.io/67films/club.html)** for the memb
 | 3. Popup form (10%) | `js/newsletter.js` | Opens on click; closes with X, outside click or Escape; traps/restores keyboard focus |
 | 4. Background (5%) | `js/background.js` | Four predefined palettes, smooth color change, persistence and readable dark-mode variants |
 | 5. Date/time (5%) | `js/clock.js` | `new Date()`, readable local time and timezone, immediate render and 1-second updates |
-| Report (10%) | PDF supplied with the submission ZIP | Team, editable group field, steps, screenshots, deployed URL, tests and reflection |
+| Report (10%) | PDF supplied with the submission ZIP | Team, steps, screenshots, deployed URL, tests and reflection |
 | Individual defense (40%) | `DEFENSE_Assignment4.md` | Code explanations, questions and live modification exercises |
 
 These five scripts use custom JavaScript; Bootstrap still supplies shared layout and styling. Every full HTML page links all scripts with `defer`. Membership and subscription are clearly labeled static demos: no accounts are created, no email is sent and passwords are never stored. `ASSIGNMENT4.md` contains the full criterion mapping.
