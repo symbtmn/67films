@@ -7,7 +7,13 @@
     const value = field.type === 'password' ? field.value : field.value.trim();
     if (field.type === 'checkbox') return field.checked ? '' : 'Келісім белгісін қойыңыз.';
     if (!value) return 'Бұл өрісті толтырыңыз.';
-    if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    // Names allow Unicode letters (including Kazakh), spaces, hyphens and apostrophes.
+    if (field.autocomplete === 'name' &&
+        !/^[\p{L}\p{M}]+(?:[ '\u2019-][\p{L}\p{M}]+)*$/u.test(value)) {
+      return 'Атыңызды әріптермен жазыңыз, мысалы: Сымбат.';
+    }
+    const emailPattern = /^[a-z0-9]+(?:[._%+-][a-z0-9]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,63}$/i;
+    if (field.type === 'email' && !emailPattern.test(value)) {
       return 'Дұрыс email енгізіңіз, мысалы: viewer@example.com.';
     }
     if (field.dataset.rule === 'password' && value.length < MIN_PASSWORD_LENGTH) {
