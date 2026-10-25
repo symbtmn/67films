@@ -62,7 +62,7 @@ def formatted_html(text):
     return '\n'.join(formatter.lines)+'\n'
 
 def header(bs, current):
-    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
+    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('movie-night.html','Кино кеші'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
     navlinks = ''.join(f'<li class="nav-item"><a class="nav-link{" active" if current == file else ""}" href="{file}" {"aria-current=\"page\"" if current == file else ""}>{name}</a></li>' for file,name in links)
     dropdowns = ''
     for name,pairs in GENRES:
@@ -163,6 +163,10 @@ def layout_lab(bs):
 def page(dest,file,title,body,bs):
     css='<link rel="stylesheet" href="vendor/bootstrap.min.css">' if bs else ''
     js='<script src="vendor/bootstrap.bundle.min.js" defer></script>' if bs else ''
+    night_assets = '''<link rel="stylesheet" href="css/movie-night.css?v=assignment-5">
+  <script src="js/night-data.js?v=assignment-5" defer></script>
+  <script src="js/night-sound.js?v=assignment-5" defer></script>
+  <script src="js/movie-night.js?v=assignment-5" defer></script>''' if file == 'movie-night.html' else ''
     head=f'''<!DOCTYPE html>
 <html lang="kk" data-bs-theme="light">
 <head>
@@ -174,11 +178,12 @@ def page(dest,file,title,body,bs):
   <link rel="stylesheet" href="css/style.css?v=assignment-4">
   {js}
   <script src="js/script.js" defer></script>
-  <script src="js/validation.js?v=assignment-4" defer></script>
+  <script src="js/validation.js?v=validation-fix-2" defer></script>
   <script src="js/accordion.js?v=assignment-4" defer></script>
   <script src="js/newsletter.js?v=assignment-4" defer></script>
   <script src="js/background.js?v=assignment-4" defer></script>
   <script src="js/clock.js?v=assignment-4" defer></script>
+  {night_assets}
 </head>
 <body>
 <a class="skip-link visually-hidden-focusable" href="#mainContent">Негізгі мазмұнға өту</a>
@@ -195,6 +200,7 @@ def build(dest,bs):
     page(dest,'about.html','Біз туралы',about(bs),bs)
     page(dest,'contact.html','Байланыс',contact(bs),bs)
     page(dest,'club.html','Кино клубы',(ROOT/'data/club.tpl').read_text(),bs)
+    page(dest,'movie-night.html','Кино кеші',(ROOT/'data/movie-night.tpl').read_text(),bs)
     page(dest,'faq.html','Жиі қойылатын сұрақтар','<h1 class="page-title">67Films туралы сұрақтар</h1>'+(ROOT/'data/faq.tpl').read_text(),bs)
     page(dest,'categories.html','Санаттар',categories(bs),bs)
     page(dest,'responsive-cards.html','Кино таңдауы',layout_lab(bs),bs)

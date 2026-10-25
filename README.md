@@ -1,6 +1,6 @@
 # 67Films — responsive cinema catalogue
 
-67Films is our team project about movies, series, anime and dramas. Visitors can browse genres, open a film's details and trailer, search the catalogue, and save a personal watch status and rating. It combines the Flexbox/Grid techniques from Assignment 2 and the responsive Bootstrap components from Assignment 3 in **one website**. Assignment 4 adds five custom JavaScript components and a cinema club.
+67Films is our team project about movies, series, anime and dramas. Visitors can browse genres, open a film's details and trailer, search the catalogue, and save a personal watch status and rating. It combines the Flexbox/Grid techniques from Assignment 2 and the responsive Bootstrap components from Assignment 3 in **one website**. Assignment 4 adds five custom JavaScript components and a cinema club. Assignment 5 adds a movie-night planner with custom DOM manipulation, keyboard navigation, callbacks, ratings, sound and animations.
 
 **Team:** Symbat Abdirakhman and Akerke Zulpubek.
 
@@ -9,6 +9,23 @@
 **Repository:** https://github.com/symbtmn/67films
 
 This repository contains the corrected final project combining Assignment 2 and Assignment 3. The GitHub Pages URL above is the website link for submission.
+
+## Assignment 5 - Advanced JavaScript and DOM Manipulation
+
+Open **[Movie Night](https://symbtmn.github.io/67films/movie-night.html)** using the **Кино кеші** navigation item. All 69 pages link to it.
+
+- Eight curated films with category filters (`switch`, objects and array methods).
+- Clickable poster thumbnails update the selected image attributes, title and link.
+- Accessible five-star rating with per-film local persistence and reset.
+- Arrow-key navigation, Home/End and keyboard-accessible controls.
+- Three-step form with `goToStep(nextStep, onChange)` callback, validation, preserved inputs, personalized review and an inline plan.
+- Optional Web Audio chime with mute, request cancellation and no overlapping oscillators.
+- Event-triggered CSS animations and a reduced-motion alternative.
+- Separate HTML, scoped CSS and three readable JavaScript files; Bootstrap supplies the visual layout.
+
+Verified Assignment 5 checks: 51 functional scenarios, 207 page/viewport checks (69 pages at 375, 768 and 1440 px), and zero uncaught JavaScript errors in Chromium 153. Real Web Audio instrumentation recorded six sound starts, at most one active tone, and zero active tones after completion.
+
+Full criterion mapping: `ASSIGNMENT5.md`. Kazakh defense guide: `DEFENSE_Assignment5.md`. Browser evidence and results: `evidence/assignment5/`. The PDF report and complete project ZIP are supplied for submission.
 
 ## Assignment 4 - Introduction to JavaScript
 
@@ -28,9 +45,9 @@ These five scripts use custom JavaScript; Bootstrap still supplies shared layout
 
 ## Pages and content
 
-The project contains 68 separate HTML files, including 34 film/detail pages and 22 genre pages. Each file contains its complete header, sidebar, main content, footer and Bootstrap imports. Images and Bootstrap are included locally. All original film descriptions, information tables, image filenames and trailer URLs are preserved.
+The project contains 69 separate HTML files, including 34 film/detail pages and 22 genre pages. Each file contains its complete header, sidebar, main content, footer and Bootstrap imports. Images and Bootstrap are included locally. All original film descriptions, information tables, image filenames and trailer URLs are preserved.
 
-Main pages: `index.html`, `categories.html`, `about.html`, `contact.html`, `movies.html`, `premieres.html`, `announcements.html`, `responsive-cards.html` and `404.html`, `club.html` and `faq.html`. Each film and genre has its own HTML file, such as `avengers.html` and `xboevik.html`.
+Main pages: `index.html`, `categories.html`, `about.html`, `contact.html`, `movies.html`, `premieres.html`, `announcements.html`, `responsive-cards.html` and `404.html`, `club.html`, `faq.html` and `movie-night.html`. Each film and genre has its own HTML file, such as `avengers.html` and `xboevik.html`.
 
 ## Where the technologies are used
 
@@ -90,7 +107,7 @@ npm test
 npm run build
 ```
 
-The test checks HTML IDs, page/image/script links, author names, imports and carousel structure. The build copies all 68 HTML files and assets to `dist/`. Optional full browser tests are in `tools/browser_check.py` and require Playwright plus Chromium. `tools/mobile_check.py` also checks poster size and the actual paint order of the opened mobile drawer, so carousel/card transforms cannot cover it. Test results are in `evidence/qa-results.json`. The final version passed 204 page/viewport checks (68 pages at 375, 768 and 1440 px), with no horizontal overflow or JavaScript errors. All 37 supplied JPEG files were verified; local image/link targets exist. External YouTube playback was not tested.
+The test checks HTML IDs, page/image/script links, author names, imports and carousel structure. The build copies all 69 HTML files and assets to `dist/`. Optional full browser tests are in `tools/browser_check.py` and require Playwright plus Chromium. `tools/mobile_check.py` also checks poster size and the actual paint order of the opened mobile drawer, so carousel/card transforms cannot cover it. Test results are in `evidence/qa-results.json`. The earlier Assignment 4 version passed 204 page/viewport checks (68 pages at 375, 768 and 1440 px), with no horizontal overflow or JavaScript errors. All 37 supplied JPEG files were verified; local image/link targets exist. External YouTube playback was not tested.
 
 ## Edit and add content
 

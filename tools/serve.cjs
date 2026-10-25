@@ -17,4 +17,4 @@ http.createServer((req,res) => {
   }
   res.writeHead(200, { 'Content-Type':mime[path.extname(filename)] || 'application/octet-stream' });
   fs.createReadStream(filename).pipe(res);
-}).listen(8080, () => console.log('67Films: http://localhost:8080'));
+}).listen(Number(process.env.PORT) || 8080, () => console.log(`67Films: http://localhost:${Number(process.env.PORT) || 8080}`));

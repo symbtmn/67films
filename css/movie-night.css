@@ -1,0 +1,50 @@
+/* Assignment 5: styles are scoped to the movie-night page. Behavior lives in JS. */
+.night-app { --night-accent: #8b1538; --night-soft: #f9f2f4; --night-star: #986000; }
+[data-bs-theme="dark"] .night-app { --night-accent: #ff9db7; --night-soft: #30232b; --night-star: #ffce76; }
+.night-app section { scroll-margin-top: 1rem; }
+.night-eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .13em; margin-bottom: .65rem; }
+.night-hero { display: flex; justify-content: space-between; gap: 2rem; padding: clamp(1.5rem, 4vw, 3rem); border-radius: .8rem; color: #fff; background: #70132f; }
+.night-hero h1 { font-size: clamp(1.9rem, 3.8vw, 3.25rem); letter-spacing: -.04em; font-weight: 700; }
+.night-hero p:not(.night-eyebrow) { color: #f5dce4; line-height: 1.65; }
+.night-ghost { border: 1px solid #d8a9b8; color: #fff; }
+.night-ghost:hover, .night-ghost:focus { background: #fff; color: #70132f; }
+.night-hero-note { flex: 0 0 auto; display: flex; gap: 1.1rem; align-items: center; font-size: .72rem; letter-spacing: .16em; line-height: 1.6; }
+.night-reel { display: grid; place-items: center; width: 5rem; height: 5rem; border: 1px dashed #e7c1cd; border-radius: 50%; font-size: 2rem; letter-spacing: -.06em; }
+.night-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.night-section-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+.night-section-nav a { color: var(--night-accent); font-weight: 700; font-size: .85rem; text-underline-offset: .35rem; }
+.night-filter { border: 1px solid var(--bs-border-color); color: var(--bs-body-color); border-radius: 2rem; padding: .5rem .9rem; }
+.night-filter:hover, .night-filter.is-active { background: var(--night-accent); border-color: var(--night-accent); color: var(--bs-body-bg); }
+.night-film-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .9rem; }
+.night-film-card { display: flex; flex-direction: column; min-width: 0; padding: 0; overflow: hidden; text-align: left; font: inherit; color: var(--bs-body-color); background: var(--bs-body-bg); border: 1px solid var(--bs-border-color); border-radius: .6rem; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.night-film-card:hover { transform: translateY(-4px); }
+.night-film-card.is-selected { border-color: var(--night-accent); box-shadow: 0 0 0 2px var(--night-accent); }
+.night-film-card img { width: 100%; height: 170px; object-fit: cover; object-position: center 30%; }
+.night-film-card .night-film-info { display: flex; flex-direction: column; gap: .3rem; padding: .8rem; flex-grow: 1; }
+.night-film-card strong { font-size: .86rem; line-height: 1.45; overflow-wrap: anywhere; }
+.night-film-card small { font-size: .7rem; color: var(--bs-secondary-color); }
+.night-film-card .night-pick-label { margin-top: auto; padding-top: .4rem; font-weight: 700; color: var(--night-accent); font-size: .72rem; }
+.night-workspace { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
+.night-selected-film { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 1rem; align-items: center; }
+.night-selected-poster { width: 112px; height: 164px; object-fit: cover; }
+.night-rating-box { padding: 1rem; border-radius: .5rem; background: var(--night-soft); }
+.night-stars { display: flex; gap: .25rem; margin-bottom: .5rem; }
+.night-star { background: none; border: 0; padding: .1rem .2rem; font-size: 2rem; color: var(--bs-secondary-color); transition: transform .18s ease, color .18s ease; line-height: 1.2; }
+.night-star.is-filled { color: var(--night-star); }
+.night-star:hover { transform: scale(1.15); }
+.night-steps { display: flex; gap: .5rem; list-style: none; padding: 0; margin: 1.25rem 0; }
+.night-steps li { flex: 1; border-bottom: 3px solid var(--bs-border-color); padding-bottom: .5rem; font-size: .75rem; }
+.night-steps li[aria-current="step"] { color: var(--night-accent); border-color: var(--night-accent); font-weight: 700; }
+.night-review { display: grid; grid-template-columns: minmax(65px, .65fr) minmax(0, 1.35fr); gap: .55rem .8rem; font-size: .9rem; margin-bottom: 0; }
+.night-review dt { color: var(--bs-secondary-color); font-weight: 400; }
+.night-review dd { margin: 0; overflow-wrap: anywhere; font-weight: 600; }
+.night-ticket { padding: 1.2rem; border: 1px dashed var(--night-accent); border-radius: .6rem; background: var(--night-soft); }
+.night-ticket .night-review { margin-bottom: 1rem; }
+/* JavaScript restarts these classes after selection, step change, or confirmation. */
+.night-enter { animation: night-enter .28s ease-out both; }
+.night-ticket-ready { animation: night-ticket .38s ease-out both; }
+@keyframes night-enter { from { opacity: .4; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes night-ticket { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 1199.98px) { .night-hero-note { display: none; } .night-workspace { grid-template-columns: 1fr; } }
+@media (max-width: 575.98px) { .night-film-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .night-film-card img { height: 150px; } .night-film-info { padding: .65rem; } .night-hero { padding: 1.4rem; } .night-section-nav { gap: .8rem; } .night-section-nav a { font-size: .78rem; } .night-selected-film { grid-template-columns: 90px minmax(0, 1fr); } .night-selected-poster { width: 90px; height: 135px; } }
+@media (prefers-reduced-motion: reduce) { .night-enter, .night-ticket-ready { animation: none; } .night-film-card, .night-star { transition: none; } .night-film-card:hover, .night-star:hover { transform: none; } }
