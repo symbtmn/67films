@@ -202,6 +202,16 @@
   date.min = today();
   date.value = today();
 
+  // Keep validation feedback in Kazakh, regardless of the browser language.
+  function kazakhError(input) {
+    if (input.id === 'nightName') return 'Атыңызды кемінде екі әріппен жазыңыз.';
+    if (input.id === 'nightGuests') return 'Адам саны 1–12 аралығындағы бүтін сан болуы керек.';
+    if (input.id === 'nightDate') return input.validity.valueMissing || input.validity.badInput
+      ? 'Кино кешінің күнін таңдаңыз.' : 'Бүгінгі немесе алдағы күнді таңдаңыз.';
+    if (input.id === 'nightTime') return 'Кино кешінің басталу уақытын енгізіңіз.';
+    return 'Бұл өрісті дұрыс толтырыңыз.';
+  }
+
   function validateStep(index) {
     if (index === 0) {
       const value = host.value.trim();
@@ -218,7 +228,7 @@
     if (invalid) {
       state.step = index;
       renderStep(index);
-      select('#nightPlanError').textContent = invalid.validationMessage;
+      select('#nightPlanError').textContent = kazakhError(invalid);
       select('#nightPlanError').hidden = false;
       invalid.setAttribute('aria-invalid', 'true');
       invalid.focus();
