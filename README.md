@@ -129,3 +129,10 @@ GitHub's official publishing-source instructions: https://docs.github.com/en/pag
 ## Defense — 40 points
 
 Open the website and its code. Explain the technologies in the mapping above, demonstrate at least two of your own pages, and practise changing the layout or content live. `DEFENSE.md` includes concrete code explanations and modification exercises. A complete site does not replace the live defense: each student needs to understand and modify their own code.
+
+
+## October 30 interface update
+
+The Assignment 5 features now have separate pages: `movie-night.html` (filter/choose), `gallery.html` (large poster plus eight interactive thumbnails), `movie-rating.html` (ratings), and `planner.html` (three-step form and visible Reset). The shared language selector supports Kazakh, Russian and English, persists across pages, and translates shared interface controls, new feature labels and planner validation. Movie catalogue titles remain their original titles. Existing long catalogue descriptions retain their original content.
+
+Dark-mode controls, form fields and carousel captions have explicit readable colors. The update passed 40 targeted browser checks including mobile/tablet/desktop overflow checks on the affected pages and no JavaScript errors.

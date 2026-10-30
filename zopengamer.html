@@ -8,7 +8,7 @@
       Оппенгеймер / Oppenheimer | 67Films
     </title>
     <link rel="stylesheet" href="vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css?v=assignment-4">
+    <link rel="stylesheet" href="css/style.css?v=readable-night-2">
     <script src="vendor/bootstrap.bundle.min.js" defer>
     </script>
     <script src="js/script.js" defer>
@@ -22,6 +22,10 @@
     <script src="js/background.js?v=assignment-4" defer>
     </script>
     <script src="js/clock.js?v=assignment-4" defer>
+    </script>
+    <script src="js/translations.js?v=languages-1" defer>
+    </script>
+    <script src="js/i18n.js?v=languages-1" defer>
     </script>
   </head>
   <body>
@@ -46,6 +50,22 @@
               Іздеу
             </button>
           </form>
+          <label class="language-control small">
+            <span>
+              Тіл
+            </span>
+            <select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл">
+              <option value="kk">
+                Қазақша
+              </option>
+              <option value="ru">
+                Русский
+              </option>
+              <option value="en">
+                English
+              </option>
+            </select>
+          </label>
           <div class="d-flex flex-wrap gap-2">
             <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
               Түнгі режим
@@ -81,7 +101,22 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="movie-night.html" >
-                    Кино кеші
+                    Кино таңдау
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="gallery.html" >
+                    Галерея
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="movie-rating.html" >
+                    Бағалау
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="planner.html" >
+                    Кеш жоспары
                   </a>
                 </li>
                 <li class="nav-item">

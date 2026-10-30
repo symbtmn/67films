@@ -62,7 +62,7 @@ def formatted_html(text):
     return '\n'.join(formatter.lines)+'\n'
 
 def header(bs, current):
-    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('movie-night.html','Кино кеші'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
+    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('movie-night.html','Кино таңдау'),('gallery.html','Галерея'),('movie-rating.html','Бағалау'),('planner.html','Кеш жоспары'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
     navlinks = ''.join(f'<li class="nav-item"><a class="nav-link{" active" if current == file else ""}" href="{file}" {"aria-current=\"page\"" if current == file else ""}>{name}</a></li>' for file,name in links)
     dropdowns = ''
     for name,pairs in GENRES:
@@ -77,6 +77,7 @@ def header(bs, current):
   <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
     <a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">67 <span class="text-danger">FILMS</span></a>
     {search}
+    <label class="language-control small"><span>Тіл</span><select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл"><option value="kk">Қазақша</option><option value="ru">Русский</option><option value="en">English</option></select></label>
     <div class="d-flex flex-wrap gap-2"><button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">Түнгі режим</button><button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">Фонды өзгерту</button><button class="btn btn-outline-danger btn-sm" type="button" data-newsletter-open>Жаңалыққа жазылу</button></div>
   </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
@@ -163,10 +164,10 @@ def layout_lab(bs):
 def page(dest,file,title,body,bs):
     css='<link rel="stylesheet" href="vendor/bootstrap.min.css">' if bs else ''
     js='<script src="vendor/bootstrap.bundle.min.js" defer></script>' if bs else ''
-    night_assets = '''<link rel="stylesheet" href="css/movie-night.css?v=assignment-5">
+    night_assets = '''<link rel="stylesheet" href="css/movie-night.css?v=separate-pages-2">
   <script src="js/night-data.js?v=assignment-5" defer></script>
   <script src="js/night-sound.js?v=assignment-5" defer></script>
-  <script src="js/movie-night.js?v=assignment-5" defer></script>''' if file == 'movie-night.html' else ''
+  <script src="js/movie-night.js?v=separate-pages-2" defer></script>''' if file in ['movie-night.html','gallery.html','movie-rating.html','planner.html'] else ''
     head=f'''<!DOCTYPE html>
 <html lang="kk" data-bs-theme="light">
 <head>
@@ -175,7 +176,7 @@ def page(dest,file,title,body,bs):
   <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
   <title>{esc(title)} | 67Films</title>
   {css}
-  <link rel="stylesheet" href="css/style.css?v=assignment-4">
+  <link rel="stylesheet" href="css/style.css?v=readable-night-2">
   {js}
   <script src="js/script.js" defer></script>
   <script src="js/validation.js?v=validation-fix-2" defer></script>
@@ -183,6 +184,8 @@ def page(dest,file,title,body,bs):
   <script src="js/newsletter.js?v=assignment-4" defer></script>
   <script src="js/background.js?v=assignment-4" defer></script>
   <script src="js/clock.js?v=assignment-4" defer></script>
+  <script src="js/translations.js?v=languages-1" defer></script>
+  <script src="js/i18n.js?v=languages-1" defer></script>
   {night_assets}
 </head>
 <body>
@@ -201,6 +204,8 @@ def build(dest,bs):
     page(dest,'contact.html','Байланыс',contact(bs),bs)
     page(dest,'club.html','Кино клубы',(ROOT/'data/club.tpl').read_text(),bs)
     page(dest,'movie-night.html','Кино кеші',(ROOT/'data/movie-night.tpl').read_text(),bs)
+    for feature,title in [('gallery','Постерлер галереясы'),('movie-rating','Киноға баға беру'),('planner','Кино кешін жоспарлау')]:
+        page(dest,feature+'.html',title,(ROOT/('data/'+feature+'.tpl')).read_text(),bs)
     page(dest,'faq.html','Жиі қойылатын сұрақтар','<h1 class="page-title">67Films туралы сұрақтар</h1>'+(ROOT/'data/faq.tpl').read_text(),bs)
     page(dest,'categories.html','Санаттар',categories(bs),bs)
     page(dest,'responsive-cards.html','Кино таңдауы',layout_lab(bs),bs)

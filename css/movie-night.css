@@ -48,3 +48,14 @@
 @media (max-width: 1199.98px) { .night-hero-note { display: none; } .night-workspace { grid-template-columns: 1fr; } }
 @media (max-width: 575.98px) { .night-film-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .night-film-card img { height: 150px; } .night-film-info { padding: .65rem; } .night-hero { padding: 1.4rem; } .night-section-nav { gap: .8rem; } .night-section-nav a { font-size: .78rem; } .night-selected-film { grid-template-columns: 90px minmax(0, 1fr); } .night-selected-poster { width: 90px; height: 135px; } }
 @media (prefers-reduced-motion: reduce) { .night-enter, .night-ticket-ready { animation: none; } .night-film-card, .night-star { transition: none; } .night-film-card:hover, .night-star:hover { transform: none; } }
+
+.night-section-nav { padding: .9rem 0; border-bottom: 1px solid var(--bs-border-color); }
+.night-app > .card { max-width: 850px; }
+.gallery-display { display: flex; gap: 2rem; align-items: center; margin: 0 0 1.5rem; }
+#galleryLarge { width: min(100%, 300px); height: 410px; object-fit: contain; background: var(--bs-tertiary-bg); border-radius: .7rem; }
+.gallery-thumbs { display: flex; gap: .75rem; flex-wrap: wrap; }
+.gallery-thumbnail { padding: 4px; border: 2px solid var(--bs-border-color); border-radius: .5rem; background: var(--bs-body-bg); }
+.gallery-thumbnail img { width: 65px; height: 90px; object-fit: cover; border-radius: .2rem; }
+.gallery-thumbnail.is-selected { border-color: var(--night-accent); box-shadow: 0 0 0 2px var(--night-accent); }
+[data-bs-theme="dark"] .night-rating-box { background: #3c3045; }
+@media(max-width:575px) { .gallery-display { flex-direction: column; align-items: start; gap: .5rem; } #galleryLarge { width: 210px; height: 290px; margin: auto; } .gallery-thumbnail img { width: 48px; height: 68px; } }

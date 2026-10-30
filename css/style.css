@@ -115,3 +115,20 @@ body.newsletter-open { overflow: hidden; }
      carousel/card transforms. Only the Bootstrap drawer should be fixed. */
   .grid-sidebar { display: contents; }
 }
+
+/* Readable shared controls and carousel in both color schemes. */
+.language-control { display: flex; align-items: center; gap: .5rem; }
+.language-control select { min-width: 110px; }
+.carousel-caption, .carousel-caption p, .carousel-caption small { color: #fff !important; }
+.carousel-caption { background-color: rgba(15, 23, 35, .88) !important; }
+.carousel-indicators [data-bs-target] { background-color: #fff; }
+[data-bs-theme="dark"] { --bs-body-bg: #252d39; --bs-body-color: #f3f5fa; --bs-secondary-color: #c8d2e0; --bs-tertiary-bg: #303c4d; --bs-border-color: #6c7e94; }
+[data-bs-theme="dark"] .bg-body, [data-bs-theme="dark"] .card { background-color: #303b4b !important; color: #f3f5fa; }
+[data-bs-theme="dark"] .btn-outline-secondary { --bs-btn-color: #f1f5fb; --bs-btn-border-color: #a8b9ce; --bs-btn-hover-color: #202b39; --bs-btn-hover-bg: #e2eaf4; --bs-btn-disabled-color: #b9c6d8; --bs-btn-disabled-border-color: #8799b0; }
+[data-bs-theme="dark"] .btn-outline-danger { --bs-btn-color: #ffafc2; --bs-btn-border-color: #ffafc2; }
+[data-bs-theme="dark"] .text-danger, [data-bs-theme="dark"] .btn-link.text-danger { color: #ffafc2 !important; }
+[data-bs-theme="dark"] .form-control, [data-bs-theme="dark"] .form-select { color: #f3f5fa; background-color: #243041; border-color: #8b9eb7; }
+[data-bs-theme="dark"] .form-control::placeholder { color: #bfccdc; opacity: 1; }
+
+[data-bs-theme="dark"] .carousel-indicators [data-bs-target] { background-color: #fff !important; }
+[data-bs-theme="dark"] .carousel-control-prev-icon, [data-bs-theme="dark"] .carousel-control-next-icon { filter: none !important; }

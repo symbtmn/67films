@@ -70,3 +70,14 @@ Chromium 153 passed 51 functional scenarios and 207 page/viewport checks (69 pag
 ## Submission
 
 Each team member submits the full project ZIP and PDF report, then defends the code individually. Fill in the report's editable **Group** field with your actual group number. The practical defense is worth 40 points and is assessed by the instructor.
+
+
+## Updated feature locations
+
+- Movie filtering and selection: `movie-night.html`.
+- Explicit thumbnail gallery with dynamic large-image src/alt: `gallery.html`.
+- Star ratings: `movie-rating.html`.
+- Three-step form, callback and Reset: `planner.html`.
+- Site-wide interface language selector and switch: `js/i18n.js`, dictionary in `js/translations.js`.
+- Shared selected movie and interface language persist between pages.
+- Initial single-page test instructions and screenshots describe the original submission; the current four-page implementation is covered by `tools/revision_check.cjs`.
