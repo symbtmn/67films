@@ -43,8 +43,15 @@ $(document).ready(function () {
   $(window).on('scroll resize',progress);progress();
   // Task 5: animate numeric properties; reduced motion renders final numbers.
   $('.jq-counter').each(function(){const el=$(this),target=Number(el.attr('data-target'));if(matchMedia('(prefers-reduced-motion: reduce)').matches)el.text(target);else $({number:0}).animate({number:target},{duration:1100,step(value){el.text(Math.floor(value));},complete(){el.text(target);}});});
+  // Trim whitespace before validation; required alone accepts spaces.
+  $('#jqForm').attr('novalidate', 'novalidate');
+  $('#jqName, #jqMessage').on('input', function () {
+    this.setCustomValidity('');
+    $(this).removeAttr('aria-invalid');
+    $('#jqFormStatus').text('');
+  });
   // Task 6: validate, show busy state, disable duplicates, restore after delay.
-  $('#jqForm').on('submit',function(event){event.preventDefault();if(!this.reportValidity()||$('#jqSubmit').prop('disabled'))return;const button=$('#jqSubmit');button.prop('disabled',true).attr('aria-busy','true').empty().append($('<span class="jq-spinner" aria-hidden="true">'),document.createTextNode(' Please wait…'));$('#jqFormStatus').text('Өтінім тексерілуде…');setTimeout(()=>{button.prop('disabled',false).removeAttr('aria-busy').text('Жіберу');$('#jqFormStatus').text('Демо өтінім тексерілді. Серверге жіберілген жоқ.');toast('Өтінім сәтті тексерілді!');},1200);});
+  $('#jqForm').on('submit',function(event){event.preventDefault();const name=$('#jqName')[0],message=$('#jqMessage')[0];name.value=name.value.trim();message.value=message.value.trim();name.setCustomValidity(name.value.length<2?'Атыңызды кемінде екі таңбамен жазыңыз.':'');message.setCustomValidity(!message.value?'Кино атауын немесе ұсынысыңызды жазыңыз.':'');const invalid=[name,message].find(field=>!field.checkValidity());if(invalid){$(invalid).attr('aria-invalid','true');$('#jqFormStatus').text(invalid.validationMessage);invalid.focus();return;}if(!this.reportValidity()||$('#jqSubmit').prop('disabled'))return;const button=$('#jqSubmit');button.prop('disabled',true).attr('aria-busy','true').empty().append($('<span class="jq-spinner" aria-hidden="true">'),document.createTextNode(' Please wait…'));$('#jqFormStatus').text('Өтінім тексерілуде…');setTimeout(()=>{button.prop('disabled',false).removeAttr('aria-busy').text('Жіберу');$('#jqFormStatus').text('Демо өтінім тексерілді. Серверге жіберілген жоқ.');toast('Өтінім сәтті тексерілді!');},1200);});
   // Task 8: modern clipboard API, explicit failure feedback and temporary tooltip.
   let copyTimer;
   $('#jqCopy').on('click',async function(){try{await navigator.clipboard.writeText($('#jqShare').text());const button=$(this);clearTimeout(copyTimer);button.text('✓ Көшірілді');$('#jqCopyTip').prop('hidden',false);toast('Мәтін көшірілді!');copyTimer=setTimeout(()=>{button.text('Көшіру');$('#jqCopyTip').prop('hidden',true);},2000);}catch{toast('Көшіру мүмкін болмады. Мәтінді қолмен көшіріңіз.');}});
