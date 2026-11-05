@@ -50,7 +50,7 @@ let server;
   await go('jquery-ux.html');
   await page.waitForTimeout(350);const intermediate=Number(await page.locator('.jq-counter').first().innerText());
   check(5,'Counter has an intermediate animated value',intermediate>0&&intermediate<34);await snap('task5-animation','section.card');
-  await page.waitForTimeout(1300);check(5,'Counters end at exact targets',JSON.stringify(await page.locator('.jq-counter').allTextContents())===JSON.stringify(['34','22','9']));
+  await page.waitForTimeout(1300);check(5,'Counters end at exact targets',JSON.stringify((await page.locator('.jq-counter').allTextContents()).map(s=>s.trim()))===JSON.stringify(['34','22','9']));
   await snap('task5','section.card');
   for(const pair of [['',''],['   ','   '],['Ali','\t \n']]){
     await page.locator('#jqName').fill(pair[0]);await page.locator('#jqMessage').fill(pair[1]);await page.locator('#jqSubmit').click();

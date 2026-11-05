@@ -189,7 +189,7 @@ $(document).ready(function () {
   $('#jqCopy').on('click', async function () {
     const button = $(this);
     try {
-      await navigator.clipboard.writeText($('#jqShare').text());
+      await navigator.clipboard.writeText($('#jqShare').text().trim());
       clearTimeout(copyTimer);
       button.text('✓ Көшірілді').attr('aria-label', 'Мәтін көшірілді');
       $('#jqCopyTip').prop('hidden', false);
