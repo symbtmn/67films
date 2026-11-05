@@ -199,6 +199,8 @@ $(document).ready(function () {
         $('#jqCopyTip').prop('hidden', true);
       }, 2500);
     } catch {
+      clearTimeout(copyTimer);
+      button.text('Көшіру').attr('aria-label', 'Мәтінді көшіру');
       $('#jqCopyTip').prop('hidden', true);
       notify('Көшіруге рұқсат берілмеді. Мәтінді қолмен көшіріңіз.');
     }
