@@ -9,3 +9,7 @@
 mark { background:#ffe28a; color:#201b12; }
 @keyframes jq-spin { to { transform:rotate(360deg); } }
 @media(prefers-reduced-motion:reduce) { .jq-spinner { animation:none; } .jq-lazy { transition:none; } }
+.jq-tooltip { display: inline-block; align-self: flex-start; margin-top: .5rem; padding: .4rem .7rem; background: #203747; color: #fff; border-radius: .35rem; }
+#jqSuggestions { position: absolute; z-index: 20; width: calc(100% - 3rem); max-width: 670px; box-shadow: 0 .5rem 1.5rem #0002; }
+#jqResults mark { padding: .05em .15em; border-radius: .15em; }
+#jqLazyGrid { margin-top: 2rem; }
