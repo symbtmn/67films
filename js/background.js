@@ -4,10 +4,10 @@
   const button = document.getElementById('background-toggle');
   if (!button) return;
   const palettes = [
-    { name: 'Классикалық', light: '#ffffff', dark: '#252d39' },
-    { name: 'Жылы', light: '#fff1e6', dark: '#3b3029' },
-    { name: 'Көгілдір', light: '#e7f1ff', dark: '#24364b' },
-    { name: 'Күлгін', light: '#f1eaff', dark: '#382e4a' }
+    { name: 'Классикалық', light: '#ffffff', dark: '#111111' },
+    { name: 'Жылы', light: '#fff1e6', dark: '#191817' },
+    { name: 'Көгілдір', light: '#e7f1ff', dark: '#181818' },
+    { name: 'Күлгін', light: '#f1eaff', dark: '#202020' }
   ];
   let index = 0;
   try {

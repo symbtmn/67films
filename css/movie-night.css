@@ -1,15 +1,15 @@
 /* Assignment 5: styles are scoped to the movie-night page. Behavior lives in JS. */
-.night-app { --night-accent: #8b1538; --night-soft: #f9f2f4; --night-star: #986000; }
-[data-bs-theme="dark"] .night-app { --night-accent: #ff9db7; --night-soft: #30232b; --night-star: #ffce76; }
+.night-app { --night-accent: #c62828; --night-soft: #fff4f4; --night-star: #986000; }
+[data-bs-theme="dark"] .night-app { --night-accent: #ff4d4f; --night-soft: #211919; --night-star: #ffce76; }
 .night-app section { scroll-margin-top: 1rem; }
 .night-eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .13em; margin-bottom: .65rem; }
-.night-hero { display: flex; justify-content: space-between; gap: 2rem; padding: clamp(1.5rem, 4vw, 3rem); border-radius: .8rem; color: #fff; background: #70132f; }
+.night-hero { display: flex; justify-content: space-between; gap: 2rem; padding: clamp(1.5rem, 4vw, 3rem); border-radius: .8rem; color: #fff; background: #8f1616; }
 .night-hero h1 { font-size: clamp(1.9rem, 3.8vw, 3.25rem); letter-spacing: -.04em; font-weight: 700; }
-.night-hero p:not(.night-eyebrow) { color: #f5dce4; line-height: 1.65; }
-.night-ghost { border: 1px solid #d8a9b8; color: #fff; }
-.night-ghost:hover, .night-ghost:focus { background: #fff; color: #70132f; }
+.night-hero p:not(.night-eyebrow) { color: #ffe5e5; line-height: 1.65; }
+.night-ghost { border: 1px solid #e6a1a1; color: #fff; }
+.night-ghost:hover, .night-ghost:focus { background: #fff; color: #8f1616; }
 .night-hero-note { flex: 0 0 auto; display: flex; gap: 1.1rem; align-items: center; font-size: .72rem; letter-spacing: .16em; line-height: 1.6; }
-.night-reel { display: grid; place-items: center; width: 5rem; height: 5rem; border: 1px dashed #e7c1cd; border-radius: 50%; font-size: 2rem; letter-spacing: -.06em; }
+.night-reel { display: grid; place-items: center; width: 5rem; height: 5rem; border: 1px dashed #e8b5b5; border-radius: 50%; font-size: 2rem; letter-spacing: -.06em; }
 .night-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
 .night-section-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
 .night-section-nav a { color: var(--night-accent); font-weight: 700; font-size: .85rem; text-underline-offset: .35rem; }
@@ -57,5 +57,5 @@
 .gallery-thumbnail { padding: 4px; border: 2px solid var(--bs-border-color); border-radius: .5rem; background: var(--bs-body-bg); }
 .gallery-thumbnail img { width: 65px; height: 90px; object-fit: cover; border-radius: .2rem; }
 .gallery-thumbnail.is-selected { border-color: var(--night-accent); box-shadow: 0 0 0 2px var(--night-accent); }
-[data-bs-theme="dark"] .night-rating-box { background: #3c3045; }
+[data-bs-theme="dark"] .night-rating-box { background: #211919; }
 @media(max-width:575px) { .gallery-display { flex-direction: column; align-items: start; gap: .5rem; } #galleryLarge { width: 210px; height: 290px; margin: auto; } .gallery-thumbnail img { width: 48px; height: 68px; } }

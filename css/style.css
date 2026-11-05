@@ -1,7 +1,7 @@
 /* Assignment 3: Bootstrap owns layout, buttons, forms and spacing.
    Only the isolated .mq-card-group task uses custom spacing (Task 2 forbids Bootstrap).
    Never override .container, .row, .col, .card or .btn globally. */
-:root { --brand: #8b1538; }
+:root { --brand: #c62828; }
 html { scroll-behavior: smooth; }
 body { font-family: Arial, Helvetica, sans-serif; }
 .grid-main, .grid-sidebar { min-width: 0; }
@@ -46,7 +46,7 @@ body.newsletter-open { overflow: hidden; }
 .gallery-item:hover figcaption, .gallery-item:focus-within figcaption { opacity: 1; transform: translateY(0); }
 .gallery-item a { display: block; height: 100%; }
 [hidden] { display: none !important; }
-:focus-visible { outline: 3px solid #c02c55; outline-offset: 3px; }
+:focus-visible { outline: 3px solid #e53935; outline-offset: 3px; }
 @media (min-width: 576px) {
   .page-title { font-size: 1.85rem; }
   .intro-text { font-size: 1rem; }
@@ -120,15 +120,35 @@ body.newsletter-open { overflow: hidden; }
 .language-control { display: flex; align-items: center; gap: .5rem; }
 .language-control select { min-width: 110px; }
 .carousel-caption, .carousel-caption p, .carousel-caption small { color: #fff !important; }
-.carousel-caption { background-color: rgba(15, 23, 35, .88) !important; }
+.carousel-caption { background-color: rgba(8, 8, 8, .9) !important; }
 .carousel-indicators [data-bs-target] { background-color: #fff; }
-[data-bs-theme="dark"] { --bs-body-bg: #252d39; --bs-body-color: #f3f5fa; --bs-secondary-color: #c8d2e0; --bs-tertiary-bg: #303c4d; --bs-border-color: #6c7e94; }
-[data-bs-theme="dark"] .bg-body, [data-bs-theme="dark"] .card { background-color: #303b4b !important; color: #f3f5fa; }
-[data-bs-theme="dark"] .btn-outline-secondary { --bs-btn-color: #f1f5fb; --bs-btn-border-color: #a8b9ce; --bs-btn-hover-color: #202b39; --bs-btn-hover-bg: #e2eaf4; --bs-btn-disabled-color: #b9c6d8; --bs-btn-disabled-border-color: #8799b0; }
-[data-bs-theme="dark"] .btn-outline-danger { --bs-btn-color: #ffafc2; --bs-btn-border-color: #ffafc2; }
-[data-bs-theme="dark"] .text-danger, [data-bs-theme="dark"] .btn-link.text-danger { color: #ffafc2 !important; }
-[data-bs-theme="dark"] .form-control, [data-bs-theme="dark"] .form-select { color: #f3f5fa; background-color: #243041; border-color: #8b9eb7; }
-[data-bs-theme="dark"] .form-control::placeholder { color: #bfccdc; opacity: 1; }
+[data-bs-theme="dark"] { --bs-body-bg: #111111; --bs-body-color: #f5f5f5; --bs-secondary-color: #c5c5c5; --bs-tertiary-bg: #1c1c1c; --bs-border-color: #505050; }
+[data-bs-theme="dark"] .bg-body, [data-bs-theme="dark"] .card { background-color: #191919 !important; color: #f5f5f5; }
+[data-bs-theme="dark"] .btn-outline-secondary { --bs-btn-color: #f5f5f5; --bs-btn-border-color: #a5a5a5; --bs-btn-hover-color: #151515; --bs-btn-hover-bg: #eeeeee; --bs-btn-disabled-color: #bdbdbd; --bs-btn-disabled-border-color: #777777; }
+[data-bs-theme="dark"] .btn-outline-danger { --bs-btn-color: #ff4d4f; --bs-btn-border-color: #ff4d4f; }
+[data-bs-theme="dark"] .text-danger, [data-bs-theme="dark"] .btn-link.text-danger { color: #ff4d4f !important; }
+[data-bs-theme="dark"] .form-control, [data-bs-theme="dark"] .form-select { color: #f5f5f5; background-color: #151515; border-color: #737373; }
+[data-bs-theme="dark"] .form-control::placeholder { color: #bdbdbd; opacity: 1; }
 
 [data-bs-theme="dark"] .carousel-indicators [data-bs-target] { background-color: #fff !important; }
 [data-bs-theme="dark"] .carousel-control-prev-icon, [data-bs-theme="dark"] .carousel-control-next-icon { filter: none !important; }
+
+/* Shared search entry and neutral black / red night palette. */
+.site-search-link { white-space: nowrap; padding: .5rem 1.1rem; }
+[data-bs-theme="dark"] {
+  --bs-link-color: #ff4d4f; --bs-link-color-rgb: 255,77,79;
+  --bs-link-hover-color: #ff7474; --bs-link-hover-color-rgb: 255,116,116;
+  --bs-danger-text-emphasis: #ff4d4f;
+  --bs-secondary-bg: #222222; --bs-secondary-bg-rgb: 34,34,34;
+  --bs-tertiary-bg-rgb: 28,28,28; --bs-body-bg-rgb: 17,17,17;
+}
+[data-bs-theme="dark"] .btn-outline-danger {
+  --bs-btn-hover-bg: #c62828; --bs-btn-hover-border-color: #c62828;
+  --bs-btn-hover-color: #fff; --bs-btn-active-bg: #b71c1c;
+  --bs-btn-active-border-color: #b71c1c; --bs-btn-active-color: #fff;
+}
+[data-bs-theme="dark"] .site-search-link {
+  --bs-btn-bg: #080808; --bs-btn-border-color: #737373;
+  --bs-btn-color: #fff; --bs-btn-hover-bg: #292929;
+  --bs-btn-hover-border-color: #aaa;
+}

@@ -62,7 +62,7 @@ def formatted_html(text):
     return '\n'.join(formatter.lines)+'\n'
 
 def header(bs, current):
-    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('movie-night.html','Кино таңдау'),('gallery.html','Галерея'),('movie-rating.html','Бағалау'),('planner.html','Кеш жоспары'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
+    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('movie-night.html','Кино таңдау'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
     navlinks = ''.join(f'<li class="nav-item"><a class="nav-link{" active" if current == file else ""}" href="{file}" {"aria-current=\"page\"" if current == file else ""}>{name}</a></li>' for file,name in links)
     dropdowns = ''
     for name,pairs in GENRES:
@@ -71,7 +71,7 @@ def header(bs, current):
             dropdowns += f'<li class="nav-item dropdown"><button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{name}</button><ul class="dropdown-menu">{items}</ul></li>'
         else:
             dropdowns += f'<li><details class="genre-menu"><summary>{name}</summary><ul>{items}</ul></details></li>'
-    search = '<form class="site-search input-group" action="index.html" method="get" role="search"><label class="visually-hidden" for="navSearch">Кино іздеу</label><input id="navSearch" name="q" type="search" class="form-control" placeholder="Кино атауын іздеу…" maxlength="100"><button class="btn btn-outline-danger" type="submit">Іздеу</button></form>'
+    search = ''
     if bs:
         return f'''<header class="grid-header bg-body border-bottom">
   <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -84,7 +84,7 @@ def header(bs, current):
     <div class="container-fluid p-0">
       <button class="btn btn-outline-danger btn-sm d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#trendingPanel" aria-controls="trendingPanel">Трендтегілер</button>
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Мәзірді ашу"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="mainNavbar"><ul class="navbar-nav flex-wrap align-items-lg-center gap-lg-2 mb-0">{navlinks}{dropdowns}</ul></div>
+      <div class="collapse navbar-collapse" id="mainNavbar"><ul class="navbar-nav flex-wrap align-items-lg-center gap-lg-2 mb-0"><li class="nav-item"><a class="btn btn-dark site-search-link" href="jquery.html">Іздеу</a></li>{navlinks}{dropdowns}</ul></div>
     </div>
   </nav>
 </header>'''
@@ -164,7 +164,7 @@ def layout_lab(bs):
 def page(dest,file,title,body,bs):
     css='<link rel="stylesheet" href="vendor/bootstrap.min.css">' if bs else ''
     js='<script src="vendor/bootstrap.bundle.min.js" defer></script>' if bs else ''
-    night_assets = '''<link rel="stylesheet" href="css/movie-night.css?v=separate-pages-2">
+    night_assets = '''<link rel="stylesheet" href="css/movie-night.css?v=black-red-3">
   <script src="js/night-data.js?v=assignment-5" defer></script>
   <script src="js/night-sound.js?v=assignment-5" defer></script>
   <script src="js/movie-night.js?v=separate-pages-2" defer></script>''' if file in ['movie-night.html','gallery.html','movie-rating.html','planner.html'] else ''
@@ -176,13 +176,13 @@ def page(dest,file,title,body,bs):
   <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
   <title>{esc(title)} | 67Films</title>
   {css}
-  <link rel="stylesheet" href="css/style.css?v=readable-night-2">
+  <link rel="stylesheet" href="css/style.css?v=black-red-3">
   {js}
   <script src="js/script.js" defer></script>
   <script src="js/validation.js?v=validation-fix-2" defer></script>
   <script src="js/accordion.js?v=assignment-4" defer></script>
   <script src="js/newsletter.js?v=assignment-4" defer></script>
-  <script src="js/background.js?v=assignment-4" defer></script>
+  <script src="js/background.js?v=black-red-3" defer></script>
   <script src="js/clock.js?v=assignment-4" defer></script>
   <script src="js/translations.js?v=languages-1" defer></script>
   <script src="js/i18n.js?v=languages-1" defer></script>
