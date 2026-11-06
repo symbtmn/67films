@@ -82,6 +82,33 @@
     document.getElementById('profilePhone').textContent = user.phone;
     edit.elements.name.value = user.name; edit.elements.email.value = user.email; edit.elements.phone.value = user.phone;
   }
+  const posterRequests = new Map();
+  function seriesPoster(value) {
+    try { const url = new URL(value); return url.protocol === 'https:' && url.hostname === 'static.tvmaze.com' ? url.href : ''; } catch { return ''; }
+  }
+  // Older saved series contain only an ID and title. Resolve their poster once,
+  // without restoring a removed entry or writing into another account's list.
+  function restoreSeriesPoster(entry, image) {
+    if (!Number.isSafeInteger(entry.id) || entry.id <= 0) return;
+    const ownerKey = listKey('tvmaze');
+    if (!posterRequests.has(entry.id)) {
+      posterRequests.set(entry.id, (async () => {
+        const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 8000);
+        try {
+          const response = await fetch('https://api.tvmaze.com/shows/' + entry.id, {signal:controller.signal});
+          if (!response.ok) return '';
+          const show = await response.json(); return seriesPoster(show.image?.medium || show.image?.original);
+        } catch { return ''; } finally { clearTimeout(timeout); }
+      })());
+    }
+    posterRequests.get(entry.id).then(poster => {
+      if (!poster || listKey('tvmaze') !== ownerKey) return;
+      const list = getList('tvmaze');
+      if (!list.some(show => show.id === entry.id)) return;
+      if (image.isConnected) image.src = poster;
+      try { setList(list.map(show => show.id === entry.id ? {...show, image:poster} : show), 'tvmaze'); } catch { /* The visible poster still works when storage is full. */ }
+    });
+  }
   function renderLists() {
     const movies = window.FilmCatalogue || []; const ids = getList(); const shows = getList('tvmaze');
     const grid = document.getElementById('profileWatchlist'); grid.replaceChildren();
@@ -93,7 +120,16 @@
       if (entry.source === 'tvmaze') { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
       const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'btn btn-outline-danger btn-sm'; remove.textContent = t('Алып тастау');
       remove.addEventListener('click',()=>{ try { setList(getList(entry.source).filter(item => entry.source === 'catalogue' ? item !== entry.id : item.id !== entry.id),entry.source); renderLists(); } catch { document.getElementById('profileStatus').textContent=t('Өзгерісті сақтау мүмкін болмады.'); } });
-      item.append(link,remove); grid.append(item);
+      const posterLink = link.cloneNode(false); posterLink.className = 'saved-poster-link'; posterLink.tabIndex = -1; posterLink.setAttribute('aria-hidden','true');
+      const image = document.createElement('img'); image.className = 'saved-poster'; image.alt = ''; image.width = 100; image.height = 150; image.loading = 'lazy';
+      const poster = entry.source === 'catalogue' ? entry.poster : seriesPoster(entry.image);
+      image.src = poster || 'images/poster-placeholder.svg';
+      image.addEventListener('error', () => { image.src = 'images/poster-placeholder.svg'; }, {once:true});
+      posterLink.append(image);
+      const details = document.createElement('div'); details.className = 'saved-details'; link.className = 'saved-title'; details.append(link);
+      if (entry.meta) { const meta = document.createElement('p'); meta.className = 'saved-meta'; meta.textContent = entry.meta; details.append(meta); }
+      details.append(remove); item.append(posterLink,details); grid.append(item);
+      if (entry.source === 'tvmaze' && !poster) restoreSeriesPoster(entry,image);
     });
   }
   renderDetails(); renderLists(); document.getElementById('logoutButton').addEventListener('click',logout);

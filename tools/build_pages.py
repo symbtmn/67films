@@ -182,7 +182,7 @@ def page(dest,file,title,body,bs):
   <title>{esc(title)} | 67Films</title>
   {css}
   <link rel="stylesheet" href="css/style.css?v=black-red-3">
-  <link rel="stylesheet" href="css/final.css?v=final-1">
+  <link rel="stylesheet" href="css/final.css?v={'watchlist-2' if file == 'profile.html' else 'final-1'}">
   {js}
   <script src="js/script.js?v=final-1" defer></script>
   <script src="js/validation.js?v=final-1" defer></script>
@@ -195,7 +195,7 @@ def page(dest,file,title,body,bs):
   <script src="js/i18n.js?v=languages-1" defer></script>
   <script src="js/jquery-catalog.js?v=final-1" defer></script>
   <script src="js/auth-core.js?v=final-1" defer></script>
-  <script src="js/auth.js?v=final-1" defer></script>
+  <script src="js/auth.js?v={'watchlist-2' if file == 'profile.html' else 'final-1'}" defer></script>
   {night_assets}
 </head>
 <body>

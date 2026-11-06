@@ -31,7 +31,7 @@
       add.addEventListener('click',()=>{
         try {
           const list=FilmAuth.getList('tvmaze');const exists=list.some(item=>item.id===show.id);
-          FilmAuth.setList(exists?list.filter(item=>item.id!==show.id):[...list,{id:show.id,name:show.name,url:url||'https://www.tvmaze.com/'}],'tvmaze');
+          FilmAuth.setList(exists?list.filter(item=>item.id!==show.id):[...list,{id:show.id,name:show.name,url:url||'https://www.tvmaze.com/',image:safeUrl(show.image?.medium || show.image?.original,true)}],'tvmaze');
           add.textContent=t(exists?'Тізімге қосу':'Сақталды ✓');add.setAttribute('aria-pressed',String(!exists));status.textContent=t(exists?'Туынды тізімнен алынды.':'Туынды көру тізіміне сақталды!');
         } catch { status.textContent=t('Өзгерісті сақтау мүмкін болмады.'); }
       });
