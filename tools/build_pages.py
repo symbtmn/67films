@@ -140,8 +140,19 @@ def detail(m,bs):
     return f'''<nav aria-label="Бет жолы"><ol class="breadcrumb mb-3"><li class="breadcrumb-item"><a href="index.html">Басты бет</a></li><li class="breadcrumb-item active" aria-current="page">{esc(m['short'])}</li></ol></nav><h1 class="page-title mb-4">{esc(m['title'])}</h1><div class="row g-4 movie-details-flex"><div class="col-6 col-sm-4 col-lg-3 mx-auto mx-sm-0"><img class="img-fluid rounded detail-poster" src="{m['image']}" alt="{esc(m['short'])} постері" width="480" height="640"></div><div class="col-12 col-sm-8 col-lg-9"><div class="table-responsive"><table class="table align-middle"><caption class="visually-hidden">{esc(m['short'])} туралы ақпарат</caption><tbody>{rows}</tbody></table></div><h2 class="h5">Сюжет</h2><p class="intro-text">{esc(m['description'])}</p></div></div>{trailerblock}{status(m)}<section class="mt-5"><h2 class="h4 mb-3">Қарап шығуға кеңес береміз</h2>{cards(rec,bs)}</section>'''
 
 def about(bs):
-    authors=[('Әбдірахман Сымбат','img/5309935748599455000.jpg','Веб құрылымы, навигация және негізгі функциялар.'),('Зұлпубек Ақерке','img/5309935748599455006.jpg','Кино карточкалары, жанрлар және медиа мазмұны.')]
-    columns=''.join(f'<div class="col-12 col-lg-6"><article class="card h-100"><div class="card-body p-4"><img src="{image}" alt="{name}" class="rounded-circle author-avatar mb-3" width="120" height="120"><h2 class="h4">{name}</h2><p>{bio}</p><span class="badge text-bg-secondary">HTML / CSS / JavaScript</span></div></article></div>' for name,image,bio in authors)
+    authors=[
+        ('Әбдірахман Сымбат','img/5309935748599455000.jpg','Веб құрылымы, навигация және негізгі функциялар.','+7 776 836 81 16','+77768368116','253236@astanait.edu.kz'),
+        ('Зұлпубек Ақерке','img/5309935748599455006.jpg','Кино карточкалары, жанрлар және медиа мазмұны.','+7 702 774 29 98','+77027742998','250409@astanait.edu.kz')
+    ]
+    columns=''
+    for name,image,bio,phone,tel,email in authors:
+        columns+=f'''<div class="col-12 col-xl-6"><article class="card h-100"><div class="card-body p-4 d-flex flex-column">
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-4"><img src="{image}" alt="{name}" class="rounded-circle author-avatar" width="120" height="120"><div><h2 class="h4 mb-2">{name}</h2><span class="badge text-bg-danger">2-курс</span> <span class="badge text-bg-secondary">SE-2503</span></div></div>
+        <p class="text-body-secondary">Astana IT University университетінің Software Engineering мамандығында оқимын. 67Films оқу жобасын бірге әзірлеп, веб-бағдарламалау дағдыларымызды тәжірибеде қолданамыз.</p>
+        <dl class="row g-2 mb-4"><dt class="col-sm-4">Университет</dt><dd class="col-sm-8">Astana IT University</dd><dt class="col-sm-4">Мамандық</dt><dd class="col-sm-8">Software Engineering <span class="d-block text-body-secondary small">Бағдарламалық инженерия</span></dd><dt class="col-sm-4">Курс</dt><dd class="col-sm-8">2-курс</dd><dt class="col-sm-4">Топ</dt><dd class="col-sm-8">SE-2503</dd></dl>
+        <h3 class="h6">Жобадағы үлесім</h3><p>{bio}</p><div class="d-flex flex-wrap gap-2 mb-4"><span class="badge text-bg-secondary">HTML</span><span class="badge text-bg-secondary">CSS / Bootstrap</span><span class="badge text-bg-secondary">JavaScript / jQuery</span></div>
+        <div class="border-top pt-3 mt-auto"><h3 class="h6 mb-3">Менімен байланысу</h3><p class="mb-2"><span class="text-body-secondary d-block small">Телефон</span><a class="text-break" href="tel:{tel}">{phone}</a></p><p class="mb-0"><span class="text-body-secondary d-block small">Электронды пошта</span><a class="text-break" href="mailto:{email}">{email}</a></p></div>
+        </div></article></div>'''
     highlights=[('Таңдау','34 туынды мен тақырыптық жанрлар.'),('Көру','Әр киноның сипаттамасы мен трейлері.'),('Сақтау','Жеке көру статусы мен 5 ұпайлық баға.')]
     three=''.join(f'<div class="col-12 col-sm-6 col-lg-4"><article class="card h-100"><div class="card-body p-3"><h3 class="h5">{a}</h3><p class="mb-0">{b}</p></div></article></div>' for a,b in highlights)
     group = '<section class="mt-5"><h2 class="h4 mb-3">Көруге арналған үш таңдау</h2><div class="card-group gap-3">'+''.join(card(m,False) for m in MOVIES[:3])+'</div></section>' if bs else ''
@@ -184,7 +195,7 @@ def page(dest,file,title,body,bs):
   <script src="js/newsletter.js?v=assignment-4" defer></script>
   <script src="js/background.js?v=black-red-3" defer></script>
   <script src="js/clock.js?v=assignment-4" defer></script>
-  <script src="js/translations.js?v=languages-1" defer></script>
+  <script src="js/translations.js?v=about-profiles-2" defer></script>
   <script src="js/i18n.js?v=languages-1" defer></script>
   {night_assets}
 </head>

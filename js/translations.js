@@ -1,5 +1,45 @@
 /* Shared interface translations. Movie names remain their catalogue titles. */
 window.FilmTranslations = {
+  "2-курс": {
+    "ru": "2-й курс",
+    "en": "Year 2"
+  },
+  "Университет": {
+    "ru": "Университет",
+    "en": "University"
+  },
+  "Мамандық": {
+    "ru": "Специальность",
+    "en": "Degree programme"
+  },
+  "Бағдарламалық инженерия": {
+    "ru": "Программная инженерия",
+    "en": "Software engineering"
+  },
+  "Курс": {
+    "ru": "Курс",
+    "en": "Year of study"
+  },
+  "Топ": {
+    "ru": "Группа",
+    "en": "Group"
+  },
+  "Жобадағы үлесім": {
+    "ru": "Мой вклад в проект",
+    "en": "My contribution"
+  },
+  "Менімен байланысу": {
+    "ru": "Связаться со мной",
+    "en": "Contact me"
+  },
+  "Телефон": {
+    "ru": "Телефон",
+    "en": "Phone"
+  },
+  "Astana IT University университетінің Software Engineering мамандығында оқимын. 67Films оқу жобасын бірге әзірлеп, веб-бағдарламалау дағдыларымызды тәжірибеде қолданамыз.": {
+    "ru": "Учусь в Astana IT University по специальности Software Engineering. Вместе разрабатываем учебный проект 67Films и применяем навыки веб-программирования на практике.",
+    "en": "I study Software Engineering at Astana IT University. We develop the 67Films coursework project together and apply our web development skills in practice."
+  },
   "Тіл": {
     "ru": "Язык",
     "en": "Language"
