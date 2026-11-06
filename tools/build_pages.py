@@ -77,8 +77,7 @@ def header(bs, current):
   <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
     <a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">67 <span class="text-danger">FILMS</span></a>
     {search}
-    <label class="language-control small"><span>Тіл</span><select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл"><option value="kk">Қазақша</option><option value="ru">Русский</option><option value="en">English</option></select></label>
-    <div class="d-flex flex-wrap gap-2"><button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">Түнгі режим</button><button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">Фонды өзгерту</button><button class="btn btn-outline-danger btn-sm" type="button" data-newsletter-open>Жаңалыққа жазылу</button></div>
+    <div class="header-controls d-flex flex-wrap align-items-center gap-2"><div class="d-flex align-items-center gap-2"><label class="language-control small"><span>Тіл</span><select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл"><option value="kk">Қазақша</option><option value="ru">Русский</option><option value="en">English</option></select></label><button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">Түнгі режим</button></div><button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">Фонды өзгерту</button><button class="btn btn-outline-danger btn-sm" type="button" data-newsletter-open>Жаңалыққа жазылу</button></div>
   </div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
     <div class="container-fluid p-0">
@@ -141,8 +140,8 @@ def detail(m,bs):
 
 def about(bs):
     authors=[
-        ('Әбдірахман Сымбат','img/5309935748599455000.jpg','Веб құрылымы, навигация және негізгі функциялар.','+7 776 836 81 16','+77768368116','253236@astanait.edu.kz'),
-        ('Зұлпубек Ақерке','img/5309935748599455006.jpg','Кино карточкалары, жанрлар және медиа мазмұны.','+7 702 774 29 98','+77027742998','250409@astanait.edu.kz')
+        ('Әбдірахман Сымбат','img/5309935748599455000.jpg','Сайттың жалпы құрылымын, беттер арасындағы навигацияны және негізгі интерактивті функцияларын әзірлеуге қатыстым. JavaScript пен jQuery арқылы іздеу, формаларды тексеру және пайдаланушыға хабарлама көрсету мүмкіндіктерін іске асырдым. Беттердің біркелкі көрінуін, тіл ауыстыру мен түнгі режимнің жұмысын тексеруге үлес қостым.','+7 776 836 81 16','+77768368116','253236@astanait.edu.kz'),
+        ('Зулпыбек Ақерке','img/5309935748599455006.jpg','Кино карточкаларын, жанрлар бойынша бөлімдерді және фильмдер туралы ақпаратты дайындауға қатыстым. Постерлерді, сипаттамаларды және трейлер сілтемелерін орналастырып, мазмұнның түсінікті әрі реттелген болуына көңіл бөлдім. Галереяны толтыруға, суреттер мен сілтемелерді тексеруге және беттердің телефонда дұрыс көрінуін жақсартуға үлес қостым.','+7 702 774 29 98','+77027742998','250409@astanait.edu.kz')
     ]
     columns=''
     for name,image,bio,phone,tel,email in authors:
@@ -195,7 +194,7 @@ def page(dest,file,title,body,bs):
   <script src="js/newsletter.js?v=assignment-4" defer></script>
   <script src="js/background.js?v=black-red-3" defer></script>
   <script src="js/clock.js?v=assignment-4" defer></script>
-  <script src="js/translations.js?v=about-profiles-2" defer></script>
+  <script src="js/translations.js?v=about-profiles-3" defer></script>
   <script src="js/i18n.js?v=languages-1" defer></script>
   {night_assets}
 </head>

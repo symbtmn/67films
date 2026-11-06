@@ -1,5 +1,13 @@
 /* Shared interface translations. Movie names remain their catalogue titles. */
 window.FilmTranslations = {
+"Сайттың жалпы құрылымын, беттер арасындағы навигацияны және негізгі интерактивті функцияларын әзірлеуге қатыстым. JavaScript пен jQuery арқылы іздеу, формаларды тексеру және пайдаланушыға хабарлама көрсету мүмкіндіктерін іске асырдым. Беттердің біркелкі көрінуін, тіл ауыстыру мен түнгі режимнің жұмысын тексеруге үлес қостым.": {
+    "ru": "Участвовала в разработке структуры сайта, навигации между страницами и основных интерактивных функций. С помощью JavaScript и jQuery реализовала поиск, проверку форм и уведомления для пользователей. Также участвовала в проверке единого оформления страниц, переключения языков и ночного режима.",
+    "en": "I contributed to the site structure, navigation and core interactive features. I implemented search, form validation and user notifications with JavaScript and jQuery. I also helped check consistent page styling, language switching and dark mode."
+  },
+  "Кино карточкаларын, жанрлар бойынша бөлімдерді және фильмдер туралы ақпаратты дайындауға қатыстым. Постерлерді, сипаттамаларды және трейлер сілтемелерін орналастырып, мазмұнның түсінікті әрі реттелген болуына көңіл бөлдім. Галереяны толтыруға, суреттер мен сілтемелерді тексеруге және беттердің телефонда дұрыс көрінуін жақсартуға үлес қостым.": {
+    "ru": "Участвовала в подготовке карточек фильмов, разделов по жанрам и информации о фильмах. Размещала постеры, описания и ссылки на трейлеры, уделяя внимание понятной структуре контента. Также помогала наполнять галерею, проверять изображения и ссылки и улучшать отображение страниц на телефонах.",
+    "en": "I contributed to movie cards, genre sections and film information. I added posters, descriptions and trailer links, keeping the content clear and organised. I also helped populate the gallery, check images and links, and improve how the pages display on phones."
+  },
   "2-курс": {
     "ru": "2-й курс",
     "en": "Year 2"
