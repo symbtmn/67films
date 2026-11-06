@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="kk" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <script src="js/theme-init.js">
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
+    <title>
+      Жеке профиль | 67Films
+    </title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css?v=black-red-3">
+    <link rel="stylesheet" href="css/final.css?v=final-1">
+    <script src="vendor/bootstrap.bundle.min.js" defer>
+    </script>
+    <script src="js/script.js?v=final-1" defer>
+    </script>
+    <script src="js/validation.js?v=final-1" defer>
+    </script>
+    <script src="js/accordion.js?v=assignment-4" defer>
+    </script>
+    <script src="js/newsletter.js?v=final-1" defer>
+    </script>
+    <script src="js/background.js?v=black-red-3" defer>
+    </script>
+    <script src="js/clock.js?v=assignment-4" defer>
+    </script>
+    <script src="js/translations.js?v=about-profiles-3" defer>
+    </script>
+    <script src="js/final-translations.js?v=final-1" defer>
+    </script>
+    <script src="js/i18n.js?v=languages-1" defer>
+    </script>
+    <script src="js/jquery-catalog.js?v=final-1" defer>
+    </script>
+    <script src="js/auth-core.js?v=final-1" defer>
+    </script>
+    <script src="js/auth.js?v=final-1" defer>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link visually-hidden-focusable" href="#mainContent">
+      Негізгі мазмұнға өту
+    </a>
+    <div class="page-layout-wrapper min-vh-100 d-flex flex-column">
+      <header class="grid-header bg-body border-bottom">
+        <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">
+            67
+            <span class="text-danger">
+              FILMS
+            </span>
+          </a>
+          <div class="header-controls d-flex flex-wrap align-items-center gap-2">
+            <div class="header-pair">
+              <label class="language-control small">
+                <span>
+                  Тіл
+                </span>
+                <select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл">
+                  <option value="kk">
+                    Қазақша
+                  </option>
+                  <option value="ru">
+                    Русский
+                  </option>
+                  <option value="en">
+                    English
+                  </option>
+                </select>
+              </label>
+              <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
+                Түнгі режим
+              </button>
+            </div>
+            <button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">
+              Фонды өзгерту
+            </button>
+            <a href="login.html" data-account-link class="btn btn-danger btn-sm final-action">
+              Кіру
+            </a>
+          </div>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
+          <div class="container-fluid p-0">
+            <button class="btn btn-outline-danger btn-sm d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#trendingPanel" aria-controls="trendingPanel">
+              Трендтегілер
+            </button>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Мәзірді ашу">
+              <span class="navbar-toggler-icon">
+              </span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav align-items-lg-center mb-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">
+                    Басты бет
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="jquery.html">
+                    Каталог
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="categories.html">
+                    Санаттар
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="discover.html">
+                    Сериалдар
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">
+                    Біз туралы
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">
+                    Байланыс
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Кино әлемі
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="movie-night.html">
+                        Кино таңдау
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="gallery.html">
+                        Галерея
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="movie-rating.html">
+                        Бағалау
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="planner.html">
+                        Кеш жоспары
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="club.html">
+                        Кино клубы
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="jquery-ux.html">
+                        Ұсыныс жіберу
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="jquery-tools.html">
+                        Постерлер мен бөлісу
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="faq.html">
+                        FAQ
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="content-shell container-fluid px-3 px-lg-4 py-4 flex-grow-1">
+        <div class="row g-4">
+          <aside class="col-lg-2 grid-sidebar p-0 p-lg-3" aria-label="Трендтегі туындылар">
+            <div class="offcanvas-lg offcanvas-start bg-body" tabindex="-1" id="trendingPanel" aria-labelledby="trendingTitle">
+              <div class="offcanvas-header d-lg-none">
+                <span class="fw-bold">
+                  67FILMS
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#trendingPanel" aria-label="Панельді жабу">
+                </button>
+              </div>
+              <div class="offcanvas-body d-block p-3 p-lg-0">
+                <h2 class="h5 fw-bold mb-3" id="trendingTitle">
+                  Трендтегілер
+                </h2>
+                <div class="list-group list-group-flush">
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="avengers.html">
+                    <span class="d-block fw-semibold">
+                      Кек алушылар: Финал
+                    </span>
+                    <small class="text-body-secondary">
+                      2019, США, Фантастика, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zgalamatgasyr.html">
+                    <span class="d-block fw-semibold">
+                      Ғаламат ғасыр
+                    </span>
+                    <small class="text-body-secondary">
+                      2011, Түркия, Мелодрама, История
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zatakatitanov.html">
+                    <span class="d-block fw-semibold">
+                      Алыптар шабуылы
+                    </span>
+                    <small class="text-body-secondary">
+                      2013, Жапония, Фэнтези, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zhvataisonja.html">
+                    <span class="d-block fw-semibold">
+                      Хватай Сон Джэ и беги
+                    </span>
+                    <small class="text-body-secondary">
+                      2024, Южная Корея, Романтика, Фэнтези
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zchelovekpauk.html">
+                    <span class="d-block fw-semibold">
+                      Өрмекші адам: Үйге қайтар жол жоқ
+                    </span>
+                    <small class="text-body-secondary">
+                      2021, США, Приключения, Фантастика
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="odyssey.html">
+                    <span class="d-block fw-semibold">
+                      Одиссея / The Odyssey
+                    </span>
+                    <small class="text-body-secondary">
+                      2026, США, Фэнтези, Приключения, Боевик
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zgravitifolz.html">
+                    <span class="d-block fw-semibold">
+                      Гравити Фолз
+                    </span>
+                    <small class="text-body-secondary">
+                      2012, США, Комедия, Мистика
+                    </small>
+                  </a>
+                  <a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="zetikigenmysyq.html">
+                    <span class="d-block fw-semibold">
+                      Етік киген мысық 2: Соңғы тілек
+                    </span>
+                    <small class="text-body-secondary">
+                      2022, АҚШ, Отбасылық, Комедия
+                    </small>
+                  </a>
+                </div>
+                <section class="mt-4">
+                  <h3 class="h6">
+                    Кино әлемі
+                  </h3>
+                  <p class="small text-body-secondary mb-2">
+                    Туындыларды жанр бойынша таңдаңыз, трейлер көріңіз және жеке бағаңызды сақтаңыз.
+                  </p>
+                  <a class="btn btn-outline-danger btn-sm" href="premieres.html">
+                    Премьералар
+                  </a>
+                </section>
+              </div>
+            </div>
+          </aside>
+          <main class="col-12 col-lg-10 grid-main p-3 p-lg-4" id="mainContent" tabindex="-1">
+            <p id="profileLoading" class="api-state" role="status">
+              Профиль жүктелуде…
+            </p>
+            <div id="profileContent" hidden>
+              <div class="section-heading">
+                <div>
+                  <p class="final-eyebrow">
+                    МЕНІҢ 67FILMS
+                  </p>
+                  <h1 class="page-title mb-0">
+                    Жеке профиль
+                  </h1>
+                </div>
+                <button id="logoutButton" class="btn btn-outline-danger" type="button">
+                  Аккаунттан шығу
+                </button>
+              </div>
+              <div class="profile-layout">
+                <section class="card">
+                  <div class="card-body p-4">
+                    <div id="profileAvatar" class="profile-avatar mb-3" aria-hidden="true">
+                    </div>
+                    <h2 class="h4" id="profileName">
+                    </h2>
+                    <dl class="profile-meta mb-0">
+                      <dt class="small text-body-secondary">
+                        Email
+                      </dt>
+                      <dd id="profileEmail">
+                      </dd>
+                      <dt class="small text-body-secondary">
+                        Телефон
+                      </dt>
+                      <dd id="profilePhone">
+                      </dd>
+                      <dt class="small text-body-secondary">
+                        Сақталған туындылар
+                      </dt>
+                      <dd class="h3 mb-0" id="profileListCount">
+                        0
+                      </dd>
+                    </dl>
+                  </div>
+                </section>
+                <section class="card">
+                  <div class="card-body p-3 p-sm-4">
+                    <h2 class="h4 mb-3">
+                      Профильді өзгерту
+                    </h2>
+                    <form id="profileForm" class="auth-form" novalidate>
+                      <div class="alert alert-danger" data-error-summary role="alert" hidden>
+                      </div>
+                      <div class="mb-3">
+                        <label for="profileEditName" class="form-label">
+                          Атыңыз
+                        </label>
+                        <input id="profileEditName" class="form-control" name="name" autocomplete="name" data-rule="name" data-required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="profileEditEmail" class="form-label">
+                          Email
+                        </label>
+                        <input id="profileEditEmail" class="form-control" name="email" inputmode="email" autocomplete="email" data-rule="email" data-required data-maxlength="120">
+                      </div>
+                      <div class="mb-3">
+                        <label for="profileEditPhone" class="form-label">
+                          Телефон
+                        </label>
+                        <input id="profileEditPhone" class="form-control" name="phone" type="tel" autocomplete="tel" data-rule="phone" data-required>
+                      </div>
+                      <button type="submit" class="btn btn-danger final-action">
+                        Өзгерістерді сақтау
+                      </button>
+                      <p id="profileStatus" class="form-status" role="status">
+                      </p>
+                    </form>
+                  </div>
+                </section>
+              </div>
+              <section class="card mt-4">
+                <div class="card-body p-3 p-sm-4">
+                  <div class="section-heading">
+                    <h2 class="h4 mb-0">
+                      Менің көру тізімім
+                    </h2>
+                    <div class="d-flex flex-wrap gap-2">
+                      <a href="jquery.html" class="btn btn-outline-danger btn-sm">
+                        Каталогтан қосу
+                      </a>
+                      <a href="discover.html" class="btn btn-outline-secondary btn-sm">
+                        Сериал табу
+                      </a>
+                    </div>
+                  </div>
+                  <p id="profileListEmpty" class="text-body-secondary">
+                    Тізім әзірге бос. Каталогтан немесе сериалдар бетінен туынды қосыңыз.
+                  </p>
+                  <ul id="profileWatchlist" class="saved-list">
+                  </ul>
+                </div>
+              </section>
+            </div>
+            <noscript>
+              <p>
+                Профильді ашу үшін JavaScript қосыңыз.
+              </p>
+            </noscript>
+          </main>
+        </div>
+      </div>
+      <footer class="grid-footer bg-body-tertiary border-top px-3 px-lg-4 py-4 mt-auto">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+          <div>
+            <a class="fw-bold text-body text-decoration-none" href="index.html">
+              67FILMS
+            </a>
+            <p class="small text-body-secondary mb-0">
+              Кино, сериал, аниме және дорама каталогы.
+            </p>
+          </div>
+          <nav class="d-flex flex-wrap gap-3" aria-label="Футер навигациясы">
+            <a href="about.html">
+              Біз туралы
+            </a>
+            <a href="contact.html">
+              Байланыс
+            </a>
+            <a href="categories.html">
+              Санаттар
+            </a>
+            <a href="discover.html">
+              Сериалдар
+            </a>
+            <a href="signup.html">
+              Тіркелу
+            </a>
+            <a href="https://github.com/symbtmn/67films" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </nav>
+        </div>
+        <div class="small mt-3 mb-3">
+          <time data-live-clock aria-live="off">
+            Уақыт жүктелуде...
+          </time>
+          <span class="text-body-secondary d-block">
+            Жергілікті уақыт ·
+            <span data-clock-zone>
+            </span>
+          </span>
+        </div>
+        <p class="small mb-0 mt-3">
+          Created by:
+          <strong>
+            Symbat Abdirakhman, Akerke Zulpubek
+          </strong>
+        </p>
+      </footer>
+    </div>
+    <dialog id="newsletter-dialog" class="newsletter-dialog bg-body text-body rounded" aria-labelledby="newsletterTitle" aria-describedby="newsletterHelp">
+      <div class="newsletter-card p-3 p-sm-4">
+        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+          <div>
+            <p class="text-danger fw-bold small mb-1">
+              67FILMS ЖАҢАЛЫҚТАРЫ
+            </p>
+            <h2 class="h4 mb-0" id="newsletterTitle">
+              Кино жаңалықтарына жазылу
+            </h2>
+          </div>
+          <button class="btn-close flex-shrink-0" type="button" data-newsletter-close aria-label="Жазылым терезесін жабу">
+          </button>
+        </div>
+        <p class="small text-body-secondary" id="newsletterHelp">
+          Сүйікті жанрыңызды таңдаңыз. Бұл оқу демосы: нақты email хаттары жіберілмейді.
+        </p>
+        <form id="newsletter-form" data-js-validation novalidate="">
+          <div class="alert alert-danger" data-error-summary role="alert" hidden>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newsletterName">
+              Атыңыз
+            </label>
+            <input class="form-control" id="newsletterName" name="newsletterName" type="text" autocomplete="name" data-minlength="2" data-maxlength="80" autofocus data-required="" data-validate-field aria-describedby="newsletterName-error">
+            <div class="invalid-feedback d-block" id="newsletterName-error" hidden>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newsletterEmail">
+              Email
+            </label>
+            <input class="form-control" id="newsletterEmail" name="newsletterEmail" type="text" inputmode="email" data-rule="email" autocomplete="email" data-maxlength="120" data-required="" data-validate-field aria-describedby="newsletterEmail-error">
+            <div class="invalid-feedback d-block" id="newsletterEmail-error" hidden>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newsletterGenre">
+              Қай жанр қызықтырады?
+            </label>
+            <select class="form-select" id="newsletterGenre" name="genre">
+              <option>
+                Барлық жанр
+              </option>
+              <option>
+                Фантастика
+              </option>
+              <option>
+                Комедия
+              </option>
+              <option>
+                Аниме
+              </option>
+              <option>
+                Дорама
+              </option>
+            </select>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="newsletterConsent" name="newsletterConsent" data-required="" data-validate-field aria-describedby="newsletterConsent-error">
+            <label class="form-check-label" for="newsletterConsent">
+              Бұл жазылым оқу демосы екенін түсінемін.
+            </label>
+            <div class="invalid-feedback d-block" id="newsletterConsent-error" hidden>
+            </div>
+          </div>
+          <button class="btn btn-danger w-100" type="submit">
+            Жазылымды тексеру
+          </button>
+          <p class="form-success mt-3 mb-0" data-form-status role="status">
+          </p>
+        </form>
+      </div>
+    </dialog>
+  </body>
+</html>

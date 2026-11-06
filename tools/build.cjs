@@ -5,7 +5,7 @@ const dest = path.join(root,'dist');
 fs.rmSync(dest,{ recursive:true, force:true });
 fs.mkdirSync(dest,{ recursive:true });
 for (const name of fs.readdirSync(root)) {
-  if (name.endsWith('.html') || ['img','css','js','vendor','favicon.ico','icon.svg','icon.png','robots.txt','site.webmanifest'].includes(name)) {
+  if (name.endsWith('.html') || ['img','images','css','js','vendor','favicon.ico','icon.svg','icon.png','robots.txt','site.webmanifest'].includes(name)) {
     fs.cpSync(path.join(root,name),path.join(dest,name),{ recursive:true });
   }
 }

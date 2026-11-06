@@ -2,7 +2,7 @@
 <div class="card-body p-3 p-sm-4">
 
 <div class="night-selected-film">
-<img alt="Интерстеллар постері" class="night-selected-poster rounded" height="270" id="selectedPoster" src="img/5307683948785770049.jpg" width="180"/>
+<img alt="Интерстеллар постері" class="night-selected-poster rounded" height="270" id="selectedPoster" src="images/5307683948785770049.jpg" width="180"/>
 <div><span class="badge text-bg-secondary mb-2" id="selectedCategory"></span><h2 class="h4" id="selectedTitle"></h2><p class="small text-body-secondary" id="selectedMeta"></p><a class="btn btn-outline-danger btn-sm" href="zintersteller.html" id="selectedLink">Киноның жеке беті ↗</a></div>
 </div>
 <p class="mt-3 mb-2" id="selectedDescription"></p>

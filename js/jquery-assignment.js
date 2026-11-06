@@ -7,6 +7,11 @@ $(document).ready(function () {
   let notificationTimer;
   let copyTimer;
   let busy = false;
+  const t = text => window.FilmLanguage?.t(text) || text;
+  const genres = [...new Set(movies.flatMap(movie => movie.meta.split(',').slice(2).map(value=>value.trim()).filter(Boolean)))].sort();
+  genres.forEach(genre => $('#jqGenre').append($('<option>').val(genre).text(genre)));
+  const filterKey = '67films.filters.' + (window.FilmAuth.currentUser()?.id || 'guest');
+  try { const saved = JSON.parse(localStorage.getItem(filterKey)||'{}'); if(typeof saved.q==='string')$('#jqSearch').val(saved.q.slice(0,100)); if(genres.includes(saved.genre))$('#jqGenre').val(saved.genre); } catch { /* Ignore malformed saved filters. */ }
 
   function notify(message) {
     // Task 7. Cancel old work before displaying the latest notification.
@@ -44,19 +49,26 @@ $(document).ready(function () {
   function updateSearch(showSuggestions = true) {
     const query = $('#jqSearch').val().trim();
     const needle = query.toLocaleLowerCase();
+    const genre = $('#jqGenre').val() || '';
+    try { localStorage.setItem(filterKey,JSON.stringify({q:query,genre})); } catch { /* Filtering stays available without storage. */ }
     const matches = $(movies).filter(function (_, movie) {
-      return `${movie.title} ${movie.meta} ${movie.description}`
+      return (!genre || movie.meta.includes(genre)) && `${movie.title} ${movie.meta} ${movie.description}`
         .toLocaleLowerCase().includes(needle);
     });
     const results = $('#jqResults').empty();
     matches.each(function (_, movie) {
       const article = $('<article class="card p-3 h-100">');
+      article.append($('<img class="catalogue-poster rounded mb-3">').attr({src:movie.poster,alt:movie.title+' постері',loading:'lazy',width:240,height:200}));
       article.append($('<h2 class="h5">').append(highlighted(movie.title, query)));
       article.append($('<p class="small text-body-secondary">')
         .append(highlighted(movie.meta, query)));
       article.append($('<p>').append(highlighted(movie.description, query)));
       article.append($('<a class="btn btn-outline-danger align-self-start mt-auto">')
         .attr('href', movie.page).text('Киноны ашу'));
+      const ids=window.FilmAuth.getList();
+      const saveButton=$('<button type="button" class="btn btn-outline-secondary btn-sm mt-2 align-self-start">').text(t(ids.includes(movie.id)?'Сақталды ✓':'Тізімге қосу')).attr('aria-pressed',String(ids.includes(movie.id)));
+      saveButton.on('click',()=>{try { const current=window.FilmAuth.getList();const exists=current.includes(movie.id);window.FilmAuth.setList(exists?current.filter(id=>id!==movie.id):[...current,movie.id]);saveButton.text(t(exists?'Тізімге қосу':'Сақталды ✓')).attr('aria-pressed',String(!exists));notify(t(exists?'Туынды тізімнен алынды.':'Туынды көру тізіміне сақталды!')); }catch{notify(t('Өзгерісті сақтау мүмкін болмады.'));}});
+      article.append(saveButton);
       results.append($('<div class="col">').append(article));
     });
     $('#jqCount').text(`Табылған туынды: ${matches.length} / ${movies.length}`);
@@ -99,6 +111,8 @@ $(document).ready(function () {
   $(document).on('click', event => {
     if (!$(event.target).closest('#jqSearch, #jqSuggestions').length) closeSuggestions();
   });
+  $('#jqGenre').on('change',()=>updateSearch(false));
+  $('#clearFilters').on('click',()=>{$('#jqSearch').val('');$('#jqGenre').val('');updateSearch(false);});
   if ($('#jqSearch').length) updateSearch(false);
 
   // Task 4. Clamp progress and handle pages with no scrollable distance.
@@ -128,7 +142,6 @@ $(document).ready(function () {
   // Task 6. Whitespace is empty; never start the spinner for invalid input.
   $('#jqForm').attr('novalidate', 'novalidate');
   $('#jqName, #jqMessage').on('input', function () {
-    this.setCustomValidity('');
     $(this).removeAttr('aria-invalid');
     $('#jqFormStatus').text('');
   });
@@ -139,14 +152,7 @@ $(document).ready(function () {
     const message = $('#jqMessage')[0];
     name.value = name.value.trim();
     message.value = message.value.trim();
-    name.setCustomValidity(name.value.length < 2 ? 'Атыңызды кемінде екі таңбамен жазыңыз.' : '');
-    message.setCustomValidity(message.value ? '' : 'Кино атауын немесе ұсынысыңызды жазыңыз.');
-    const invalid = [name, message].find(field => !field.checkValidity());
-    if (invalid) {
-      $('#jqFormStatus').text(invalid.validationMessage);
-      $(invalid).attr('aria-invalid', 'true').trigger('focus');
-      return;
-    }
+    if (!window.FilmForms.validate(this)) return;
     busy = true;
     const button = $('#jqSubmit');
     button.prop('disabled', true).attr('aria-busy', 'true').empty()
@@ -163,7 +169,7 @@ $(document).ready(function () {
   // Task 7. A toast confirms a real, persistent watchlist change.
   let saved = [];
   try {
-    const value = JSON.parse(localStorage.getItem('67films-jq-watchlist') || '[]');
+    const value = window.FilmAuth.getList();
     if (Array.isArray(value)) saved = value.filter(id => movies.some(movie => movie.id === id));
   } catch { /* Storage restrictions leave the current visit functional. */ }
   $('#jqWatchMovie').append(movies.map(movie => $('<option>').val(movie.id).text(movie.title)));
@@ -179,7 +185,7 @@ $(document).ready(function () {
     const exists = saved.includes(id);
     saved = exists ? saved.filter(item => item !== id) : [...saved, id];
     let persisted = true;
-    try { localStorage.setItem('67films-jq-watchlist', JSON.stringify(saved)); } catch { persisted = false; }
+    try { window.FilmAuth.setList(saved); } catch { persisted = false; }
     showWatchlist();
     notify(exists ? 'Туынды тізімнен алынды.' : persisted ? 'Туынды көру тізіміне сақталды!' : 'Туынды осы беттегі тізімге қосылды. Браузер тұрақты сақтауды бұғаттады.');
   });

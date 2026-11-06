@@ -1,138 +1,96 @@
-# 67Films — responsive cinema catalogue
+# 67Films — Final Project
 
-67Films is our team project about movies, series, anime and dramas. Visitors can browse genres, open a film's details and trailer, search the catalogue, and save a personal watch status and rating. It combines the Flexbox/Grid techniques from Assignment 2 and the responsive Bootstrap components from Assignment 3 in **one website**. Assignment 4 adds five custom JavaScript components and a cinema club. Assignment 5 adds a movie-night planner with custom DOM manipulation, keyboard navigation, callbacks, ratings, sound and animations.
+A responsive cinema catalogue for viewers who want to find a film, discover a series, save a watchlist and plan a movie night.
 
-**Team:** Symbat Abdirakhman and Akerke Zulpubek.
+**Team:** Symbat Abdirakhman and Akerke Zulpubek · **Group:** SE-2503 · Astana IT University, Software Engineering, Year 2.
 
-**Website URL:** https://symbtmn.github.io/67films/
+- **Live website:** https://symbtmn.github.io/67films/
+- **Repository:** https://github.com/symbtmn/67films
+- **Submission deadline:** 18 November 2026, 23:59 (Asia/Almaty).
+- **Cut-off:** 19 November 2026, 08:59. Submit before the actual deadline.
 
-**Repository:** https://github.com/symbtmn/67films
+## Start here
 
-This repository contains the corrected final project combining Assignment 2 and Assignment 3. The GitHub Pages URL above is the website link for submission.
-
-## Assignment 5 - Advanced JavaScript and DOM Manipulation
-
-Open **[Movie Night](https://symbtmn.github.io/67films/movie-night.html)** using the **Кино кеші** navigation item. All 69 pages link to it.
-
-- Eight curated films with category filters (`switch`, objects and array methods).
-- Clickable poster thumbnails update the selected image attributes, title and link.
-- Accessible five-star rating with per-film local persistence and reset.
-- Arrow-key navigation, Home/End and keyboard-accessible controls.
-- Three-step form with `goToStep(nextStep, onChange)` callback, validation, preserved inputs, personalized review and an inline plan.
-- Optional Web Audio chime with mute, request cancellation and no overlapping oscillators.
-- Event-triggered CSS animations and a reduced-motion alternative.
-- Separate HTML, scoped CSS and three readable JavaScript files; Bootstrap supplies the visual layout.
-
-Verified Assignment 5 checks: 51 functional scenarios, 207 page/viewport checks (69 pages at 375, 768 and 1440 px), and zero uncaught JavaScript errors in Chromium 153. Real Web Audio instrumentation recorded six sound starts, at most one active tone, and zero active tones after completion.
-
-Full criterion mapping: `ASSIGNMENT5.md`. Kazakh defense guide: `DEFENSE_Assignment5.md`. Browser evidence and results: `evidence/assignment5/`. The PDF report and complete project ZIP are supplied for submission.
-
-## Assignment 4 - Introduction to JavaScript
-
-Open **[Cinema Club](https://symbtmn.github.io/67films/club.html)** for the membership form and FAQ. The header offers a subscription popup and background-color button; live date/time also appears in every footer.
-
-| Task | File | Behavior |
-|---|---|---|
-| 1. Form validation (15%) | `js/validation.js`, `club.html` | Required fields, email format, minimum 8-character password, confirmation, inline errors, live corrections and success state |
-| 2. FAQ accordion (15%) | `js/accordion.js`, `faq.html` and `club.html` | Initially hidden answers, animated open/close, keyboard support and safe rapid toggling |
-| 3. Popup form (10%) | `js/newsletter.js` | Opens on click; closes with X, outside click or Escape; traps/restores keyboard focus |
-| 4. Background (5%) | `js/background.js` | Four predefined palettes, smooth color change, persistence and readable dark-mode variants |
-| 5. Date/time (5%) | `js/clock.js` | `new Date()`, readable local time and timezone, immediate render and 1-second updates |
-| Report (10%) | PDF supplied with the submission ZIP | Team, steps, screenshots, deployed URL, tests and reflection |
-| Individual defense (40%) | `DEFENSE_Assignment4.md` | Code explanations, questions and live modification exercises |
-
-These five scripts use custom JavaScript; Bootstrap still supplies shared layout and styling. Every full HTML page links all scripts with `defer`. Membership and subscription are clearly labeled static demos: no accounts are created, no email is sent and passwords are never stored. `ASSIGNMENT4.md` contains the full criterion mapping.
-
-## Pages and content
-
-The project contains 69 separate HTML files, including 34 film/detail pages and 22 genre pages. Each file contains its complete header, sidebar, main content, footer and Bootstrap imports. Images and Bootstrap are included locally. All original film descriptions, information tables, image filenames and trailer URLs are preserved.
-
-Main pages: `index.html`, `categories.html`, `about.html`, `contact.html`, `movies.html`, `premieres.html`, `announcements.html`, `responsive-cards.html` and `404.html`, `club.html`, `faq.html` and `movie-night.html`. Each film and genre has its own HTML file, such as `avengers.html` and `xboevik.html`.
-
-## Where the technologies are used
-
-| Technology | Actual use | Files to explain |
-|---|---|---|
-| Semantic HTML | header, nav, aside, main, sections, forms, labels and footer | Every HTML page |
-| CSS Grid | Named header/sidebar/main/footer areas and nine-poster image gallery | `css/style.css`: `.page-layout-wrapper`, `.image-gallery` |
-| Flexbox | Header alignment, wrapping film rows and column-based card bodies | `css/style.css`: `.top-bar`, `.movie-grid`, `.movie-card .card-body` |
-| Media queries | Font sizes, mobile layout and an isolated 1/2/3-card exercise | `css/style.css`, `responsive-cards.html` |
-| Bootstrap grid | Two `col-lg-6` sections, three `col-lg-4` sections, 2/4-card catalogue rows | `about.html`, `contact.html`, `categories.html`, genre pages |
-| Bootstrap components | Collapsing navbar, genre dropdowns, cards, buttons, form, mobile offcanvas and carousel | All pages; carousel on home; form on contact |
-| JavaScript | Search, saved theme, watch status, rating and CSV download | `js/script.js` |
-
-The custom Grid layout targets only the project wrapper. Bootstrap classes remain in the HTML, so disabling `css/style.css` preserves the main structure and form. Do not remove the Bootstrap stylesheet when demonstrating this fallback.
-
-## Features
-
-- Exactly nine carousel slides, one image per slide. Each image opens its matching film page. Indicators and previous/next controls work; autoplay is off.
-- Four film cards per row on desktop, two on mobile/tablet. Card contents use Flexbox and action links align at the bottom.
-- Desktop trending sidebar; a closed-by-default side drawer on mobile.
-- Responsive two-column author/contact sections and three-column feature/category sections.
-- Separate nine-image Grid gallery with hover/focus captions and visible touch-screen captions.
-- Search with live matching and an empty-results message.
-- Persistent light/dark mode, movie watch status and five-point rating.
-- Labeled, responsive feedback form with validation, input group, select, radios and checkbox. It downloads a CSV locally; it does not send mail or store data on a server.
-- Compact, centered film-detail posters on phones (at most 180 × 270 px); Bootstrap keeps the poster column narrow even without custom CSS.
-- Full-width footer containing both team members on every page.
-
-## Final project requirements — 60 points
-
-| Criterion | Points | Evidence / final action |
-|---|---:|---|
-| Responsiveness | 15 | Shared responsive layout; browser checks at mobile, tablet and desktop widths; working hamburger and side drawer |
-| Hosting | 10 | Live GitHub Pages URL above; the corrected combined project is published and this README is in the repository |
-| Design quality | 20 | Valid local links/assets, readable colors, consistent components and full-width footer; separate HTML pages for both students |
-| Theme and cohesion | 15 | Genres, trailers, search, recommendations, watch status and rating all support the cinema catalogue |
-
-There are enough separate pages for each member to work on at least two. The table below is a **suggested defense allocation**, not a claim about who originally authored a file. Each student must review, contribute to and explain their selected pages before submission.
-
-| Member | Suggested pages to review and defend |
+| Page | Purpose |
 |---|---|
-| Symbat Abdirakhman | `index.html`, `categories.html`, `avengers.html` |
-| Akerke Zulpubek | `about.html`, `contact.html`, `zetikigenmysyq.html` |
+| `index.html` | Purpose, featured films, nine-slide carousel and clear next actions |
+| `jquery.html` | Complete 34-title catalogue, live search, genre filter, suggestions and watchlist |
+| `discover.html` | Live TVmaze series search, ratings, loading/error/empty states and save actions |
+| `signup.html` | Custom-validated local account creation |
+| `login.html` | Credential verification and redirect to the profile |
+| `profile.html` | Stored account details, editing, personal watchlist and logout |
+| `about.html` | Team, university, course, programme and contributions |
+| `contact.html` | Validated feedback form and actual CSV download |
+| `planner.html` | Three-step movie-night plan with custom validation and reset |
+
+The site contains 79 connected HTML pages, including individual film pages and genre pages. The main navigation, footer and Cinema Club menu connect the core experiences.
 
 ## Run locally
 
-Open the folder with VS Code Live Server, open `index.html` directly, or run:
+No installation or API key is required.
 
-```bash
+```sh
 npm start
 ```
 
-Visit http://localhost:8080. No npm installation is needed: the preview/build use Node's built-in modules. YouTube trailers need internet; their playback also depends on the video owner's embed settings.
+Open the printed local URL. Use an HTTP server rather than opening HTML via `file://`; local storage and Web Crypto work consistently on localhost or HTTPS.
 
-```bash
-npm test
-npm run build
+```sh
+npm test                 # static audits + 52 behavioral unit assertions
+npm run build:pages      # regenerate all final HTML pages
+npm run build            # package public files into dist/
 ```
 
-The test checks HTML IDs, page/image/script links, author names, imports and carousel structure. The build copies all 69 HTML files and assets to `dist/`. Optional full browser tests are in `tools/browser_check.py` and require Playwright plus Chromium. `tools/mobile_check.py` also checks poster size and the actual paint order of the opened mobile drawer, so carousel/card transforms cannot cover it. Test results are in `evidence/qa-results.json`. The earlier Assignment 4 version passed 204 page/viewport checks (68 pages at 375, 768 and 1440 px), with no horizontal overflow or JavaScript errors. All 37 supplied JPEG files were verified; local image/link targets exist. External YouTube playback was not tested.
+`tools/responsive-preview.html` is a development-only preview of real iframe viewports at 320, 375, 768 and 1280 px. It is a QA aid rather than a navigation destination.
 
-## Edit and add content
+## Final rubric map
 
-Edit a page directly if you only need a local change. For consistent repeated changes, edit `tools/build_pages.py` and `data/catalog.json`, then run `python3 tools/build_pages.py`. This regenerates the static HTML; put permanent changes in the generator/data before running it, because direct edits will be overwritten.
+| Criterion | Points | Implementation and demonstration |
+|---|---:|---|
+| Responsiveness | 10 | Bootstrap, Flexbox and Grid; fluid typography; mobile collapse/offcanvas; 8 core pages checked at 4 widths |
+| Hosting | 5 | GitHub Pages, repository and live links above; local asset/link audit on all pages |
+| Light/dark | 5 | Shared toggle; saved `67films-theme`; early `theme-init.js` prevents a wrong-theme flash |
+| Design and UX | 20 | Consistent cinema identity, red accents, readable neutral dark palette, focused home page, relevant posters and clear feedback |
+| Authentication | Part of 25 | Sign up stores name/email/phone/password representation; login verifies credentials, opens profile; details persist; logout and profile guard |
+| Form validation | Part of 25 | `novalidate` on every form; no `required`, `pattern`, `minlength`, `maxlength`, `min`, `max` or `type=email` constraints in emitted HTML; JS rules and inline messages |
+| Search/filter | Part of 25 | Dynamic title/genre/description search; stored filters; account-specific saved titles; API result saving |
+| Button/UI effects | 5 | Hover transitions, counter animation, form spinner, fade notifications and reduced-motion handling |
+| Public API | 10 | Real `fetch`/async-await TVmaze client; loading, abort/timeout, HTTP/network/schema errors, retry, empty state and optional labeled cache |
+| Feature cohesion | 10 | Profiles, watchlists, recommendations, series discovery, trailers and movie-night planning all support choosing what to watch |
+| Presentation | 5 | Rehearse the timed two-member demonstration in `DEFENSE_FINAL.md`; delivery is assessed live |
+| Code quality | 5 | Organized HTML, CSS, JS, images, templates and tools; shared validation, authentication and API modules; comments on complex logic |
 
-A new film needs a unique page filename, poster, title, information table, plot and trailer. Add its card to home/relevant genres, and use a unique `data-movie` value so its saved rating is separate. Keep Bootstrap imports and both member names in the footer.
+## Local authentication simulation
 
-## Update the GitHub Pages site
+Accounts are stored under `67films.accounts.v1`. Each account stores `name`, `email`, `phone` and a `password` object containing a random salt and a PBKDF2-SHA-256 hash (120,000 iterations). The plaintext password is never saved. The session stores the account ID and sign-in time under `67films.session.v1` and lasts seven days.
 
-1. Back up the existing repository or use a new branch.
-2. Copy this complete project's contents into the repository root, including every HTML page, `img/`, `css/`, `js/`, `vendor/` and `README.md`.
-3. Run the local checks. Commit and push the reviewed files through your GitHub account.
-4. In repository Settings → Pages, keep/select **Deploy from a branch → main → /(root)**. If your current Pages publishing source differs, update that actual source instead.
-5. Open https://symbtmn.github.io/67films/ and verify the new home page, carousel destinations, genre/movie links and contact form on your phone.
-6. Paste this verified URL into the LMS online text section. Both team members must upload their project files individually.
+Use made-up demo data. This is a browser-only simulation, not server authentication: local storage can be edited, another device cannot read the account, and clearing browser data removes it. The profile does not show a password. Invalid credentials use a generic inline message. Duplicate emails are rejected case-insensitively.
 
-GitHub's official publishing-source instructions: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+Passwords require 8–64 characters, uppercase and lowercase Latin letters, a digit and a symbol, without spaces. Kazakhstan phone numbers accept `+7` plus 10 digits; formatted spaces, parentheses and hyphens are normalized. An `8`-prefixed 11-digit number is normalized to `+7`.
 
-## Defense — 40 points
+## Public API and attribution
 
-Open the website and its code. Explain the technologies in the mapping above, demonstrate at least two of your own pages, and practise changing the layout or content live. `DEFENSE.md` includes concrete code explanations and modification exercises. A complete site does not replace the live defense: each student needs to understand and modify their own code.
+The series discovery page requests `https://api.tvmaze.com/search/shows?q=...`. TVmaze is a public key-free, CORS-enabled TV database: https://www.tvmaze.com/api . Requests contain only the series search term. No account data is sent to it.
 
+TVmaze data is credited in the UI with a source link and CC BY-SA attribution. Descriptions retain the source language. API HTML summaries are converted to inert text; API URLs are restricted to HTTPS TVmaze domains. Requests are debounced, old requests are aborted, timeouts are handled, and missing posters use a local SVG.
 
-## October 30 interface update
+## File organization
 
-The Assignment 5 features now have separate pages: `movie-night.html` (filter/choose), `gallery.html` (large poster plus eight interactive thumbnails), `movie-rating.html` (ratings), and `planner.html` (three-step form and visible Reset). The shared language selector supports Kazakh, Russian and English, persists across pages, and translates shared interface controls, new feature labels and planner validation. Movie catalogue titles remain their original titles. Existing long catalogue descriptions retain their original content.
+```text
+67films/
+├── index.html, about.html, contact.html
+├── signup.html, login.html, profile.html, discover.html
+├── jquery.html, planner.html, gallery.html, individual-film-pages.html
+├── css/       # Bootstrap-compatible site and component styling
+├── js/        # shared state, validation, auth, API and feature modules
+├── images/    # local film posters, author photos and SVG fallback
+├── vendor/    # local Bootstrap and jQuery fallback, with license notices
+├── data/      # catalogue data and HTML templates
+└── tools/     # generators, static server and checks
+```
 
-Dark-mode controls, form fields and carousel captions have explicit readable colors. The update passed 40 targeted browser checks including mobile/tablet/desktop overflow checks on the affected pages and no JavaScript errors.
+Historical assignment notes remain available, but this README and `DEFENSE_FINAL.md` describe the final project. To regenerate the final site use `build_final.py`, not an older assignment-only generator.
+
+## Verification boundaries
+
+The submission includes recorded browser scenarios, responsive viewport observations and unit results. CSS-width testing is not a claim that every physical device has been tested. External API availability and third-party video playback remain dependent on their providers. The five presentation points are awarded by the instructor during delivery; implementation alone does not guarantee a grade.

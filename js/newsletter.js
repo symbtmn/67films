@@ -43,6 +43,9 @@
     event.preventDefault();
     form.querySelector('[data-form-status]').textContent = '';
     if (!window.FilmForms.validate(form)) return;
-    form.querySelector('[data-form-status]').textContent = 'Email тексерілді! Бұл демо жазылым: хат жіберілмейді.';
+    try {
+      localStorage.setItem('67films.newsletter', JSON.stringify({name:form.elements.newsletterName.value.trim(),email:form.elements.newsletterEmail.value.trim(),genre:form.elements.genre.value}));
+      form.querySelector('[data-form-status]').textContent = window.FilmLanguage.t('Жазылым таңдауы осы браузерге сақталды. Хат жіберілмейді.');
+    } catch { form.querySelector('[data-form-status]').textContent=window.FilmLanguage.t('Өзгерісті сақтау мүмкін болмады.'); }
   });
 })();

@@ -127,8 +127,9 @@
     if (input.id === 'nightName' && !/^[\p{L}\p{M}]+(?:[ '\u2019-][\p{L}\p{M}]+)*$/u.test(input.value.trim())) return t('Атыңызды кемінде екі әріппен жазыңыз.');
     if (input.id === 'nightName' && input.value.trim().length < 2) return t('Атыңызды кемінде екі әріппен жазыңыз.');
     if (input.id === 'nightGuests' && (!Number.isInteger(Number(input.value)) || Number(input.value)<1 || Number(input.value)>12)) return t('Адам саны 1–12 аралығындағы бүтін сан болуы керек.');
+    if (input.id === 'nightTime' && !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(input.value)) return t('Дұрыс уақытты таңдаңыз.');
     if (input.id === 'nightDate' && (!input.value || input.value < today())) return t('Бүгінгі немесе алдағы күнді таңдаңыз.');
-    if (input.required && (!input.value || input.validity.badInput)) return t('Бұл өрісті дұрыс толтырыңыз.');
+    if (input.hasAttribute('data-required') && !input.value) return t('Бұл өрісті дұрыс толтырыңыз.');
     return '';
   }
   function validate(index) {
@@ -152,10 +153,10 @@
   // onChange is the callback used to render a step after validation and state update.
   function goToStep(index, onChange) { if(index<0||index>2)return;if(index>state.step&&!validate(state.step))return;state.step=index;onChange(index);steps[index].querySelector('legend').focus(); }
   if(form) {
-    $('#nightDate').min=today(); $('#nightDate').value=today();
+    $('#nightDate').value=today();
     $('#nightNext').addEventListener('click',()=>goToStep(state.step+1,renderStep)); $('#nightBack').addEventListener('click',()=>goToStep(state.step-1,renderStep));
     form.addEventListener('input',event=>{event.target.removeAttribute('aria-invalid');$('#nightPlanError').hidden=true;invalidateTicket();});
-    form.addEventListener('reset',()=>setTimeout(()=>{state.step=0;$('#nightDate').min=today();$('#nightDate').value=today();form.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));invalidateTicket();renderStep(0);$('#nightName').focus();},0));
+    form.addEventListener('reset',()=>setTimeout(()=>{state.step=0;$('#nightDate').value=today();form.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));invalidateTicket();renderStep(0);$('#nightName').focus();},0));
     form.addEventListener('submit',event=>{
       event.preventDefault();if(state.step<2){goToStep(state.step+1,renderStep);return;}if(!validate(0)||!validate(1))return;
       details($('#ticketDetails'));$('#ticketMessage').textContent=t('Жоспарыңыз дайын, {name}!',{name:$('#nightName').value.trim()});$('#nightTicket').hidden=false;$('#nightSubmit').disabled=true;animate($('#nightTicket'),'night-ticket-ready');$('#ticketHeading').focus();window.NightSound?.play();

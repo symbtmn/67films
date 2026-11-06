@@ -36,7 +36,19 @@ class PrettyHTML(HTMLParser):
     def handle_decl(self,decl):
         self.line('<!'+decl+'>')
     def handle_starttag(self,tag,attrs):
-        self.line(self.get_starttag_text())
+        if tag in {'form','input','textarea','select'}:
+            clean=[]
+            for name,value in attrs:
+                if name in {'required','pattern','minlength','maxlength','min','max'}:
+                    if name=='pattern': continue
+                    clean.append(('data-'+name,value if value is not None else ''))
+                elif name=='type' and value=='email':
+                    clean.extend([('type','text'),('inputmode','email'),('data-rule','email')])
+                else: clean.append((name,value))
+            if tag=='form' and not any(name=='novalidate' for name,_ in clean):clean.append(('novalidate',''))
+            clean=list(dict(clean).items())
+            self.line('<'+tag+''.join(' '+name+(('="'+esc(value,quote=True)+'"') if value is not None else '') for name,value in clean)+'>')
+        else: self.line(self.get_starttag_text())
         if tag not in self.VOID:
             self.depth+=1
     def handle_endtag(self,tag):
@@ -59,35 +71,14 @@ class PrettyHTML(HTMLParser):
 def formatted_html(text):
     formatter=PrettyHTML()
     formatter.feed(text)
-    return '\n'.join(formatter.lines)+'\n'
+    return '\n'.join(line.rstrip() for line in formatter.lines)+'\n'
 
 def header(bs, current):
-    links = [('index.html','Басты бет'),('categories.html','Санаттар'),('movie-night.html','Кино таңдау'),('about.html','Біз туралы'),('contact.html','Байланыс'),('club.html','Кино клубы'),('faq.html','FAQ')]
-    navlinks = ''.join(f'<li class="nav-item"><a class="nav-link{" active" if current == file else ""}" href="{file}" {"aria-current=\"page\"" if current == file else ""}>{name}</a></li>' for file,name in links)
-    dropdowns = ''
-    for name,pairs in GENRES:
-        items = ''.join(f'<li><a class="dropdown-item" href="{file}">{label}</a></li>' for file,label in pairs)
-        if bs:
-            dropdowns += f'<li class="nav-item dropdown"><button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{name}</button><ul class="dropdown-menu">{items}</ul></li>'
-        else:
-            dropdowns += f'<li><details class="genre-menu"><summary>{name}</summary><ul>{items}</ul></details></li>'
-    search = ''
-    if bs:
-        return f'''<header class="grid-header bg-body border-bottom">
-  <div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
-    <a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">67 <span class="text-danger">FILMS</span></a>
-    {search}
-    <div class="header-controls d-flex flex-wrap align-items-center gap-2"><div class="d-flex align-items-center gap-2"><label class="language-control small"><span>Тіл</span><select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл"><option value="kk">Қазақша</option><option value="ru">Русский</option><option value="en">English</option></select></label><button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">Түнгі режим</button></div><button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">Фонды өзгерту</button><button class="btn btn-outline-danger btn-sm" type="button" data-newsletter-open>Жаңалыққа жазылу</button></div>
-  </div>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
-    <div class="container-fluid p-0">
-      <button class="btn btn-outline-danger btn-sm d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#trendingPanel" aria-controls="trendingPanel">Трендтегілер</button>
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Мәзірді ашу"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="mainNavbar"><ul class="navbar-nav flex-wrap align-items-lg-center gap-lg-2 mb-0"><li class="nav-item"><a class="btn btn-dark site-search-link" href="jquery.html">Іздеу</a></li>{navlinks}{dropdowns}</ul></div>
-    </div>
-  </nav>
-</header>'''
-    return f'''<header class="grid-header"><div class="top-bar"><a class="logo" href="index.html">67 <span>FILMS</span></a><nav aria-label="Негізгі навигация"><ul class="custom-nav">{navlinks}</ul></nav></div><div class="header-tools">{search}<button id="theme-toggle" type="button" class="btn" aria-pressed="false">Түнгі режим</button><ul class="custom-nav">{dropdowns}</ul></div></header>'''
+    links=[('index.html','Басты бет'),('jquery.html','Каталог'),('categories.html','Санаттар'),('discover.html','Сериалдар'),('about.html','Біз туралы'),('contact.html','Байланыс')]
+    nav=''.join(f'<li class="nav-item"><a class="nav-link{ " active" if current==file else ""}" href="{file}"'+(' aria-current="page"' if current==file else '')+f'>{name}</a></li>' for file,name in links)
+    extras=[('movie-night.html','Кино таңдау'),('gallery.html','Галерея'),('movie-rating.html','Бағалау'),('planner.html','Кеш жоспары'),('club.html','Кино клубы'),('jquery-ux.html','Ұсыныс жіберу'),('jquery-tools.html','Постерлер мен бөлісу'),('faq.html','FAQ')]
+    items=''.join(f'<li><a class="dropdown-item" href="{file}">{name}</a></li>' for file,name in extras)
+    return f'''<header class="grid-header bg-body border-bottom"><div class="container-fluid px-3 px-lg-4 py-3 top-bar d-flex flex-wrap align-items-center justify-content-between gap-3"><a class="logo text-decoration-none fs-3 fw-bold text-body" href="index.html">67 <span class="text-danger">FILMS</span></a><div class="header-controls d-flex flex-wrap align-items-center gap-2"><div class="header-pair"><label class="language-control small"><span>Тіл</span><select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл"><option value="kk">Қазақша</option><option value="ru">Русский</option><option value="en">English</option></select></label><button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">Түнгі режим</button></div><button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">Фонды өзгерту</button><a href="login.html" data-account-link class="btn btn-danger btn-sm final-action">Кіру</a></div></div><nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация"><div class="container-fluid p-0"><button class="btn btn-outline-danger btn-sm d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#trendingPanel" aria-controls="trendingPanel">Трендтегілер</button><button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Мәзірді ашу"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="mainNavbar"><ul class="navbar-nav align-items-lg-center mb-0">{nav}<li class="nav-item dropdown"><button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Кино әлемі</button><ul class="dropdown-menu">{items}</ul></li></ul></div></div></nav></header>'''
 
 def sidebar(bs):
     items = ''.join(f'<a class="list-group-item list-group-item-action py-3 px-0 border-start-0 border-end-0" href="{m["href"]}"><span class="d-block fw-semibold">{esc(m["short"])}</span><small class="text-body-secondary">{esc(m["meta"])}</small></a>' for m in MOVIES[:8])
@@ -97,7 +88,7 @@ def sidebar(bs):
     return f'<aside class="grid-sidebar"><details class="trending-details" open><summary>Трендтегілер</summary><div>{body}</div></details></aside>'
 
 def footer(bs):
-    return f'''<footer class="grid-footer bg-body-tertiary border-top px-3 px-lg-4 py-4 mt-auto"><div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3"><div><a class="fw-bold text-body text-decoration-none" href="index.html">67FILMS</a><p class="small text-body-secondary mb-0">Кино, сериал, аниме және дорама каталогы.</p></div><nav class="d-flex flex-wrap gap-3" aria-label="Футер навигациясы"><a href="about.html">Біз туралы</a><a href="contact.html">Байланыс</a><a href="categories.html">Санаттар</a></nav></div><div class="small mt-3 mb-3"><time data-live-clock aria-live="off">Уақыт жүктелуде...</time><span class="text-body-secondary d-block">Жергілікті уақыт · <span data-clock-zone></span></span></div><p class="small mb-0 mt-3">Created by: <strong>{NAMES}</strong></p></footer>'''
+    return f'''<footer class="grid-footer bg-body-tertiary border-top px-3 px-lg-4 py-4 mt-auto"><div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3"><div><a class="fw-bold text-body text-decoration-none" href="index.html">67FILMS</a><p class="small text-body-secondary mb-0">Кино, сериал, аниме және дорама каталогы.</p></div><nav class="d-flex flex-wrap gap-3" aria-label="Футер навигациясы"><a href="about.html">Біз туралы</a><a href="contact.html">Байланыс</a><a href="categories.html">Санаттар</a><a href="discover.html">Сериалдар</a><a href="signup.html">Тіркелу</a><a href="https://github.com/symbtmn/67films" target="_blank" rel="noopener noreferrer">GitHub</a></nav></div><div class="small mt-3 mb-3"><time data-live-clock aria-live="off">Уақыт жүктелуде...</time><span class="text-body-secondary d-block">Жергілікті уақыт · <span data-clock-zone></span></span></div><p class="small mb-0 mt-3">Created by: <strong>{NAMES}</strong></p></footer>'''
 
 def card(m,bs):
     alt = esc(m['short']); href=m['href']
@@ -123,7 +114,10 @@ def carousel():
     return f'''<section class="mb-4" aria-label="Ұсынылған тоғыз кино"><div class="row"><div class="col-12"><div id="movieCarousel" class="carousel slide" aria-roledescription="карусель" aria-label="Кино таңдауы"><div class="carousel-indicators">{indicators}</div><div class="carousel-inner rounded">{slides}</div><button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Алдыңғы кино</span></button><button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Келесі кино</span></button></div></div></div></section>'''
 
 def homepage(bs):
-    return f'''<h1 class="page-title mb-2">Кино әлеміне қош келдіңіз</h1><p class="intro-text text-body-secondary mb-4">Сүйікті туындыңызды табыңыз. Жанрды таңдаңыз, трейлерді көріңіз, әсеріңізді сақтаңыз.</p>{carousel() if bs else ''}<section aria-labelledby="catalogTitle"><div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3"><h2 id="catalogTitle" class="h4 mb-0">Барлық туындылар</h2><a class="btn btn-danger btn-sm" href="categories.html">Жанр таңдау</a></div><p id="searchSummary" class="small text-body-secondary" role="status"></p>{cards([m['file'] for m in MOVIES],bs)}</section>{gallery(bs)}'''
+    posters=''.join(f'<img src="{m["image"]}" alt="{esc(m["short"])} постері" width="145" height="218">' for m in [MOVIES[26],MOVIES[27],MOVIES[8]])
+    hero=f'''<section class="final-hero mb-4"><div><p class="final-eyebrow">КИНОҒА БІРГЕ ЖАҚЫНДАЙЫҚ</p><h1 class="mb-3">Келесі жақсы киноң осы жерден басталады.</h1><p class="intro-text text-body-secondary mb-4">67Films — фильм, сериал және аниме іздейтін көрермендерге арналған каталог. Трейлер көріңіз, таңдауыңызды сақтаңыз, кино кешін жоспарлаңыз.</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-danger final-action" href="jquery.html">Каталогты ашу</a><a class="btn btn-outline-secondary" href="signup.html">Клубқа қосылу</a></div></div><div class="hero-posters">{posters}</div></section>'''
+    features='<section class="feature-strip mb-5" aria-label="67Films мүмкіндіктері">'+''.join(f'<article class="card h-100"><div class="card-body p-4"><p class="feature-number">{number}</p><h2 class="h5">{title}</h2><p class="small text-body-secondary">{description}</p><a href="{href}">{label}</a></div></article>' for number,title,description,href,label in [('01 / КАТАЛОГ','Өзіңізге сай туынды','34 туындыны атауы немесе жанры бойынша бірден табыңыз.','jquery.html','Кино іздеу'),('02 / ЖАҢА ОҚИҒАЛАР','Сериалдарды зерттеңіз','TVmaze API арқылы жаңа сериалдар мен олардың рейтингтерін ашыңыз.','discover.html','Сериал табу'),('03 / КИНО КЕШІ','Жоспар құрыңыз','Фильмді, қонақтарды және уақытты бір жоспарға біріктіріңіз.','planner.html','Кешті жоспарлау')])+'</section>'
+    return hero+features+'<div class="section-heading"><h2 class="h3 mb-0">Апталық таңдау</h2><a href="movie-night.html">Кино таңдау</a></div>'+carousel()+'<section class="mt-5"><div class="section-heading"><h2 class="h3 mb-0" id="catalogTitle">Танымал туындылар</h2><a href="jquery.html">Толық каталог</a></div>'+cards([m['file'] for m in MOVIES[:6]],bs)+'</section>'
 
 def status(m):
     values=[('watching','Көріп жатырмын'),('watched','Қарадым'),('will_watch','Көремін'),('dropped','Тастадым'),('not_watched','Көрген жоқпын')]
@@ -140,8 +134,8 @@ def detail(m,bs):
 
 def about(bs):
     authors=[
-        ('Әбдірахман Сымбат','img/5309935748599455000.jpg','Сайттың жалпы құрылымын, беттер арасындағы навигацияны және негізгі интерактивті функцияларын әзірлеуге қатыстым. JavaScript пен jQuery арқылы іздеу, формаларды тексеру және пайдаланушыға хабарлама көрсету мүмкіндіктерін іске асырдым. Беттердің біркелкі көрінуін, тіл ауыстыру мен түнгі режимнің жұмысын тексеруге үлес қостым.','+7 776 836 81 16','+77768368116','253236@astanait.edu.kz'),
-        ('Зулпыбек Ақерке','img/5309935748599455006.jpg','Кино карточкаларын, жанрлар бойынша бөлімдерді және фильмдер туралы ақпаратты дайындауға қатыстым. Постерлерді, сипаттамаларды және трейлер сілтемелерін орналастырып, мазмұнның түсінікті әрі реттелген болуына көңіл бөлдім. Галереяны толтыруға, суреттер мен сілтемелерді тексеруге және беттердің телефонда дұрыс көрінуін жақсартуға үлес қостым.','+7 702 774 29 98','+77027742998','250409@astanait.edu.kz')
+        ('Әбдірахман Сымбат','images/5309935748599455000.jpg','Сайттың жалпы құрылымын, беттер арасындағы навигацияны және негізгі интерактивті функцияларын әзірлеуге қатыстым. JavaScript пен jQuery арқылы іздеу, формаларды тексеру және пайдаланушыға хабарлама көрсету мүмкіндіктерін іске асырдым. Беттердің біркелкі көрінуін, тіл ауыстыру мен түнгі режимнің жұмысын тексеруге үлес қостым.','+7 776 836 81 16','+77768368116','253236@astanait.edu.kz'),
+        ('Зулпыбек Ақерке','images/5309935748599455006.jpg','Кино карточкаларын, жанрлар бойынша бөлімдерді және фильмдер туралы ақпаратты дайындауға қатыстым. Постерлерді, сипаттамаларды және трейлер сілтемелерін орналастырып, мазмұнның түсінікті әрі реттелген болуына көңіл бөлдім. Галереяны толтыруға, суреттер мен сілтемелерді тексеруге және беттердің телефонда дұрыс көрінуін жақсартуға үлес қостым.','+7 702 774 29 98','+77027742998','250409@astanait.edu.kz')
     ]
     columns=''
     for name,image,bio,phone,tel,email in authors:
@@ -158,7 +152,7 @@ def about(bs):
     return f'<h1 class="page-title mb-3">Біз туралы</h1><p class="intro-text mb-4">67Films — фильмдер, сериалдар, аниме және дорамаларды бір жерден табуға арналған оқу жобасы.</p><section class="row g-4 author-grid mt-3 mt-lg-4" aria-label="Жоба авторлары">{columns}</section><section class="mt-5" aria-labelledby="featuresTitle"><h2 class="h4 mb-3" id="featuresTitle">Сайт мүмкіндіктері</h2><div class="row g-3 feature-grid">{three}</div></section>{group}'
 
 def contact(bs):
-    return '''<h1 class="page-title mb-3">Байланыс және кері байланыс</h1><p class="intro-text mb-4">Кино ұсыныңыз немесе сайттағы қатені сипаттаңыз.</p><div class="row g-4 contact-layout mt-3 mt-lg-4"><section class="col-12 col-lg-6"><div class="card h-100"><div class="card-body p-4"><h2 class="h4">67Films командасы</h2><p>Symbat Abdirakhman және Akerke Zulpubek</p><p>Astana IT University, Астана.</p><a href="https://github.com/symbtmn/67films" class="btn btn-outline-secondary" target="_blank" rel="noopener noreferrer">Жоба репозиторийі</a><p id="formHelp" class="small text-body-secondary mt-4 mb-0">Бұл оқу формасы: хабарлама серверге жіберілмейді. Деректеріңіз CSV файлы ретінде құрылғыңызға жүктеледі.</p></div></div></section><section class="col-12 col-lg-6"><div class="card"><div class="card-body p-4"><h2 class="h4 mb-3">Кино ұсыну</h2><form id="contact-form" aria-describedby="formHelp"><div class="mb-3"><label class="form-label" for="username">Атыңыз</label><input class="form-control" id="username" name="username" type="text" autocomplete="name" minlength="2" maxlength="80" required></div><div class="mb-3"><label class="form-label" for="email">Электронды пошта</label><div class="input-group"><span class="input-group-text" aria-hidden="true">@</span><input class="form-control" id="email" name="email" type="email" autocomplete="email" maxlength="120" required></div></div><div class="mb-3"><label class="form-label" for="category">Санат</label><select class="form-select" id="category" name="category"><option value="suggest">Кино ұсыну</option><option value="bug">Қате хабарлау</option><option value="other">Басқа сұрақ</option></select></div><fieldset class="mb-3"><legend class="h6">Ұсынылатын туынды түрі</legend><div class="form-check"><input class="form-check-input" type="radio" name="contentType" id="typeMovie" value="movie" checked><label class="form-check-label" for="typeMovie">Фильм</label></div><div class="form-check"><input class="form-check-input" type="radio" name="contentType" id="typeSeries" value="series"><label class="form-check-label" for="typeSeries">Сериал / аниме / дорама</label></div></fieldset><div class="mb-3"><label class="form-label" for="message">Хабарламаңыз</label><textarea class="form-control" id="message" name="message" rows="5" minlength="10" maxlength="2000" required></textarea></div><div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="confirm" name="confirm" required><label class="form-check-label" for="confirm">CSV файлды өз құрылғыма сақтауға келісемін.</label></div><div class="d-flex flex-wrap gap-2"><button class="btn btn-danger btn-lg" type="submit">CSV сақтау</button><button class="btn btn-outline-secondary" type="reset">Тазалау</button></div><p id="formStatus" class="small mt-3 mb-0" role="status"></p><noscript><p>CSV сақтау үшін JavaScript қосыңыз.</p></noscript></form></div></div></section></div>'''
+    return '''<h1 class="page-title mb-3">Байланыс және кері байланыс</h1><p class="intro-text mb-4">Кино ұсыныңыз немесе сайттағы қатені сипаттаңыз.</p><div class="row g-4 contact-layout mt-3 mt-lg-4"><section class="col-12 col-lg-6"><div class="card h-100"><div class="card-body p-4"><h2 class="h4">67Films командасы</h2><p>Symbat Abdirakhman және Akerke Zulpubek</p><p>Astana IT University, Астана.</p><a href="https://github.com/symbtmn/67films" class="btn btn-outline-secondary" target="_blank" rel="noopener noreferrer">Жоба репозиторийі</a><p id="formHelp" class="small text-body-secondary mt-4 mb-0">Бұл оқу формасы: хабарлама серверге жіберілмейді. Деректеріңіз CSV файлы ретінде құрылғыңызға жүктеледі.</p></div></div></section><section class="col-12 col-lg-6"><div class="card"><div class="card-body p-4"><h2 class="h4 mb-3">Кино ұсыну</h2><form id="contact-form" aria-describedby="formHelp"><div class="mb-3"><label class="form-label" for="username">Атыңыз</label><input class="form-control" id="username" name="username" type="text" autocomplete="name" minlength="2" maxlength="80" required></div><div class="mb-3"><label class="form-label" for="email">Электронды пошта</label><div class="input-group"><span class="input-group-text" aria-hidden="true">@</span><input class="form-control" id="email" name="email" type="email" autocomplete="email" maxlength="120" required></div></div><div class="mb-3"><label class="form-label" for="contactPhone">Телефон</label><input id="contactPhone" name="phone" class="form-control" type="tel" autocomplete="tel" placeholder="+7 777 123 45 67" data-rule="phone" data-required></div><div class="mb-3"><label class="form-label" for="category">Санат</label><select class="form-select" id="category" name="category"><option value="suggest">Кино ұсыну</option><option value="bug">Қате хабарлау</option><option value="other">Басқа сұрақ</option></select></div><fieldset class="mb-3"><legend class="h6">Ұсынылатын туынды түрі</legend><div class="form-check"><input class="form-check-input" type="radio" name="contentType" id="typeMovie" value="movie" checked><label class="form-check-label" for="typeMovie">Фильм</label></div><div class="form-check"><input class="form-check-input" type="radio" name="contentType" id="typeSeries" value="series"><label class="form-check-label" for="typeSeries">Сериал / аниме / дорама</label></div></fieldset><div class="mb-3"><label class="form-label" for="message">Хабарламаңыз</label><textarea class="form-control" id="message" name="message" rows="5" minlength="10" maxlength="2000" required></textarea></div><div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="confirm" name="confirm" required><label class="form-check-label" for="confirm">CSV файлды өз құрылғыма сақтауға келісемін.</label></div><div class="d-flex flex-wrap gap-2"><button class="btn btn-danger btn-lg" type="submit">CSV сақтау</button><button class="btn btn-outline-secondary" type="reset">Тазалау</button></div><p id="formStatus" class="small mt-3 mb-0" role="status"></p><noscript><p>CSV сақтау үшін JavaScript қосыңыз.</p></noscript></form></div></div></section></div>'''
 
 def categories(bs):
     groups=''
@@ -177,25 +171,31 @@ def page(dest,file,title,body,bs):
     night_assets = '''<link rel="stylesheet" href="css/movie-night.css?v=black-red-3">
   <script src="js/night-data.js?v=assignment-5" defer></script>
   <script src="js/night-sound.js?v=assignment-5" defer></script>
-  <script src="js/movie-night.js?v=separate-pages-2" defer></script>''' if file in ['movie-night.html','gallery.html','movie-rating.html','planner.html'] else ''
+  <script src="js/movie-night.js?v=final-1" defer></script>''' if file in ['movie-night.html','gallery.html','movie-rating.html','planner.html'] else ''
     head=f'''<!DOCTYPE html>
 <html lang="kk" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
+  <script src="js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
   <title>{esc(title)} | 67Films</title>
   {css}
   <link rel="stylesheet" href="css/style.css?v=black-red-3">
+  <link rel="stylesheet" href="css/final.css?v=final-1">
   {js}
-  <script src="js/script.js" defer></script>
-  <script src="js/validation.js?v=validation-fix-2" defer></script>
+  <script src="js/script.js?v=final-1" defer></script>
+  <script src="js/validation.js?v=final-1" defer></script>
   <script src="js/accordion.js?v=assignment-4" defer></script>
-  <script src="js/newsletter.js?v=assignment-4" defer></script>
+  <script src="js/newsletter.js?v=final-1" defer></script>
   <script src="js/background.js?v=black-red-3" defer></script>
   <script src="js/clock.js?v=assignment-4" defer></script>
   <script src="js/translations.js?v=about-profiles-3" defer></script>
+  <script src="js/final-translations.js?v=final-1" defer></script>
   <script src="js/i18n.js?v=languages-1" defer></script>
+  <script src="js/jquery-catalog.js?v=final-1" defer></script>
+  <script src="js/auth-core.js?v=final-1" defer></script>
+  <script src="js/auth.js?v=final-1" defer></script>
   {night_assets}
 </head>
 <body>

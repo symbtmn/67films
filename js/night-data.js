@@ -4,7 +4,7 @@ window.NightMovies = [
   {
     "id": "zintersteller",
     "title": "Интерстеллар",
-    "poster": "img/5307683948785770049.jpg",
+    "poster": "images/5307683948785770049.jpg",
     "page": "zintersteller.html",
     "category": "science",
     "categoryLabel": "Ғарыш пен қиял",
@@ -16,7 +16,7 @@ window.NightMovies = [
   {
     "id": "avengers",
     "title": "Кек алушылар: Финал",
-    "poster": "img/5276258587908973287.jpg",
+    "poster": "images/5276258587908973287.jpg",
     "page": "avengers.html",
     "category": "science",
     "categoryLabel": "Ғарыш пен қиял",
@@ -28,7 +28,7 @@ window.NightMovies = [
   {
     "id": "zgaryshsakshylary",
     "title": "Ғарыш сақшылары 3",
-    "poster": "img/5307683948785770032.jpg",
+    "poster": "images/5307683948785770032.jpg",
     "page": "zgaryshsakshylary.html",
     "category": "science",
     "categoryLabel": "Ғарыш пен қиял",
@@ -40,7 +40,7 @@ window.NightMovies = [
   {
     "id": "zetikigenmysyq",
     "title": "Етік киген мысық 2: Соңғы тілек",
-    "poster": "img/5276258587908973591.jpg",
+    "poster": "images/5276258587908973591.jpg",
     "page": "zetikigenmysyq.html",
     "category": "family",
     "categoryLabel": "Отбасымен",
@@ -52,7 +52,7 @@ window.NightMovies = [
   {
     "id": "zlilomensich",
     "title": "Лило мен Стич",
-    "poster": "img/5307683948785770053.jpg",
+    "poster": "images/5307683948785770053.jpg",
     "page": "zlilomensich.html",
     "category": "family",
     "categoryLabel": "Отбасымен",
@@ -64,7 +64,7 @@ window.NightMovies = [
   {
     "id": "zbalerina",
     "title": "Балерина / Leap!",
-    "poster": "img/5307683948785770054.jpg",
+    "poster": "images/5307683948785770054.jpg",
     "page": "zbalerina.html",
     "category": "family",
     "categoryLabel": "Отбасымен",
@@ -76,7 +76,7 @@ window.NightMovies = [
   {
     "id": "zruhtar",
     "title": "Рухтар баураған шаһар",
-    "poster": "img/5307683948785770041.jpg",
+    "poster": "images/5307683948785770041.jpg",
     "page": "zruhtar.html",
     "category": "anime",
     "categoryLabel": "Аниме",
@@ -88,7 +88,7 @@ window.NightMovies = [
   {
     "id": "zdemetr",
     "title": "Деметр жоюшы жүз",
-    "poster": "img/5307683948785770037.jpg",
+    "poster": "images/5307683948785770037.jpg",
     "page": "zdemetr.html",
     "category": "anime",
     "categoryLabel": "Аниме",

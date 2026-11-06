@@ -99,7 +99,7 @@
   if (form) {
     form.addEventListener('submit', event => {
       event.preventDefault();
-      if (!form.reportValidity()) return;
+      if (!window.FilmForms.validate(form)) return;
       const data = new FormData(form);
       // Escape every field. Formula-leading strings remain inert in spreadsheet apps.
       const cell = value => {
@@ -107,8 +107,8 @@
         if (/^[\s]*[=+@-]/.test(text)) text = `'${text}`;
         return `"${text.replace(/"/g, '""')}"`;
       };
-      const columns = ['username', 'email', 'category', 'contentType', 'message'];
-      const csv = '\ufeff' + ['Аты,Email,Санат,Туынды түрі,Хабарлама', columns.map(name => cell(data.get(name))).join(',')].join('\r\n');
+      const columns = ['username', 'email', 'phone', 'category', 'contentType', 'message'];
+      const csv = '\ufeff' + ['Аты,Email,Телефон,Санат,Туынды түрі,Хабарлама', columns.map(name => cell(data.get(name))).join(',')].join('\r\n');
       const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }));
       const link = document.createElement('a');
       link.href = url;

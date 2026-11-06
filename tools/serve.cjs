@@ -3,6 +3,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const mime = { '.html':'text/html; charset=utf-8', '.css':'text/css', '.js':'text/javascript', '.jpg':'image/jpeg', '.png':'image/png', '.svg':'image/svg+xml', '.ico':'image/x-icon', '.json':'application/json' };
+const portFlag = process.argv.indexOf('--port');
+const hostFlag = process.argv.indexOf('--host');
+const port = Number(portFlag >= 0 ? process.argv[portFlag+1] : process.env.PORT) || 8080;
+const host = hostFlag >= 0 ? process.argv[hostFlag+1] : '0.0.0.0';
 http.createServer((req,res) => {
   let filename;
   try {
@@ -17,4 +21,4 @@ http.createServer((req,res) => {
   }
   res.writeHead(200, { 'Content-Type':mime[path.extname(filename)] || 'application/octet-stream' });
   fs.createReadStream(filename).pipe(res);
-}).listen(Number(process.env.PORT) || 8080, () => console.log(`67Films: http://localhost:${Number(process.env.PORT) || 8080}`));
+}).listen(port, host, () => console.log(`67Films: http://${host === '0.0.0.0' ? 'localhost' : host}:${port}`));

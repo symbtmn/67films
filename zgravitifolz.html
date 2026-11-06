@@ -2,6 +2,8 @@
 <html lang="kk" data-bs-theme="light">
   <head>
     <meta charset="UTF-8">
+    <script src="js/theme-init.js">
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="67Films кино каталогы: жанрлар, сипаттамалар және трейлерлер.">
     <title>
@@ -9,23 +11,32 @@
     </title>
     <link rel="stylesheet" href="vendor/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css?v=black-red-3">
+    <link rel="stylesheet" href="css/final.css?v=final-1">
     <script src="vendor/bootstrap.bundle.min.js" defer>
     </script>
-    <script src="js/script.js" defer>
+    <script src="js/script.js?v=final-1" defer>
     </script>
-    <script src="js/validation.js?v=validation-fix-2" defer>
+    <script src="js/validation.js?v=final-1" defer>
     </script>
     <script src="js/accordion.js?v=assignment-4" defer>
     </script>
-    <script src="js/newsletter.js?v=assignment-4" defer>
+    <script src="js/newsletter.js?v=final-1" defer>
     </script>
     <script src="js/background.js?v=black-red-3" defer>
     </script>
     <script src="js/clock.js?v=assignment-4" defer>
     </script>
-    <script src="js/translations.js?v=languages-1" defer>
+    <script src="js/translations.js?v=about-profiles-3" defer>
+    </script>
+    <script src="js/final-translations.js?v=final-1" defer>
     </script>
     <script src="js/i18n.js?v=languages-1" defer>
+    </script>
+    <script src="js/jquery-catalog.js?v=final-1" defer>
+    </script>
+    <script src="js/auth-core.js?v=final-1" defer>
+    </script>
+    <script src="js/auth.js?v=final-1" defer>
     </script>
   </head>
   <body>
@@ -41,30 +52,34 @@
               FILMS
             </span>
           </a>
-          <div class="header-controls d-flex flex-wrap align-items-center gap-2"><div class="d-flex align-items-center gap-2"><label class="language-control small">
-            <span>
-              Тіл
-            </span>
-            <select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл">
-              <option value="kk">
-                Қазақша
-              </option>
-              <option value="ru">
-                Русский
-              </option>
-              <option value="en">
-                English
-              </option>
-            </select>
-          </label><button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
-              Түнгі режим
-            </button></div>
+          <div class="header-controls d-flex flex-wrap align-items-center gap-2">
+            <div class="header-pair">
+              <label class="language-control small">
+                <span>
+                  Тіл
+                </span>
+                <select id="languageSelect" class="form-select form-select-sm" aria-label="Тіл">
+                  <option value="kk">
+                    Қазақша
+                  </option>
+                  <option value="ru">
+                    Русский
+                  </option>
+                  <option value="en">
+                    English
+                  </option>
+                </select>
+              </label>
+              <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm" aria-pressed="false">
+                Түнгі режим
+              </button>
+            </div>
             <button id="background-toggle" type="button" class="btn btn-outline-secondary btn-sm">
               Фонды өзгерту
             </button>
-            <button class="btn btn-outline-danger btn-sm" type="button" data-newsletter-open>
-              Жаңалыққа жазылу
-            </button>
+            <a href="login.html" data-account-link class="btn btn-danger btn-sm final-action">
+              Кіру
+            </a>
           </div>
         </div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 px-lg-4 py-2" aria-label="Негізгі навигация">
@@ -77,183 +92,80 @@
               </span>
             </button>
             <div class="collapse navbar-collapse" id="mainNavbar">
-              <ul class="navbar-nav flex-wrap align-items-lg-center gap-lg-2 mb-0"><li class="nav-item"><a class="btn btn-dark site-search-link" href="jquery.html">Іздеу</a></li>
+              <ul class="navbar-nav align-items-lg-center mb-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html" >
+                  <a class="nav-link" href="index.html">
                     Басты бет
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="categories.html" >
+                  <a class="nav-link" href="jquery.html">
+                    Каталог
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="categories.html">
                     Санаттар
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="movie-night.html" >
-                    Кино таңдау
+                  <a class="nav-link" href="discover.html">
+                    Сериалдар
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html" >
+                  <a class="nav-link" href="about.html">
                     Біз туралы
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html" >
+                  <a class="nav-link" href="contact.html">
                     Байланыс
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="club.html" >
-                    Кино клубы
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="faq.html" >
-                    FAQ
-                  </a>
-                </li>
                 <li class="nav-item dropdown">
                   <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Фильмдер
+                    Кино әлемі
                   </button>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="xfantastika.html">
-                        Фантастика
+                      <a class="dropdown-item" href="movie-night.html">
+                        Кино таңдау
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="xboevik.html">
-                        Боевик
+                      <a class="dropdown-item" href="gallery.html">
+                        Галерея
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="xfentezi.html">
-                        Фэнтези
+                      <a class="dropdown-item" href="movie-rating.html">
+                        Бағалау
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="xprikliucheniya.html">
-                        Шытырман
+                      <a class="dropdown-item" href="planner.html">
+                        Кеш жоспары
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="xdrama.html">
-                        Драма
+                      <a class="dropdown-item" href="club.html">
+                        Кино клубы
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="xtriller.html">
-                        Триллер
+                      <a class="dropdown-item" href="jquery-ux.html">
+                        Ұсыныс жіберу
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="xdetektiv.html">
-                        Детектив
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Сериалдар
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="xkomediya.html">
-                        Комедиялық сериалдар
+                      <a class="dropdown-item" href="jquery-tools.html">
+                        Постерлер мен бөлісу
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="xmelodrama.html">
-                        Мелодрамалар
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xtarihy.html">
-                        Тарихи сериалдар
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Мультфильмдер
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="xanimatsia.html">
-                        Толықметражды
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xmultserial.html">
-                        Мультсериалдар
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xotbasylyk.html">
-                        Отбасылық
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xmuzikalik.html">
-                        Музыкалық
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Аниме
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="xsionen.html">
-                        Сёнэн
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xmistika.html">
-                        Мистика
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xanimeboevik.html">
-                        Экшн және боевик
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xskazka.html">
-                        Ертегі және фэнтези
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Дорамалар
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="xdorama.html">
-                        Оңтүстік Кореялық
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xromantika.html">
-                        Романтика
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xdoramatriller.html">
-                        Триллер және қорқынышты
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="xdoramagistorya.html">
-                        Тарихи дорамалар
+                      <a class="dropdown-item" href="faq.html">
+                        FAQ
                       </a>
                     </li>
                   </ul>
@@ -376,7 +288,7 @@
             </h1>
             <div class="row g-4 movie-details-flex">
               <div class="col-6 col-sm-4 col-lg-3 mx-auto mx-sm-0">
-                <img class="img-fluid rounded detail-poster" src="img/5276258587908973584.jpg" alt="Гравити Фолз постері" width="480" height="640">
+                <img class="img-fluid rounded detail-poster" src="images/5276258587908973584.jpg" alt="Гравити Фолз постері" width="480" height="640">
               </div>
               <div class="col-12 col-sm-8 col-lg-9">
                 <div class="table-responsive">
@@ -534,7 +446,7 @@
                 <div class="col d-flex movie-item" data-search="Кек алушылар: Финал Кек алушылар: Финал (2019) 2019, США, Фантастика, Боевик">
                   <article class="card movie-card h-100 w-100">
                     <a href="avengers.html" class="poster-link ratio ratio-4x3">
-                      <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973287.jpg" alt="Кек алушылар: Финал постері" width="480" height="360" loading="lazy">
+                      <img class="card-img-top object-fit-cover w-100 h-100" src="images/5276258587908973287.jpg" alt="Кек алушылар: Финал постері" width="480" height="360" loading="lazy">
                     </a>
                     <div class="card-body d-flex flex-column p-3">
                       <span class="badge text-bg-danger align-self-start mb-2">
@@ -560,7 +472,7 @@
                 <div class="col d-flex movie-item" data-search="Ғаламат ғасыр Ғаламат ғасыр / Muhteşem Yüzyıl 2011, Түркия, Мелодрама, История">
                   <article class="card movie-card h-100 w-100">
                     <a href="zgalamatgasyr.html" class="poster-link ratio ratio-4x3">
-                      <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973304.jpg" alt="Ғаламат ғасыр постері" width="480" height="360" loading="lazy">
+                      <img class="card-img-top object-fit-cover w-100 h-100" src="images/5276258587908973304.jpg" alt="Ғаламат ғасыр постері" width="480" height="360" loading="lazy">
                     </a>
                     <div class="card-body d-flex flex-column p-3">
                       <span class="badge text-bg-danger align-self-start mb-2">
@@ -586,7 +498,7 @@
                 <div class="col d-flex movie-item" data-search="Алыптар шабуылы Алыптар шабуылы / Attack on Titan 2013, Жапония, Фэнтези, Боевик">
                   <article class="card movie-card h-100 w-100">
                     <a href="zatakatitanov.html" class="poster-link ratio ratio-4x3">
-                      <img class="card-img-top object-fit-cover w-100 h-100" src="img/d83491ac30d4c7a2b64b42c7ed67b7b8.jpg" alt="Алыптар шабуылы постері" width="480" height="360" loading="lazy">
+                      <img class="card-img-top object-fit-cover w-100 h-100" src="images/d83491ac30d4c7a2b64b42c7ed67b7b8.jpg" alt="Алыптар шабуылы постері" width="480" height="360" loading="lazy">
                     </a>
                     <div class="card-body d-flex flex-column p-3">
                       <span class="badge text-bg-danger align-self-start mb-2">
@@ -612,7 +524,7 @@
                 <div class="col d-flex movie-item" data-search="Хватай Сон Джэ и беги Хватай Сон Джэ и беги / Lovely Runner 2024, Южная Корея, Романтика, Фэнтези">
                   <article class="card movie-card h-100 w-100">
                     <a href="zhvataisonja.html" class="poster-link ratio ratio-4x3">
-                      <img class="card-img-top object-fit-cover w-100 h-100" src="img/5276258587908973596.jpg" alt="Хватай Сон Джэ и беги постері" width="480" height="360" loading="lazy">
+                      <img class="card-img-top object-fit-cover w-100 h-100" src="images/5276258587908973596.jpg" alt="Хватай Сон Джэ и беги постері" width="480" height="360" loading="lazy">
                     </a>
                     <div class="card-body d-flex flex-column p-3">
                       <span class="badge text-bg-danger align-self-start mb-2">
@@ -663,6 +575,15 @@
             <a href="categories.html">
               Санаттар
             </a>
+            <a href="discover.html">
+              Сериалдар
+            </a>
+            <a href="signup.html">
+              Тіркелу
+            </a>
+            <a href="https://github.com/symbtmn/67films" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
           </nav>
         </div>
         <div class="small mt-3 mb-3">
@@ -700,14 +621,14 @@
         <p class="small text-body-secondary" id="newsletterHelp">
           Сүйікті жанрыңызды таңдаңыз. Бұл оқу демосы: нақты email хаттары жіберілмейді.
         </p>
-        <form id="newsletter-form" data-js-validation>
+        <form id="newsletter-form" data-js-validation novalidate="">
           <div class="alert alert-danger" data-error-summary role="alert" hidden>
           </div>
           <div class="mb-3">
             <label class="form-label" for="newsletterName">
               Атыңыз
             </label>
-            <input class="form-control" id="newsletterName" name="newsletterName" type="text" autocomplete="name" minlength="2" maxlength="80" autofocus required data-validate-field aria-describedby="newsletterName-error">
+            <input class="form-control" id="newsletterName" name="newsletterName" type="text" autocomplete="name" data-minlength="2" data-maxlength="80" autofocus data-required="" data-validate-field aria-describedby="newsletterName-error">
             <div class="invalid-feedback d-block" id="newsletterName-error" hidden>
             </div>
           </div>
@@ -715,7 +636,7 @@
             <label class="form-label" for="newsletterEmail">
               Email
             </label>
-            <input class="form-control" id="newsletterEmail" name="newsletterEmail" type="email" autocomplete="email" maxlength="120" required data-validate-field aria-describedby="newsletterEmail-error">
+            <input class="form-control" id="newsletterEmail" name="newsletterEmail" type="text" inputmode="email" data-rule="email" autocomplete="email" data-maxlength="120" data-required="" data-validate-field aria-describedby="newsletterEmail-error">
             <div class="invalid-feedback d-block" id="newsletterEmail-error" hidden>
             </div>
           </div>
@@ -742,7 +663,7 @@
             </select>
           </div>
           <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="newsletterConsent" name="newsletterConsent" required data-validate-field aria-describedby="newsletterConsent-error">
+            <input class="form-check-input" type="checkbox" id="newsletterConsent" name="newsletterConsent" data-required="" data-validate-field aria-describedby="newsletterConsent-error">
             <label class="form-check-label" for="newsletterConsent">
               Бұл жазылым оқу демосы екенін түсінемін.
             </label>
